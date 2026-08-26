@@ -5,26 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>A&F JACEK — Tattoo & PMU Studio, Biberach an der Riß</title>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
     <style>
-        /* ============================================================
-                   ALLGEMEINE STYLES
-                   ============================================================ */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --bg-primary: #0a0a0a;
@@ -47,1001 +35,276 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ============================================================
-                   NAVIGATION
-                   ============================================================ */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
             background: rgba(10, 10, 10, 0.92);
             backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--border-dim);
             transition: all 0.3s ease;
         }
-
         .navrow {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 24px;
-            max-width: 1200px;
-            margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 24px; max-width: 1200px; margin: 0 auto;
         }
-
         .brand {
-            font-family: 'Oswald', sans-serif;
-            font-weight: 700;
-            font-size: 24px;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
+            font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 24px;
+            letter-spacing: 0.05em; text-transform: uppercase;
         }
         .brand small {
-            display: block;
-            font-family: 'Barlow', sans-serif;
-            font-weight: 400;
-            font-size: 11px;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-            margin-top: 2px;
+            display: block; font-family: 'Barlow', sans-serif; font-weight: 400;
+            font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--text-secondary); margin-top: 2px;
         }
-
-        .brand img {
-            height: 40px;
-            width: auto;
-            display: block;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 32px;
-        }
+        nav ul { list-style: none; display: flex; gap: 32px; }
         nav a {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-secondary);
-            transition: color 0.3s;
-            position: relative;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
+            font-size: 14px; font-weight: 500; color: var(--text-secondary);
+            transition: color 0.3s; position: relative; text-transform: uppercase; letter-spacing: 0.08em;
         }
         nav a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -4px;
-            width: 0;
-            height: 2px;
-            background: var(--accent-gold);
-            transition: width 0.3s ease;
+            content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px;
+            background: var(--accent-gold); transition: width 0.3s ease;
         }
-        nav a:hover {
-            color: var(--text-primary);
-        }
-        nav a:hover::after {
-            width: 100%;
-        }
+        nav a:hover { color: var(--text-primary); }
+        nav a:hover::after { width: 100%; }
 
         .navcall {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--accent-gold);
-            color: #0a0a0a;
-            padding: 10px 24px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--accent-gold); color: #0a0a0a; padding: 10px 24px;
+            border-radius: 4px; font-weight: 600; font-size: 14px; transition: all 0.3s;
+            text-transform: uppercase; letter-spacing: 0.05em;
         }
-        .navcall i {
-            font-size: 14px;
-        }
-        .navcall:hover {
-            background: var(--accent-gold-dim);
-            transform: translateY(-2px);
-        }
+        .navcall i { font-size: 14px; }
+        .navcall:hover { background: var(--accent-gold-dim); transform: translateY(-2px); }
 
         @media (max-width: 760px) {
             nav ul { display: none; }
             .navcall { display: none; }
             .mobile-call {
-                display: inline-flex !important;
-                align-items: center;
-                gap: 8px;
-                background: var(--accent-gold);
-                color: #0a0a0a;
-                padding: 8px 16px;
-                border-radius: 4px;
-                font-weight: 600;
-                font-size: 13px;
+                display: inline-flex !important; align-items: center; gap: 8px;
+                background: var(--accent-gold); color: #0a0a0a; padding: 8px 16px;
+                border-radius: 4px; font-weight: 600; font-size: 13px;
             }
         }
-        @media (min-width: 761px) {
-            .mobile-call { display: none !important; }
-        }
+        @media (min-width: 761px) { .mobile-call { display: none !important; } }
 
-        /* ============================================================
-                   HERO BANNER
-                   ============================================================ */
         .hero-banner {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-            overflow: hidden;
-            background: var(--bg-primary);
+            position: relative; min-height: 100vh; display: flex; align-items: center;
+            padding-top: 80px; overflow: hidden; background: var(--bg-primary);
         }
-
         .hero-banner .bg-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            background-image: url('header.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 1;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+            background-image: url('header.png'); background-size: cover;
+            background-position: center; background-repeat: no-repeat; opacity: 1;
         }
-
         .hero-banner .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5); z-index: 1;
         }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 700px;
-            padding: 60px 0;
-        }
-
+        .hero-content { position: relative; z-index: 2; max-width: 700px; padding: 60px 0; }
         .hero-content .eyebrow {
-            font-size: 13px;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--accent-gold);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
+            font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--accent-gold); margin-bottom: 20px; display: flex; align-items: center; gap: 14px;
         }
-        .hero-content .eyebrow::before {
-            content: '';
-            width: 30px;
-            height: 2px;
-            background: var(--accent-gold);
-        }
-
+        .hero-content .eyebrow::before { content: ''; width: 30px; height: 2px; background: var(--accent-gold); }
         .hero-content h1 {
-            font-family: 'Oswald', sans-serif;
-            font-weight: 700;
-            font-size: clamp(3rem, 8vw, 5.5rem);
-            line-height: 1.05;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
+            font-family: 'Oswald', sans-serif; font-weight: 700; font-size: clamp(3rem, 8vw, 5.5rem);
+            line-height: 1.05; text-transform: uppercase; letter-spacing: 0.02em;
             text-shadow: 0 2px 20px rgba(0,0,0,0.8);
         }
-        .hero-content h1 .highlight {
-            color: var(--accent-gold);
-        }
-
+        .hero-content h1 .highlight { color: var(--accent-gold); }
         .hero-content .lede {
-            margin-top: 24px;
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 520px;
-            line-height: 1.7;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+            margin-top: 24px; font-size: 18px; color: var(--text-secondary);
+            max-width: 520px; line-height: 1.7; text-shadow: 0 2px 10px rgba(0,0,0,0.9);
         }
-
-        .hero-ctas {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-top: 36px;
-        }
-
+        .hero-ctas { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 36px; }
         .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 32px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            text-shadow: none;
+            display: inline-flex; align-items: center; gap: 12px; padding: 16px 32px;
+            border-radius: 4px; font-weight: 600; font-size: 15px; text-transform: uppercase;
+            letter-spacing: 0.05em; transition: all 0.3s ease; border: none; cursor: pointer; text-shadow: none;
         }
-        .btn-primary {
-            background: var(--accent-gold);
-            color: #0a0a0a;
-        }
-        .btn-primary:hover {
-            background: var(--accent-gold-dim);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(200, 168, 124, 0.3);
-        }
-        .btn-outline {
-            border: 2px solid var(--accent-gold);
-            color: var(--text-primary);
-            background: transparent;
-        }
-        .btn-outline:hover {
-            background: var(--accent-gold);
-            color: #0a0a0a;
-            transform: translateY(-3px);
-        }
+        .btn-primary { background: var(--accent-gold); color: #0a0a0a; }
+        .btn-primary:hover { background: var(--accent-gold-dim); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(200, 168, 124, 0.3); }
+        .btn-outline { border: 2px solid var(--accent-gold); color: var(--text-primary); background: transparent; }
+        .btn-outline:hover { background: var(--accent-gold); color: #0a0a0a; transform: translateY(-3px); }
 
         .hero-badge {
-            position: absolute;
-            right: 8%;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(26, 26, 26, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-dim);
-            border-radius: 12px;
-            padding: 32px 28px;
-            text-align: center;
-            box-shadow: var(--shadow-elegant);
-            z-index: 2;
-            min-width: 180px;
+            position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
+            background: rgba(26, 26, 26, 0.9); backdrop-filter: blur(10px);
+            border: 1px solid var(--border-dim); border-radius: 12px; padding: 32px 28px;
+            text-align: center; box-shadow: var(--shadow-elegant); z-index: 2; min-width: 180px;
         }
-        .hero-badge .big {
-            font-family: 'Oswald', sans-serif;
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--accent-gold);
-            line-height: 1;
-        }
-        .hero-badge .stars {
-            color: var(--accent-gold);
-            font-size: 20px;
-            letter-spacing: 3px;
-            margin: 8px 0;
-        }
-        .hero-badge .sub {
-            color: var(--text-secondary);
-            font-size: 13px;
-            letter-spacing: 0.02em;
-        }
+        .hero-badge .big { font-family: 'Oswald', sans-serif; font-size: 48px; font-weight: 700; color: var(--accent-gold); line-height: 1; }
+        .hero-badge .stars { color: var(--accent-gold); font-size: 20px; letter-spacing: 3px; margin: 8px 0; }
+        .hero-badge .sub { color: var(--text-secondary); font-size: 13px; letter-spacing: 0.02em; }
 
         @media (max-width: 900px) {
-            .hero-badge {
-                position: relative;
-                right: auto;
-                top: auto;
-                transform: none;
-                margin-top: 30px;
-                max-width: 280px;
-            }
+            .hero-badge { position: relative; right: auto; top: auto; transform: none; margin-top: 30px; max-width: 280px; }
             .hero-content { text-align: center; }
             .hero-content .lede { margin-left: auto; margin-right: auto; }
             .hero-ctas { justify-content: center; }
             .hero-content .eyebrow { justify-content: center; }
         }
-
         @media (max-width: 480px) {
             .hero-badge { width: 100%; max-width: 100%; }
             .hero-ctas .btn { width: 100%; justify-content: center; }
         }
 
-        /* ============================================================
-                   SECTIONS
-                   ============================================================ */
-        section {
-            padding: 90px 0;
-            border-bottom: 1px solid var(--border-dim);
-        }
-
+        section { padding: 90px 0; border-bottom: 1px solid var(--border-dim); }
         .section-label {
-            font-size: 12px;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--accent-gold);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
+            font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--accent-gold); margin-bottom: 12px; display: flex; align-items: center; gap: 14px;
         }
-        .section-label::before {
-            content: '';
-            width: 24px;
-            height: 2px;
-            background: var(--accent-gold);
-        }
-
+        .section-label::before { content: ''; width: 24px; height: 2px; background: var(--accent-gold); }
         .section-title {
-            font-family: 'Oswald', sans-serif;
-            font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-            font-weight: 700;
-            line-height: 1.15;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-            margin-bottom: 16px;
+            font-family: 'Oswald', sans-serif; font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 700;
+            line-height: 1.15; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 16px;
         }
+        .section-sub { color: var(--text-secondary); max-width: 600px; font-size: 17px; line-height: 1.7; }
 
-        .section-sub {
-            color: var(--text-secondary);
-            max-width: 600px;
-            font-size: 17px;
-            line-height: 1.7;
-        }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 44px; }
+        .service-card { background: var(--bg-card); border: 1px solid var(--border-dim); border-radius: 8px; padding: 36px 30px; transition: all 0.3s ease; }
+        .service-card:hover { transform: translateY(-8px); border-color: var(--accent-gold); box-shadow: var(--shadow-elegant); }
+        .service-card .icon { font-size: 36px; color: var(--accent-gold); margin-bottom: 20px; }
+        .service-card h3 { font-family: 'Oswald', sans-serif; font-size: 24px; text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 12px; }
+        .service-card p { color: var(--text-secondary); font-size: 15px; line-height: 1.7; margin-bottom: 18px; }
+        .service-card ul { list-style: none; font-size: 14px; color: var(--text-secondary); border-top: 1px solid var(--border-dim); padding-top: 16px; }
+        .service-card ul li { padding: 8px 0; display: flex; justify-content: space-between; align-items: center; }
+        .service-card ul li::after { content: '→'; color: var(--accent-gold); font-weight: 300; }
 
-        /* ============================================================
-                   LEISTUNGEN
-                   ============================================================ */
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 44px;
-        }
-
-        .service-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-dim);
-            border-radius: 8px;
-            padding: 36px 30px;
-            transition: all 0.3s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent-gold);
-            box-shadow: var(--shadow-elegant);
-        }
-        .service-card .icon {
-            font-size: 36px;
-            color: var(--accent-gold);
-            margin-bottom: 20px;
-        }
-        .service-card h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 24px;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            margin-bottom: 12px;
-        }
-        .service-card p {
-            color: var(--text-secondary);
-            font-size: 15px;
-            line-height: 1.7;
-            margin-bottom: 18px;
-        }
-        .service-card ul {
-            list-style: none;
-            font-size: 14px;
-            color: var(--text-secondary);
-            border-top: 1px solid var(--border-dim);
-            padding-top: 16px;
-        }
-        .service-card ul li {
-            padding: 8px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .service-card ul li::after {
-            content: '→';
-            color: var(--accent-gold);
-            font-weight: 300;
-        }
-
-        /* ============================================================
-                   BEWERTUNGEN
-                   ============================================================ */
         .rating-band {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 44px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-dim);
-            border-radius: 8px;
-            padding: 40px 44px;
-            margin-top: 24px;
+            display: flex; flex-wrap: wrap; align-items: center; gap: 44px;
+            background: var(--bg-card); border: 1px solid var(--border-dim); border-radius: 8px;
+            padding: 40px 44px; margin-top: 24px;
         }
-        .rating-band .stars-big {
-            color: var(--accent-gold);
-            font-size: 28px;
-            letter-spacing: 4px;
-        }
-        .rating-num {
-            font-family: 'Oswald', sans-serif;
-            font-size: 52px;
-            font-weight: 700;
-            color: var(--accent-gold);
-            line-height: 1;
-        }
-        .rating-sub {
-            color: var(--text-secondary);
-            font-size: 13px;
-            margin-top: 4px;
-            letter-spacing: 0.02em;
-        }
+        .rating-band .stars-big { color: var(--accent-gold); font-size: 28px; letter-spacing: 4px; }
+        .rating-num { font-family: 'Oswald', sans-serif; font-size: 52px; font-weight: 700; color: var(--accent-gold); line-height: 1; }
+        .rating-sub { color: var(--text-secondary); font-size: 13px; margin-top: 4px; letter-spacing: 0.02em; }
         .rating-quote {
-            font-style: italic;
-            color: var(--text-secondary);
-            border-left: 2px solid var(--accent-gold);
-            padding-left: 24px;
-            max-width: 440px;
-            font-size: 16px;
-            line-height: 1.6;
+            font-style: italic; color: var(--text-secondary); border-left: 2px solid var(--accent-gold);
+            padding-left: 24px; max-width: 440px; font-size: 16px; line-height: 1.6;
         }
 
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
-        }
-        .testimonial-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-dim);
-            border-radius: 8px;
-            padding: 28px;
-            transition: transform 0.3s;
-        }
-        .testimonial-card:hover {
-            transform: translateY(-4px);
-        }
-        .testimonial-card .stars {
-            color: var(--accent-gold);
-            font-size: 16px;
-            letter-spacing: 2px;
-        }
-        .testimonial-card p {
-            color: var(--text-secondary);
-            font-size: 14.5px;
-            line-height: 1.7;
-            margin: 14px 0;
-        }
-        .testimonial-card .source {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--accent-gold);
-            opacity: 0.7;
-        }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 40px; }
+        .testimonial-card { background: var(--bg-card); border: 1px solid var(--border-dim); border-radius: 8px; padding: 28px; transition: transform 0.3s; }
+        .testimonial-card:hover { transform: translateY(-4px); }
+        .testimonial-card .stars { color: var(--accent-gold); font-size: 16px; letter-spacing: 2px; }
+        .testimonial-card p { color: var(--text-secondary); font-size: 14.5px; line-height: 1.7; margin: 14px 0; }
+        .testimonial-card .source { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-gold); opacity: 0.7; }
 
-        .reviews-cta {
-            text-align: center;
-            margin-top: 44px;
-        }
+        .reviews-cta { text-align: center; margin-top: 44px; }
 
-        /* ============================================================
-                   GALERIE - MIT VIDEO AUF HOVER
-                   ============================================================ */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-            margin-top: 36px;
-        }
+        /* GALERIE */
+        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 36px; }
 
-        /* NORMALE GALERIE-SLOTS */
         .gallery-slot {
-            aspect-ratio: 3/4;
-            background: var(--bg-card);
-            border: 1px dashed var(--border-dim);
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            gap: 14px;
-            font-size: 13px;
-            transition: all 0.3s;
-            cursor: pointer;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
+            aspect-ratio: 3/4; background: var(--bg-card); border: 1px dashed var(--border-dim);
+            border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            color: var(--text-secondary); gap: 14px; font-size: 13px; transition: all 0.3s; cursor: pointer;
+            background-size: cover; background-position: center; position: relative; overflow: hidden;
         }
-        .gallery-slot:hover {
-            border-color: var(--accent-gold);
-            background-color: var(--bg-soft);
-        }
-        .gallery-slot i {
-            font-size: 36px;
-            opacity: 0.4;
-            z-index: 1;
-        }
-        .gallery-slot .overlay-text {
-            background: rgba(0,0,0,0.7);
-            padding: 4px 12px;
-            border-radius: 4px;
-            z-index: 1;
-        }
+        .gallery-slot:hover { border-color: var(--accent-gold); background-color: var(--bg-soft); }
+        .gallery-slot i { font-size: 36px; opacity: 0.4; z-index: 1; }
+        .gallery-slot .overlay-text { background: rgba(0,0,0,0.7); padding: 4px 12px; border-radius: 4px; z-index: 1; }
         .gallery-slot .image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.3);
-            border-radius: 8px;
-            transition: all 0.3s;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3); border-radius: 8px; transition: all 0.3s;
         }
-        .gallery-slot:hover .image-overlay {
-            background: rgba(0,0,0,0.1);
-        }
+        .gallery-slot:hover .image-overlay { background: rgba(0,0,0,0.1); }
 
-        /* VIDEO-SLOT */
-        .gallery-slot.gallery-video {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
+        /* Reine Foto-Kachel ohne Platzhalter-Icon/Text (für Beauty & echte Fotos) */
+        .gallery-slot.photo-only { border-style: solid; }
+        .gallery-slot.photo-only i,
+        .gallery-slot.photo-only .overlay-text { display: none; }
 
+        /* VIDEO-SLOT (Tattoo-Galerie, Hover-Video wie gehabt) */
+        .gallery-slot.gallery-video { position: relative; overflow: hidden; cursor: pointer; }
         .gallery-slot .gallery-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: opacity 0.4s ease;
-            z-index: 1;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center; transition: opacity 0.4s ease; z-index: 1;
         }
-
         .gallery-slot .gallery-video-wrapper {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 2;
-            background: #000;
-            pointer-events: none;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0; transition: opacity 0.4s ease; z-index: 2; background: #000;
         }
-
         .gallery-slot .gallery-video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
         }
-
         .gallery-slot .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            z-index: 3;
-            background: rgba(0, 0, 0, 0.3);
-            transition: background 0.3s ease;
-            color: white;
-            pointer-events: none;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+            z-index: 3; background: rgba(0, 0, 0, 0.3); transition: background 0.3s ease; color: white; pointer-events: none;
         }
-
-        .gallery-slot .video-overlay i {
-            font-size: 48px;
-            color: white;
-            opacity: 0.8;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.8);
-            transition: transform 0.3s ease;
-        }
-
+        .gallery-slot .video-overlay i { font-size: 48px; color: white; opacity: 0.8; text-shadow: 0 2px 20px rgba(0,0,0,0.8); transition: transform 0.3s ease; }
         .gallery-slot .video-overlay span {
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            background: rgba(0,0,0,0.6);
-            padding: 6px 16px;
-            border-radius: 4px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+            background: rgba(0,0,0,0.6); padding: 6px 16px; border-radius: 4px; opacity: 0; transition: opacity 0.3s ease;
         }
+        .gallery-slot.gallery-video:hover .gallery-image { opacity: 0; }
+        .gallery-slot.gallery-video:hover .gallery-video-wrapper { opacity: 1; }
+        .gallery-slot.gallery-video:hover .video-overlay { background: rgba(0, 0, 0, 0.1); }
+        .gallery-slot.gallery-video:hover .video-overlay i { transform: scale(1.1); }
+        .gallery-slot.gallery-video:hover .video-overlay span { opacity: 1; }
 
-        /* HOVER EFFEKTE */
-        .gallery-slot.gallery-video:hover .gallery-image {
-            opacity: 0;
-        }
-
-        .gallery-slot.gallery-video:hover .gallery-video-wrapper {
-            opacity: 1;
-        }
-
-        .gallery-slot.gallery-video:hover .video-overlay {
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .gallery-slot.gallery-video:hover .video-overlay i {
-            transform: scale(1.1);
-        }
-
-        .gallery-slot.gallery-video:hover .video-overlay span {
-            opacity: 1;
-        }
-
-        /* MOBILE */
         @media (max-width: 768px) {
-            .gallery-slot.gallery-video .gallery-image {
-                opacity: 0;
-            }
-            .gallery-slot.gallery-video .gallery-video-wrapper {
-                opacity: 1;
-            }
-            .gallery-slot.gallery-video .video-overlay {
-                background: rgba(0, 0, 0, 0.4);
-            }
-            .gallery-slot.gallery-video .video-overlay span {
-                opacity: 1;
-            }
+            .gallery-slot.gallery-video .gallery-image { opacity: 0; }
+            .gallery-slot.gallery-video .gallery-video-wrapper { opacity: 1; }
+            .gallery-slot.gallery-video .video-overlay { background: rgba(0, 0, 0, 0.4); }
+            .gallery-slot.gallery-video .video-overlay span { opacity: 1; }
         }
-
-        @media (max-width: 640px) {
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-        }
+        @media (max-width: 640px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
 
         .gallery-note {
-            margin-top: 24px;
-            color: var(--text-secondary);
-            font-size: 14px;
-            background: var(--bg-card);
-            border-left: 3px solid var(--accent-gold);
-            padding: 16px 20px;
-            border-radius: 4px;
+            margin-top: 24px; color: var(--text-secondary); font-size: 14px; background: var(--bg-card);
+            border-left: 3px solid var(--accent-gold); padding: 16px 20px; border-radius: 4px;
         }
 
-        .gallery-more-btn {
-            text-align: center;
-            margin-top: 32px;
-        }
+        /* Zusatz-Bilder unter "Mehr" - standardmäßig ausgeblendet, klappt im Raster auf */
+        .gallery-extra { display: none; }
+        .gallery-extra.visible { display: contents; }
 
-        /* ============================================================
-                   LIGHTBOX (Bild / Video vergrößert)
-                   ============================================================ */
-        .lightbox-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.92);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            padding: 70px 20px;
-            cursor: zoom-out;
-        }
-        .lightbox-overlay.active {
-            display: flex;
-        }
-        .lightbox-content {
-            position: relative;
-            max-width: 460px;
-            width: 100%;
-            cursor: default;
-        }
-        .lightbox-content img {
-            width: 100%;
-            height: auto;
-            max-height: 82vh;
-            object-fit: contain;
-            border-radius: 8px;
-            display: block;
-            box-shadow: var(--shadow-elegant);
-        }
-        .lightbox-video-box {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 9 / 16;
-            max-height: 82vh;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow-elegant);
-            background: #000;
-        }
-        .lightbox-video-box iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .lightbox-close {
-            position: absolute;
-            top: -48px;
-            right: 0;
-            background: var(--accent-gold);
-            color: #0a0a0a;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 18px;
-            border: none;
-        }
-        .lightbox-close:hover {
-            background: var(--accent-gold-dim);
-        }
+        .gallery-more-btn { text-align: center; margin-top: 32px; }
 
-        /* ============================================================
-                   MEHR-MODAL (4 zusätzliche Bilder)
-                   ============================================================ */
-        .more-modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 9998;
-            padding: 40px 20px;
-        }
-        .more-modal-overlay.active {
-            display: flex;
-        }
-        .more-modal-inner {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-dim);
-            border-radius: 12px;
-            padding: 36px;
-            max-width: 820px;
-            width: 100%;
-            max-height: 85vh;
-            overflow-y: auto;
-            position: relative;
-        }
-        .more-modal-inner h3 {
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            font-size: 22px;
-            margin-bottom: 24px;
-            padding-right: 30px;
-        }
-        .more-modal-close {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            background: var(--accent-gold);
-            color: #0a0a0a;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border: none;
-            font-size: 16px;
-        }
-        .more-modal-close:hover {
-            background: var(--accent-gold-dim);
-        }
-        .more-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-        }
-        .more-grid .gallery-slot {
-            aspect-ratio: 3/4;
-        }
-        @media (max-width: 640px) {
-            .more-grid { grid-template-columns: repeat(2, 1fr); }
-        }
+        .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; align-items: center; }
+        .about-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: -39px; }
+        .fact { background: var(--bg-card); border: 1px solid var(--border-dim); border-radius: 8px; padding: 28px 20px; text-align: center; }
+        .fact .n { font-family: 'Oswald', sans-serif; font-size: 42px; font-weight: 700; color: var(--accent-gold); }
+        .fact .l { font-size: 13px; color: var(--text-secondary); margin-top: 4px; letter-spacing: 0.02em; }
+        @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
 
-        /* ============================================================
-                   ABOUT / STUDIO
-                   ============================================================ */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 50px;
-            align-items: center;
-        }
-        .about-facts {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-            margin-top: -39px;
-        }
-        .fact {
-            background: var(--bg-card);
-            border: 1px solid var(--border-dim);
-            border-radius: 8px;
-            padding: 28px 20px;
-            text-align: center;
-        }
-        .fact .n {
-            font-family: 'Oswald', sans-serif;
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--accent-gold);
-        }
-        .fact .l {
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-top: 4px;
-            letter-spacing: 0.02em;
-        }
-        @media (max-width: 760px) {
-            .about-grid { grid-template-columns: 1fr; }
-        }
-
-        /* ============================================================
-                   KONTAKT + MAP
-                   ============================================================ */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 28px;
-        }
-        .contact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-dim);
-            border-radius: 8px;
-            padding: 36px 32px;
-        }
-        .contact-card h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 24px;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            margin-bottom: 24px;
-        }
-        .contact-row {
-            display: flex;
-            gap: 18px;
-            padding: 16px 0;
-            border-top: 1px solid var(--border-dim);
-            align-items: flex-start;
-        }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 28px; }
+        .contact-card { background: var(--bg-card); border: 1px solid var(--border-dim); border-radius: 8px; padding: 36px 32px; }
+        .contact-card h3 { font-family: 'Oswald', sans-serif; font-size: 24px; text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 24px; }
+        .contact-row { display: flex; gap: 18px; padding: 16px 0; border-top: 1px solid var(--border-dim); align-items: flex-start; }
         .contact-row:first-of-type { border-top: none; }
-        .contact-row i {
-            font-size: 20px;
-            color: var(--accent-gold);
-            width: 24px;
-            margin-top: 2px;
-        }
-        .contact-row a {
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+        .contact-row i { font-size: 20px; color: var(--accent-gold); width: 24px; margin-top: 2px; }
+        .contact-row a { font-weight: 500; transition: color 0.3s; }
         .contact-row a:hover { color: var(--accent-gold); }
-        .contact-row .muted {
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
+        .contact-row .muted { color: var(--text-secondary); font-size: 14px; }
 
-        .map-embed {
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--border-dim);
-            min-height: 300px;
-            height: 100%;
-        }
-        .map-embed iframe {
-            width: 100%;
-            height: 100%;
-            min-height: 300px;
-            border: 0;
-            display: block;
-        }
-        @media (max-width: 760px) {
-            .contact-grid { grid-template-columns: 1fr; }
-            .map-embed { min-height: 250px; }
-        }
+        .map-embed { border-radius: 8px; overflow: hidden; border: 1px solid var(--border-dim); min-height: 300px; height: 100%; }
+        .map-embed iframe { width: 100%; height: 100%; min-height: 300px; border: 0; display: block; }
+        @media (max-width: 760px) { .contact-grid { grid-template-columns: 1fr; } .map-embed { min-height: 250px; } }
 
-        /* ============================================================
-                   FOOTER
-                   ============================================================ */
-        footer {
-            background: var(--bg-secondary);
-            padding: 50px 0 30px;
-            border-top: 1px solid var(--border-dim);
-        }
-        .footer-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 24px;
-        }
-        .footer-brand {
-            font-family: 'Oswald', sans-serif;
-            font-weight: 700;
-            font-size: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-        }
-        .footer-brand small {
-            display: block;
-            font-family: 'Barlow', sans-serif;
-            font-weight: 400;
-            font-size: 11px;
-            color: var(--text-secondary);
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-top: 2px;
-        }
-        .footer-links {
-            display: flex;
-            gap: 28px;
-            list-style: none;
-            font-size: 14px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .footer-links a {
-            transition: color 0.3s;
-        }
+        footer { background: var(--bg-secondary); padding: 50px 0 30px; border-top: 1px solid var(--border-dim); }
+        .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; }
+        .footer-brand { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 20px; text-transform: uppercase; letter-spacing: 0.03em; }
+        .footer-brand small { display: block; font-family: 'Barlow', sans-serif; font-weight: 400; font-size: 11px; color: var(--text-secondary); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+        .footer-links { display: flex; gap: 28px; list-style: none; font-size: 14px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+        .footer-links a { transition: color 0.3s; }
         .footer-links a:hover { color: var(--text-primary); }
         .footer-fine {
-            margin-top: 32px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-dim);
-            font-size: 12.5px;
-            color: var(--text-secondary);
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
+            margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border-dim);
+            font-size: 12.5px; color: var(--text-secondary); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
         }
 
-        .animate__animated {
-            visibility: visible !important;
-        }
+        .animate__animated { visibility: visible !important; }
     </style>
 </head>
 <body>
 
-<!-- ============================================================
-     HEADER
-     ============================================================ -->
 <header>
     <div class="navrow">
         <div class="brand">
@@ -1063,13 +326,9 @@
     </div>
 </header>
 
-<!-- ============================================================
-     HERO BANNER
-     ============================================================ -->
 <section class="hero-banner">
     <div class="bg-image" style="background-image: url('header.png');"></div>
     <div class="overlay"></div>
-
     <div class="container">
         <div class="hero-content">
             <div class="eyebrow animate__animated animate__fadeInUp">Biberach an der Riß</div>
@@ -1084,7 +343,6 @@
                 <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=A%26F+JACEK+Tattoo%26PMU+Studio&query_place_id=ChIJ5U9jTOvFm0cRpx4KwDK5K9c" target="_blank"><i class="fas fa-map-pin"></i> Route zum Studio</a>
             </div>
         </div>
-
         <div class="hero-badge animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
             <div class="big">5.0</div>
             <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
@@ -1093,48 +351,32 @@
     </div>
 </section>
 
-<!-- ============================================================
-     LEISTUNGEN
-     ============================================================ -->
 <section id="leistungen" style="background: var(--bg-secondary);">
     <div class="container">
         <div class="section-label animate__animated animate__fadeInUp">Leistungen</div>
         <h2 class="section-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Zwei Handwerke, ein Studio</h2>
         <p class="section-sub animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">Von der ersten Skizze bis zum fertigen Motiv — jede Sitzung wird individuell geplant und in ruhiger, hygienischer Atmosphäre umgesetzt.</p>
-
         <div class="service-grid">
             <div class="service-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
                 <div class="icon"><i class="fas fa-pen-fancy"></i></div>
                 <h3>Tattoo</h3>
                 <p>Von filigranem Fineline bis zu großflächigen Motiven — Freihand oder nach Vorlage, jedes Stück ein Unikat.</p>
-                <ul>
-                    <li>Fineline &amp; Ornamental</li>
-                    <li>Cover-ups</li>
-                    <li>Individuelle Motive nach Beratung</li>
-                </ul>
+                <ul><li>Fineline &amp; Ornamental</li><li>Cover-ups</li><li>Individuelle Motive nach Beratung</li></ul>
             </div>
             <div class="service-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
                 <div class="icon"><i class="fas fa-feather-alt"></i></div>
                 <h3>Permanent Make-up</h3>
                 <p>Natürlich betonte Brauen, Lidstrich oder Lippen — langanhaltend und auf den Hautton abgestimmt.</p>
-                <ul>
-                    <li>Powder Brows</li>
-                    <li>Lidstrich</li>
-                    <li>Lip Blush</li>
-                </ul>
+                <ul><li>Powder Brows</li><li>Lidstrich</li><li>Lip Blush</li></ul>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============================================================
-     BEWERTUNGEN
-     ============================================================ -->
 <section id="bewertungen">
     <div class="container">
         <div class="section-label animate__animated animate__fadeInUp">Bewertungen</div>
         <h2 class="section-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Was Kund:innen sagen</h2>
-
         <div class="rating-band animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
             <div>
                 <div class="stars-big"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
@@ -1143,7 +385,6 @@
             </div>
             <p class="rating-quote">Ehrliche Beratung, saubere Arbeit, faire Preise — das ziehen sich als roter Faden durch die Rückmeldungen.</p>
         </div>
-
         <div class="testimonial-grid">
             <div class="testimonial-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
                 <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
@@ -1161,7 +402,6 @@
                 <div class="source">Google-Bewertung</div>
             </div>
         </div>
-
         <div class="reviews-cta animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
             <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=A%26F+JACEK+Tattoo%26PMU+Studio&query_place_id=ChIJ5U9jTOvFm0cRpx4KwDK5K9c" target="_blank"><i class="fas fa-external-link-alt"></i> Alle 27 Bewertungen auf Google ansehen</a>
         </div>
@@ -1169,18 +409,17 @@
 </section>
 
 <!-- ============================================================
-     GALERIE - TATTOOS - MIT FACEBOOK VIDEO AUF HOVER + LIGHTBOX
+     GALERIE - TATTOOS (Hover-Video wie vorher, ohne Klick-Popup)
      ============================================================ -->
 <section id="galerie" style="background: var(--bg-secondary);">
     <div class="container">
         <div class="section-label animate__animated animate__fadeInUp">Galerie</div>
         <h2 class="section-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Aktuelle Arbeiten</h2>
 
-        <div class="gallery-grid">
+        <div class="gallery-grid" id="galleryGrid">
 
             <!-- GALERIE 1 -->
-            <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.1s;"
-                 onclick="openLightboxVideo('https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1610495730538049%2F&show_text=false&width=385&t=0')">
+            <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
                 <div class="gallery-image" style="background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.99422-6/773912946_2441695216239982_8028727674805031092_n.png?stp=dst-jpg_tt6&cstp=mx3316x4096&ctp=s3316x4096&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=IanEDcYXAakQ7kNvwFcB0ba&_nc_oc=Adpyh6aadTYOGD01i84PDjQINDeg0wHBKdDMz5lVdCL-Mvj4OHNcAsF6PJyObQkT1AY&_nc_zt=14&_nc_ht=scontent-fra5-1.xx&_nc_gid=BtdglD06zPejiig-VCOW_A&_nc_ss=7b2a8&oh=00_AQF1VtMK5WFmG8rRySVrazZgXHGzFPDIF2zLwO5F7nZCRA&oe=6A9506C3');"></div>
                 <div class="gallery-video-wrapper">
                     <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1610495730538049%2F&show_text=false&width=385&t=0"
@@ -1189,12 +428,10 @@
                             scrolling="no" frameborder="0" allowfullscreen="true"
                             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 </div>
-                <div class="video-overlay"><i class="fas fa-play-circle"></i><span>Vorschau ansehen</span></div>
             </div>
 
             <!-- GALERIE 2 -->
-            <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.1s;"
-                 onclick="openLightboxVideo('https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F981940711558273%2F&show_text=false&width=357&t=0')">
+            <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
                 <div class="gallery-image" style="background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.99422-6/753707381_1024384417111863_1863466894185881683_n.png?stp=dst-jpg_tt6&cstp=mx3075x4096&ctp=s3075x4096&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=NAKpFYW7p48Q7kNvwGV8nn8&_nc_oc=Adq07RqiOIh8r7PAdtCWW6JD53LFO9DXK7-XuSXw8jgRyuupM4j9LI0RcJtx3epx8Ww&_nc_zt=14&_nc_ht=scontent-fra5-1.xx&_nc_gid=9Rb5m2SNcKVHWzpbKoO-2w&_nc_ss=7b2a8&oh=00_AQG7PuD0eU5T4hTylg-_-v5uh3uEQUgGOsQjrZ5xbJIeAQ&oe=6A94F2C7');"></div>
                 <div class="gallery-video-wrapper">
                     <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F981940711558273%2F&show_text=false&width=357&t=0"
@@ -1203,12 +440,10 @@
                             scrolling="no" frameborder="0" allowfullscreen="true"
                             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 </div>
-                <div class="video-overlay"><i class="fas fa-play-circle"></i><span>Vorschau ansehen</span></div>
             </div>
 
             <!-- GALERIE 3 -->
-            <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.2s;"
-                 onclick="openLightboxVideo('https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1723965712114611%2F&show_text=false&width=360&t=0')">
+            <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
                 <div class="gallery-image" style="background-image: url('https://scontent-dus1-1.xx.fbcdn.net/v/t39.99422-6/727519389_2419640565201949_1188565738683056779_n.png?stp=dst-jpg_tt6&cstp=mx3102x4096&ctp=s590x590&_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=QE4vChl1JbAQ7kNvwEFaKLr&_nc_oc=Adq4vmmL4fWjMHbXFh4IKEMrTMqTx95_ln_pus2gxGNO4nQ0Qp16FUTR8J-YCrHxF_A&_nc_zt=14&_nc_ht=scontent-dus1-1.xx&_nc_gid=Q_S6r-GBMcUnctwI-5cBAA&_nc_ss=7b2a8&oh=00_AQExf0jDE2YS9yH4gsqKH7HRopD9sNXCOdRIyc5XtfEqAQ&oe=6A952459');"></div>
                 <div class="gallery-video-wrapper">
                     <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1723965712114611%2F&show_text=false&width=360&t=0"
@@ -1217,12 +452,10 @@
                             scrolling="no" frameborder="0" allowfullscreen="true"
                             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 </div>
-                <div class="video-overlay"><i class="fas fa-play-circle"></i><span>Vorschau ansehen</span></div>
             </div>
 
             <!-- GALERIE 4 -->
-            <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.25s;"
-                 onclick="openLightboxVideo('https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1969545020342782%2F&show_text=false&width=357&t=0')">
+            <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.25s;">
                 <div class="gallery-image" style="background-image: url('https://scontent-fra3-2.xx.fbcdn.net/v/t39.99422-6/724534673_1303596565088020_4607571948662739470_n.png?stp=dst-jpg_tt6&cstp=mx3072x4096&ctp=s3072x4096&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iy64KooIPFoQ7kNvwEsQfwW&_nc_oc=AdowSw2QvSpSJcgoLJvcoHdVBlCM46BPTVP5ZpnsLgoB2AgoCBgM2kQhJ8A8t0nZGt8&_nc_zt=14&_nc_ht=scontent-fra3-2.xx&_nc_gid=pXR_ARJ6bnb0GlCY_8yxpQ&_nc_ss=7b2a8&oh=00_AQHqlq7EJyYSRqnTa4q7WlJD8gxuEnxwKi71zP7UaT3BbA&oe=6A950CEA');"></div>
                 <div class="gallery-video-wrapper">
                     <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1969545020342782%2F&show_text=false&width=357&t=0"
@@ -1231,24 +464,29 @@
                             scrolling="no" frameborder="0" allowfullscreen="true"
                             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 </div>
-                <div class="video-overlay"><i class="fas fa-play-circle"></i><span>Vorschau ansehen</span></div>
             </div>
+
+            <!-- ZUSATZBILDER - standardmäßig versteckt, erscheinen beim Klick auf "Mehr" direkt hier im Raster -->
+            <div class="gallery-slot photo-only gallery-extra" id="extra1" style="background-image: url('https://scontent-fra3-1.xx.fbcdn.net/v/t51.82787-15/573256724_18212747344308450_1828411614948836631_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1918&ctp=s1440x1918&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=WHTX1TCSHHYQ7kNvwEWHKpq&_nc_oc=Adovmmgx1xFc0eT8DLSG8j6amEOwwdZfgzc21eDVAhG4yQ3sAiI8bqmQVbj8DtsmFwk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&_nc_gid=1ORHkY8s-j1o9q9vSv4zVg&_nc_ss=7b2a8&oh=00_AQEY7nV1muzQrSbwf347NKmkMgbtuEs4Bm_VqPFQ3VYc5w&oe=6A94FCA4');"></div>
+            <div class="gallery-slot photo-only gallery-extra" id="extra2" style="background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t51.82787-15/619505697_18220748629308450_6127866125872254746_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1838&ctp=s1440x1838&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=OXjz8BiaMNEQ7kNvwE-PYxP&_nc_oc=Adq6cEH4HjxbX_r4CCVpZv0-OAgBvnO3Sxdh9BUAn8Wx8MJVtpbIC33aITTcFRv4Y0Y&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=6ApOsP8m9Srgk44UZnxN5Q&_nc_ss=7b2a8&oh=00_AQFqnp50tUUu486U5v-Y7jNZRr-LqFmVQ1zqrNxaDAXSiQ&oe=6A952CAA');"></div>
+            <div class="gallery-slot photo-only gallery-extra" id="extra3" style="background-image: url('https://scontent-fra3-2.xx.fbcdn.net/v/t51.82787-15/548583082_18206077534308450_7662693264021069259_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1846&ctp=s1440x1846&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=r7L39aM_nfgQ7kNvwE5boPQ&_nc_oc=AdoHNDSQR4EqVaKkiIsDkFP5x0vw7nw_hduKsUD7d4Q_NzkMPsAlYvGM3C8y0ang3nM&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&_nc_gid=sqWQvgfDJpedvI3uFUN2UA&_nc_ss=7b2a8&oh=00_AQGl6TyXwWVTxKWt7NwARikomF6Xj2isgkkUPOslfk-8xw&oe=6A951C12');"></div>
+            <div class="gallery-slot photo-only gallery-extra" id="extra4" style="background-image: url('https://scontent-fra3-1.xx.fbcdn.net/v/t51.82787-15/573256724_18212747344308450_1828411614948836631_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1918&ctp=s1440x1918&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=WHTX1TCSHHYQ7kNvwEWHKpq&_nc_oc=Adovmmgx1xFc0eT8DLSG8j6amEOwwdZfgzc21eDVAhG4yQ3sAiI8bqmQVbj8DtsmFwk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&_nc_gid=1ORHkY8s-j1o9q9vSv4zVg&_nc_ss=7b2a8&oh=00_AQEY7nV1muzQrSbwf347NKmkMgbtuEs4Bm_VqPFQ3VYc5w&oe=6A94FCA4');"></div>
 
         </div>
 
         <div class="gallery-more-btn animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
-            <button class="btn btn-outline" onclick="openMoreModal()"><i class="fas fa-images"></i> Mehr Arbeiten ansehen</button>
+            <button class="btn btn-outline" id="moreBtn" onclick="toggleMore()"><i class="fas fa-images"></i> Mehr Arbeiten ansehen</button>
         </div>
 
         <div class="gallery-note animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
             <i class="fas fa-info-circle" style="color: var(--accent-gold); margin-right: 10px;"></i>
-            Klicke auf ein Bild um eine Vorschau zu starten.
+            Bewege die Maus über ein Bild, um eine Vorschau zu sehen.
         </div>
     </div>
 </section>
 
 <!-- ============================================================
-     BEAUTY - PMU GALERIE - MIT LIGHTBOX
+     BEAUTY - PMU GALERIE (reine Fotos, kein Icon/Text drüber)
      ============================================================ -->
 <section id="beauty">
     <div class="container">
@@ -1257,51 +495,21 @@
         <p class="section-sub animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">Powder Brows, Lidstrich und Lip Blush — natürlich betont und langanhaltend.</p>
 
         <div class="gallery-grid">
-
-            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.1s; background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/787124187_122195092400755530_8600243483550638894_n.jpg?stp=dst-jpg_tt6&cstp=mx1320x1629&ctp=s1320x1629&_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=Fv2hfhLT7i0Q7kNvwG009aN&_nc_oc=AdqDAXhnip5l3flZelrqK6bHjw5yysAshDEdKxqsdT0S3MwDUpAPLI5YGzJU1X5JShY&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=0fEN8CGtGvThAg71A71suQ&_nc_ss=7b2a8&oh=00_AQHpbnooS-jCz1Wl092ToVhC-ak7EkTbWrIuO51ZCCRhQg&oe=6A95302A');"
-                 onclick="openLightboxImage(this.style.backgroundImage.slice(5, -2))">
-                <div class="image-overlay"></div>
-                <i class="fas fa-image"></i>
-                <span class="overlay-text">Beauty 1</span>
-            </div>
-
-            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.15s; background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/786702689_122195092388755530_4484297296442769516_n.jpg?stp=dst-jpg_tt6&cstp=mx1320x1635&ctp=s1320x1635&_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=vE9IG3peseQQ7kNvwHy_Zn5&_nc_oc=AdoyJPoL_xYnh5Xk2uf0T0H0e--4aFL7MiTM-reKhUMrCc2lbxObtLJ_WcU2k-hI6wo&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=MCL7GQEhwVogdp5JwrU8Ug&_nc_ss=7b2a8&oh=00_AQF0Ofe727KdkIUTKCodOSkx5B5-SOzc-hYD1Cr2afcHxg&oe=6A9514C8');"
-                 onclick="openLightboxImage(this.style.backgroundImage.slice(5, -2))">
-                <div class="image-overlay"></div>
-                <i class="fas fa-image"></i>
-                <span class="overlay-text">Beauty 2</span>
-            </div>
-
-            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.2s; background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/742173256_122189777828755530_985448460305734498_n.jpg?stp=dst-jpg_tt6&cstp=mx1638x2048&ctp=s1638x2048&_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=ujd7NnKfxZsQ7kNvwEp7G0b&_nc_oc=AdoTmBqUcrAUfT-UVHM6IV6SHEiquKoJS7Glra4YMhWGoEnO_O4KUrCOSnO7xakOnEw&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=XjJ6-qPuRzRrKgO9GhvhHQ&_nc_ss=7b2a8&oh=00_AQFs5szTZg6sXlC7KciRBHOLPC5_GzK5H98ApNUJic5s3Q&oe=6A95076C');"
-                 onclick="openLightboxImage(this.style.backgroundImage.slice(5, -2))">
-                <div class="image-overlay"></div>
-                <i class="fas fa-image"></i>
-                <span class="overlay-text">Beauty 3</span>
-            </div>
-
-            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.25s; background-image: url('https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/617866792_122169124922755530_3742007039944926568_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1850&ctp=s1440x1850&_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=_VgCTwBDyLgQ7kNvwFe3Kww&_nc_oc=AdpcJZSdIU4LlN99PwX27FEl7bFKIXiToNHqywy8ne-u3oMC1NMCzMy8uKyKBZTZ9bk&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&_nc_gid=S6KJuAvTCvO-3xKnfxmwog&_nc_ss=7b2a8&oh=00_AQGfpxdr4JJZWwTwUlzlo1cHp6LW3gPSfB9tr4D5d-4mBw&oe=6A94FE46');"
-                 onclick="openLightboxImage(this.style.backgroundImage.slice(5, -2))">
-                <div class="image-overlay"></div>
-                <i class="fas fa-image"></i>
-                <span class="overlay-text">Beauty 4</span>
-            </div>
-
+            <div class="gallery-slot photo-only animate__animated animate__fadeInUp" style="animation-delay: 0.1s; background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/787124187_122195092400755530_8600243483550638894_n.jpg?stp=dst-jpg_tt6&cstp=mx1320x1629&ctp=s1320x1629&_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=Fv2hfhLT7i0Q7kNvwG009aN&_nc_oc=AdqDAXhnip5l3flZelrqK6bHjw5yysAshDEdKxqsdT0S3MwDUpAPLI5YGzJU1X5JShY&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=0fEN8CGtGvThAg71A71suQ&_nc_ss=7b2a8&oh=00_AQHpbnooS-jCz1Wl092ToVhC-ak7EkTbWrIuO51ZCCRhQg&oe=6A95302A');"></div>
+            <div class="gallery-slot photo-only animate__animated animate__fadeInUp" style="animation-delay: 0.15s; background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/786702689_122195092388755530_4484297296442769516_n.jpg?stp=dst-jpg_tt6&cstp=mx1320x1635&ctp=s1320x1635&_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=vE9IG3peseQQ7kNvwHy_Zn5&_nc_oc=AdoyJPoL_xYnh5Xk2uf0T0H0e--4aFL7MiTM-reKhUMrCc2lbxObtLJ_WcU2k-hI6wo&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=MCL7GQEhwVogdp5JwrU8Ug&_nc_ss=7b2a8&oh=00_AQF0Ofe727KdkIUTKCodOSkx5B5-SOzc-hYD1Cr2afcHxg&oe=6A9514C8');"></div>
+            <div class="gallery-slot photo-only animate__animated animate__fadeInUp" style="animation-delay: 0.2s; background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/742173256_122189777828755530_985448460305734498_n.jpg?stp=dst-jpg_tt6&cstp=mx1638x2048&ctp=s1638x2048&_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=ujd7NnKfxZsQ7kNvwEp7G0b&_nc_oc=AdoTmBqUcrAUfT-UVHM6IV6SHEiquKoJS7Glra4YMhWGoEnO_O4KUrCOSnO7xakOnEw&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=XjJ6-qPuRzRrKgO9GhvhHQ&_nc_ss=7b2a8&oh=00_AQFs5szTZg6sXlC7KciRBHOLPC5_GzK5H98ApNUJic5s3Q&oe=6A95076C');"></div>
+            <div class="gallery-slot photo-only animate__animated animate__fadeInUp" style="animation-delay: 0.25s; background-image: url('https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/617866792_122169124922755530_3742007039944926568_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1850&ctp=s1440x1850&_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=_VgCTwBDyLgQ7kNvwFe3Kww&_nc_oc=AdpcJZSdIU4LlN99PwX27FEl7bFKIXiToNHqywy8ne-u3oMC1NMCzMy8uKyKBZTZ9bk&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&_nc_gid=S6KJuAvTCvO-3xKnfxmwog&_nc_ss=7b2a8&oh=00_AQGfpxdr4JJZWwTwUlzlo1cHp6LW3gPSfB9tr4D5d-4mBw&oe=6A94FE46');"></div>
         </div>
     </div>
 </section>
 
-<!-- ============================================================
-     ABOUT / STUDIO
-     ============================================================ -->
 <section id="studio">
     <div class="container">
         <div class="about-grid">
             <div>
                 <div class="section-label animate__animated animate__fadeInUp">Über uns</div>
                 <h2 class="section-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Handwerk aus Biberach</h2>
-                
                 <img src="https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/615495961_122168150198755530_3579319844257571998_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=ohtMZaf_pGwQ7kNvwHl6L6p&_nc_oc=Adp8_JepqfLGtAwl8kGW8AoSm7rOnIalLTP-TNKBFPF7RbJrzLFyio8W0uC932LpMd8&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=I8srcR35FReZTsgy6tJqmw&_nc_ss=7b2a8&oh=00_AQEGgNNwV9I0DPSZyCsvDIEpj31zumezCABhqa4L_fx7zQ&oe=6A9514C5" alt="Unser Studio" style="width: 100%; height: 320px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" class="animate__animated animate__fadeInUp">
-                
                 <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.8; max-width: 560px;" class="animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
                     A&F JACEK Tattoo &amp; PMU Studio steht für saubere Linien, hohe Hygienestandards und persönliche Beratung — mitten in Biberach an der Riß. Ob erstes Tattoo oder nächstes Stück in der Sammlung: hier wird jede Idee ernst genommen.
                 </p>
@@ -1316,35 +524,18 @@
     </div>
 </section>
 
-<!-- ============================================================
-     KONTAKT + MAP
-     ============================================================ -->
 <section id="kontakt" style="background: var(--bg-secondary);">
     <div class="container">
         <div class="section-label animate__animated animate__fadeInUp">Kontakt</div>
         <h2 class="section-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Vorbeikommen oder anrufen</h2>
-
         <div class="contact-grid">
             <div class="contact-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
                 <h3>Studio</h3>
-                <div class="contact-row">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>Pfluggasse 14<br><span class="muted">88400 Biberach an der Riß</span></div>
-                </div>
-                <div class="contact-row">
-                    <i class="fas fa-phone-alt"></i>
-                    <a href="tel:015734602843">01573 4602843</a>
-                </div>
-                <div class="contact-row">
-                    <i class="fas fa-clock"></i>
-                    <div>Termine nach Vereinbarung<br><span class="muted">Anruf oder Nachricht genügt</span></div>
-                </div>
-                <div class="contact-row">
-                    <i class="fab fa-facebook"></i>
-                    <a href="https://www.facebook.com/share/1993gLLr56/?mibextid=wwXIfr" target="_blank">Facebook-Seite</a>
-                </div>
+                <div class="contact-row"><i class="fas fa-map-marker-alt"></i><div>Pfluggasse 14<br><span class="muted">88400 Biberach an der Riß</span></div></div>
+                <div class="contact-row"><i class="fas fa-phone-alt"></i><a href="tel:015734602843">01573 4602843</a></div>
+                <div class="contact-row"><i class="fas fa-clock"></i><div>Termine nach Vereinbarung<br><span class="muted">Anruf oder Nachricht genügt</span></div></div>
+                <div class="contact-row"><i class="fab fa-facebook"></i><a href="https://www.facebook.com/share/1993gLLr56/?mibextid=wwXIfr" target="_blank">Facebook-Seite</a></div>
             </div>
-
             <div class="map-embed animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
                 <iframe src="https://www.google.com/maps?q=48.0984905,9.7910243&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Standort A&F JACEK Tattoo & PMU Studio"></iframe>
             </div>
@@ -1352,9 +543,6 @@
     </div>
 </section>
 
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
 <footer>
     <div class="container">
         <div class="footer-row">
@@ -1375,41 +563,6 @@
     </div>
 </footer>
 
-<!-- ============================================================
-     MEHR-MODAL (4 zusätzliche Bilder)
-     ============================================================ -->
-<div class="more-modal-overlay" id="moreModalOverlay">
-    <div class="more-modal-inner">
-        <button class="more-modal-close" onclick="closeMoreModal()"><i class="fas fa-times"></i></button>
-        <h3>Weitere Arbeiten</h3>
-        <div class="more-grid">
-            <div class="gallery-slot" style="background-image: url('https://scontent-fra3-1.xx.fbcdn.net/v/t51.82787-15/573256724_18212747344308450_1828411614948836631_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1918&ctp=s1440x1918&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=WHTX1TCSHHYQ7kNvwEWHKpq&_nc_oc=Adovmmgx1xFc0eT8DLSG8j6amEOwwdZfgzc21eDVAhG4yQ3sAiI8bqmQVbj8DtsmFwk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&_nc_gid=1ORHkY8s-j1o9q9vSv4zVg&_nc_ss=7b2a8&oh=00_AQEY7nV1muzQrSbwf347NKmkMgbtuEs4Bm_VqPFQ3VYc5w&oe=6A94FCA4');"
-                 onclick="openLightboxImage(this.style.backgroundImage.slice(5, -2))">
-                <div class="image-overlay"></div><i class="fas fa-image"></i>
-            </div>
-            <div class="gallery-slot" style="background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t51.82787-15/619505697_18220748629308450_6127866125872254746_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1838&ctp=s1440x1838&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=OXjz8BiaMNEQ7kNvwE-PYxP&_nc_oc=Adq6cEH4HjxbX_r4CCVpZv0-OAgBvnO3Sxdh9BUAn8Wx8MJVtpbIC33aITTcFRv4Y0Y&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=6ApOsP8m9Srgk44UZnxN5Q&_nc_ss=7b2a8&oh=00_AQFqnp50tUUu486U5v-Y7jNZRr-LqFmVQ1zqrNxaDAXSiQ&oe=6A952CAA');"
-                 onclick="openLightboxImage(this.style.backgroundImage.slice(5, -2))">
-                <div class="image-overlay"></div><i class="fas fa-image"></i>
-            </div>
-            <div class="gallery-slot" style="background-image: url('https://scontent-fra3-2.xx.fbcdn.net/v/t51.82787-15/548583082_18206077534308450_7662693264021069259_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1846&ctp=s1440x1846&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=r7L39aM_nfgQ7kNvwE5boPQ&_nc_oc=AdoHNDSQR4EqVaKkiIsDkFP5x0vw7nw_hduKsUD7d4Q_NzkMPsAlYvGM3C8y0ang3nM&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&_nc_gid=sqWQvgfDJpedvI3uFUN2UA&_nc_ss=7b2a8&oh=00_AQGl6TyXwWVTxKWt7NwARikomF6Xj2isgkkUPOslfk-8xw&oe=6A951C12');"
-                 onclick="openLightboxImage(this.style.backgroundImage.slice(5, -2))">
-                <div class="image-overlay"></div><i class="fas fa-image"></i>
-            </div>
-            <div class="gallery-slot" style="background-image: url('https://scontent-fra3-1.xx.fbcdn.net/v/t51.82787-15/573256724_18212747344308450_1828411614948836631_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1918&ctp=s1440x1918&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=WHTX1TCSHHYQ7kNvwEWHKpq&_nc_oc=Adovmmgx1xFc0eT8DLSG8j6amEOwwdZfgzc21eDVAhG4yQ3sAiI8bqmQVbj8DtsmFwk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&_nc_gid=1ORHkY8s-j1o9q9vSv4zVg&_nc_ss=7b2a8&oh=00_AQEY7nV1muzQrSbwf347NKmkMgbtuEs4Bm_VqPFQ3VYc5w&oe=6A94FCA4');"
-                 onclick="openLightboxImage(this.style.backgroundImage.slice(5, -2))">
-                <div class="image-overlay"></div><i class="fas fa-image"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================================
-     LIGHTBOX (Bild / Video vergrößert)
-     ============================================================ -->
-<div class="lightbox-overlay" id="lightboxOverlay" onclick="if(event.target===this) closeLightbox()">
-    <div class="lightbox-content" id="lightboxContent"></div>
-</div>
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const animatedElements = document.querySelectorAll('.animate__animated');
@@ -1424,55 +577,15 @@
         animatedElements.forEach(el => observer.observe(el));
     });
 
-    // ============================================================
-    // LIGHTBOX
-    // ============================================================
-    function openLightboxImage(src) {
-        const overlay = document.getElementById('lightboxOverlay');
-        const content = document.getElementById('lightboxContent');
-        content.innerHTML = `
-            <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
-            <img src="${src}" alt="Vorschau">
-        `;
-        overlay.classList.add('active');
+    function toggleMore() {
+        const extras = document.querySelectorAll('.gallery-extra');
+        const btn = document.getElementById('moreBtn');
+        const isVisible = extras[0].classList.contains('visible');
+        extras.forEach(el => el.classList.toggle('visible', !isVisible));
+        btn.innerHTML = isVisible
+            ? '<i class="fas fa-images"></i> Mehr Arbeiten ansehen'
+            : '<i class="fas fa-chevron-up"></i> Weniger anzeigen';
     }
-
-    function openLightboxVideo(embedUrl) {
-        const overlay = document.getElementById('lightboxOverlay');
-        const content = document.getElementById('lightboxContent');
-        content.innerHTML = `
-            <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
-            <div class="lightbox-video-box">
-                <iframe src="${embedUrl}" scrolling="no" frameborder="0" allowfullscreen="true"
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-            </div>
-        `;
-        overlay.classList.add('active');
-    }
-
-    function closeLightbox() {
-        const overlay = document.getElementById('lightboxOverlay');
-        overlay.classList.remove('active');
-        document.getElementById('lightboxContent').innerHTML = '';
-    }
-
-    // ============================================================
-    // MEHR-MODAL
-    // ============================================================
-    function openMoreModal() {
-        document.getElementById('moreModalOverlay').classList.add('active');
-    }
-    function closeMoreModal() {
-        document.getElementById('moreModalOverlay').classList.remove('active');
-    }
-
-    // Escape schließt beides
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeLightbox();
-            closeMoreModal();
-        }
-    });
 </script>
 
 </body>
