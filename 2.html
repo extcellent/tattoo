@@ -261,39 +261,14 @@
             border-left: 3px solid var(--accent-gold); padding: 16px 20px; border-radius: 4px;
         }
 
-        /* ZUSATZ-GALERIE:
-           Vor dem Klick ist nur ein kleiner, deutlich sichtbarer Streifen
-           vom oberen Anfang der zusätzlichen Bilder zu sehen.
-           Die Bilder selbst bleiben stark verschwommen.
-           Beim Klick öffnet sich die komplette Reihe. */
+        /* Zusatz-Bilder: vor dem Klick komplett versteckt */
         .gallery-extra {
-            filter: blur(10px);
-            opacity: 0.38;
-            pointer-events: none;
-
-            /* Nur der obere Anfang des Bildes bleibt sichtbar */
-            height: 90px;
-            min-height: 90px;
-            max-height: 90px;
-            aspect-ratio: auto;
-
-            overflow: hidden;
-            transition:
-                height 0.55s ease,
-                min-height 0.55s ease,
-                max-height 0.55s ease,
-                filter 0.5s ease,
-                opacity 0.5s ease;
+            display: none;
         }
 
+        /* Nach dem Klick normal aufklappen */
         .gallery-extra.visible {
-            height: auto;
-            min-height: 0;
-            max-height: 1000px;
-            filter: blur(0);
-            opacity: 1;
-            pointer-events: auto;
-            aspect-ratio: 3 / 4;
+            display: flex;
         }
 
         .gallery-more-btn { text-align: center; margin-top: 32px; }
