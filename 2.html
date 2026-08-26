@@ -543,7 +543,7 @@
         }
 
         /* ============================================================
-                   GALERIE - VIDEO OHNE PLAYBUTTON (NUR BILD -> VIDEO)
+                   GALERIE - MIT VIDEO AUF HOVER (OHNE PLAYBUTTON)
                    ============================================================ */
         .gallery-grid {
             display: grid;
@@ -552,6 +552,7 @@
             margin-top: 36px;
         }
 
+        /* NORMALE GALERIE-SLOTS */
         .gallery-slot {
             aspect-ratio: 3/4;
             background: var(--bg-card);
@@ -600,7 +601,7 @@
             background: rgba(0,0,0,0.1);
         }
 
-        /* VIDEO-SLOT - KEIN PLAYBUTTON, KEIN OVERLAY */
+        /* VIDEO-SLOT - OHNE PLAYBUTTON */
         .gallery-slot.gallery-video {
             position: relative;
             overflow: hidden;
@@ -616,7 +617,7 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.4s ease;
             z-index: 1;
         }
 
@@ -627,7 +628,7 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.4s ease;
             z-index: 2;
             background: #000;
         }
@@ -642,7 +643,7 @@
             pointer-events: none;
         }
 
-        /* HOVER - BILD WECHSELT ZU VIDEO */
+        /* HOVER EFFEKTE - OHNE PLAYBUTTON */
         .gallery-slot.gallery-video:hover .gallery-image {
             opacity: 0;
         }
@@ -651,7 +652,7 @@
             opacity: 1;
         }
 
-        /* MOBILE - VIDEO IMMER SICHTBAR */
+        /* MOBILE */
         @media (max-width: 768px) {
             .gallery-slot.gallery-video .gallery-image {
                 opacity: 0;
@@ -847,6 +848,7 @@
 <header>
     <div class="navrow">
         <div class="brand">
+            <!-- HIER IHR LOGO EINFÜGEN -->
             <img src="IHRE-LOGO-URL.png" alt="A&F JACEK Logo">
             <small>Tattoo &amp; PMU Studio</small>
         </div>
@@ -868,6 +870,7 @@
      HERO BANNER
      ============================================================ -->
 <section class="hero-banner">
+    <!-- HIER IHR HERO-BILD EINFÜGEN -->
     <div class="bg-image" style="background-image: url('header.png');"></div>
     <div class="overlay"></div>
 
@@ -981,15 +984,15 @@
         <div class="gallery-grid">
             
             <!-- ============================================================
-                 GALERIE 1 - VIDEO (KEIN PLAYBUTTON)
+                 GALERIE 1 - VIDEO (OHNE PLAYBUTTON) - NEUE BILD-URL
                  ============================================================ -->
             <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
-                <!-- BILD -->
+                <!-- NEUE BILD-URL -->
                 <div class="gallery-image" style="background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.99422-6/773912946_2441695216239982_8028727674805031092_n.png?stp=dst-jpg_tt6&cstp=mx3316x4096&ctp=s3316x4096&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=IanEDcYXAakQ7kNvwFcB0ba&_nc_oc=Adpyh6aadTYOGD01i84PDjQINDeg0wHBKdDMz5lVdCL-Mvj4OHNcAsF6PJyObQkT1AY&_nc_zt=14&_nc_ht=scontent-fra5-1.xx&_nc_gid=LQfCz7aYoBa4CCVtTTdAXQ&_nc_ss=7b2a8&oh=00_AQH9AlEiZj8pmnv6gipBrOFrMCZ6tqt4mg0XP6SKOArBIA&oe=6A949643');"></div>
                 
-                <!-- VIDEO -->
+                <!-- VIDEO (UNVERÄNDERT) -->
                 <div class="gallery-video-wrapper">
-                    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1610495730538049%2F&show_text=false&width=385&t=0&autoplay=1" 
+                    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1610495730538049%2F&show_text=false&width=385&t=0" 
                             width="100%" 
                             height="100%" 
                             style="border:none;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100%;" 
@@ -999,6 +1002,7 @@
                             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
                     </iframe>
                 </div>
+                <!-- PLAYBUTTON ENTFERNT -->
             </div>
             
             <!-- ============================================================
@@ -1047,6 +1051,7 @@
                 <div class="section-label animate__animated animate__fadeInUp">Über uns</div>
                 <h2 class="section-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Handwerk aus Biberach</h2>
                 
+                <!-- HIER IHR STUDIO-BILD EINFÜGEN -->
                 <img src="IHRE-STUDIO-BILD-URL.jpg" alt="Unser Studio" style="width: 100%; border-radius: 8px; margin-bottom: 20px;" class="animate__animated animate__fadeInUp" style="animation-delay: 0.15s;">
                 
                 <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.8; max-width: 560px;" class="animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
