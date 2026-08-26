@@ -543,7 +543,7 @@
         }
 
         /* ============================================================
-                   GALERIE - VIDEO MIT AUTOPLAY (KEIN PLAYBUTTON)
+                   GALERIE - VIDEO OHNE PLAYBUTTON (NUR BILD -> VIDEO)
                    ============================================================ */
         .gallery-grid {
             display: grid;
@@ -600,7 +600,7 @@
             background: rgba(0,0,0,0.1);
         }
 
-        /* VIDEO-SLOT - WIE EIN GIF, AUTOPLAY */
+        /* VIDEO-SLOT - KEIN PLAYBUTTON, KEIN OVERLAY */
         .gallery-slot.gallery-video {
             position: relative;
             overflow: hidden;
@@ -642,7 +642,7 @@
             pointer-events: none;
         }
 
-        /* HOVER - BILD WECHSELT ZU VIDEO (WIE GIF) */
+        /* HOVER - BILD WECHSELT ZU VIDEO */
         .gallery-slot.gallery-video:hover .gallery-image {
             opacity: 0;
         }
@@ -970,7 +970,7 @@
 </section>
 
 <!-- ============================================================
-     GALERIE - MIT AUTOPLAY (KEIN PLAYBUTTON)
+     GALERIE - OHNE PLAYBUTTON
      ============================================================ -->
 <section id="galerie" style="background: var(--bg-secondary);">
     <div class="container">
@@ -981,14 +981,13 @@
         <div class="gallery-grid">
             
             <!-- ============================================================
-                 GALERIE 1 - VIDEO MIT AUTOPLAY
+                 GALERIE 1 - VIDEO (KEIN PLAYBUTTON)
                  ============================================================ -->
             <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
-                
-                <!-- BILD (wird auf Hover ausgeblendet) -->
+                <!-- BILD -->
                 <div class="gallery-image" style="background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.99422-6/773912946_2441695216239982_8028727674805031092_n.png?stp=dst-jpg_tt6&cstp=mx3316x4096&ctp=s3316x4096&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=IanEDcYXAakQ7kNvwFcB0ba&_nc_oc=Adpyh6aadTYOGD01i84PDjQINDeg0wHBKdDMz5lVdCL-Mvj4OHNcAsF6PJyObQkT1AY&_nc_zt=14&_nc_ht=scontent-fra5-1.xx&_nc_gid=LQfCz7aYoBa4CCVtTTdAXQ&_nc_ss=7b2a8&oh=00_AQH9AlEiZj8pmnv6gipBrOFrMCZ6tqt4mg0XP6SKOArBIA&oe=6A949643');"></div>
                 
-                <!-- VIDEO (wird auf Hover eingeblendet - AUTOPLAY) -->
+                <!-- VIDEO -->
                 <div class="gallery-video-wrapper">
                     <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1610495730538049%2F&show_text=false&width=385&t=0&autoplay=1" 
                             width="100%" 
@@ -1000,7 +999,6 @@
                             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
                     </iframe>
                 </div>
-                
             </div>
             
             <!-- ============================================================
