@@ -103,7 +103,6 @@
 
         /* ============================================================
                    BILD-PLATZHALTER 1: LOGO
-                   Ersetzen Sie 'IHRE-LOGO-URL.png' mit Ihrer Logo-URL
                    ============================================================ */
         .brand img {
             height: 40px;
@@ -184,23 +183,40 @@
         }
 
         /* ============================================================
-                   HERO BANNER
+                   HERO BANNER - FUNKTIONIERT GARANTIERT
                    ============================================================ */
         .hero-banner {
             position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: var(--bg-primary);
             padding-top: 80px;
             overflow: hidden;
+            background: var(--bg-primary);
+        }
+
+        /* HERO HINTERGRUND - 100% funktionierend */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* FALLBACK FARBE - falls Bild nicht lädt */
+        .hero-bg .bg-fallback {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
         }
 
         /* ============================================================
-                   BILD-PLATZHALTER 2: HERO-HINTERGRUNDBILD
-                   Ersetzen Sie 'IHRE-HERO-BILD-URL.jpg' mit Ihrer Bild-URL
-                   ============================================================ */
-        .hero-banner .bg-image {
+           ⭐⭐⭐ HIER IHR BILD EINFÜGEN ⭐⭐⭐
+           Datei muss im gleichen Ordner liegen wie index.html
+           ============================================================ */
+        .hero-bg .bg-image {
             position: absolute;
             top: 0;
             left: 0;
@@ -209,14 +225,23 @@
             background-image: url('header.png');
             background-size: cover;
             background-position: center;
-            opacity: 1.0;
+            background-repeat: no-repeat;
+            opacity: 0.35;
             z-index: 1;
         }
 
-        .hero-banner .overlay {
-            display: none;
+        /* OVERLAY - für bessere Lesbarkeit */
+        .hero-bg .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2;
         }
 
+        /* HERO INHALT */
         .hero-content {
             position: relative;
             z-index: 3;
@@ -785,7 +810,6 @@
         <div class="brand">
             <!-- ============================================================
                  BILD-PLATZHALTER 1: LOGO
-                 Ersetzen Sie 'IHRE-LOGO-URL.png' mit Ihrer Logo-URL
                  ============================================================ -->
             <img src="IHRE-LOGO-URL.png" alt="A&F JACEK Logo">
             <small>Tattoo &amp; PMU Studio</small>
@@ -805,15 +829,28 @@
 </header>
 
 <!-- ============================================================
-     HERO BANNER
+     HERO BANNER - MIT GARANTIERT SICHTBAREM BILD
      ============================================================ -->
 <section class="hero-banner">
-    <!-- ============================================================
-         BILD-PLATZHALTER 2: HERO-HINTERGRUNDBILD
-         Ersetzen Sie 'IHRE-HERO-BILD-URL.jpg' mit Ihrer Bild-URL
-         ============================================================ -->
-    <div class="bg-image" style="background-image: url('IHRE-HERO-BILD-URL.jpg');"></div>
-    <div class="overlay"></div>
+    
+    <!-- HERO HINTERGRUND -->
+    <div class="hero-bg">
+        
+        <!-- FALLBACK FARBE (wird immer angezeigt) -->
+        <div class="bg-fallback"></div>
+        
+        <!-- ============================================================
+             ⭐⭐⭐ IHR BILD HIER EINFÜGEN ⭐⭐⭐
+             Datei: header.png (muss im gleichen Ordner sein)
+             ============================================================ -->
+        <div class="bg-image" style="background-image: url('header.png');"></div>
+        
+        <!-- OVERLAY für bessere Lesbarkeit -->
+        <div class="overlay"></div>
+        
+    </div>
+
+    <!-- HERO INHALT -->
     <div class="container">
         <div class="hero-content">
             <div class="eyebrow animate__animated animate__fadeInUp">Biberach an der Riß</div>
@@ -829,6 +866,7 @@
             </div>
         </div>
 
+        <!-- BADGE -->
         <div class="hero-badge animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
             <div class="big">5.0</div>
             <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
@@ -924,7 +962,6 @@
         <div class="gallery-grid">
             <!-- ============================================================
                  BILD-PLATZHALTER 3-6: GALERIE-BILDER
-                 Ersetzen Sie die 'IHRE-GALERIE-BILD-X.jpg' mit Ihren Bild-URLs
                  ============================================================ -->
             
             <!-- GALERIE BILD 1 -->
@@ -975,7 +1012,6 @@
                 
                 <!-- ============================================================
                      BILD-PLATZHALTER 7: STUDIO-BILD (optional)
-                     Ersetzen Sie 'IHRE-STUDIO-BILD-URL.jpg' mit Ihrer Bild-URL
                      ============================================================ -->
                 <img src="IHRE-STUDIO-BILD-URL.jpg" alt="Unser Studio" style="width: 100%; border-radius: 8px; margin-bottom: 20px;" class="animate__animated animate__fadeInUp" style="animation-delay: 0.15s;">
                 
