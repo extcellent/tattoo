@@ -261,9 +261,18 @@
             border-left: 3px solid var(--accent-gold); padding: 16px 20px; border-radius: 4px;
         }
 
-        /* Zusatz-Bilder unter "Mehr" - standardmäßig ausgeblendet, klappt im Raster auf */
-        .gallery-extra { display: none; }
-        .gallery-extra.visible { display: contents; }
+        /* Zusatz-Bilder unter "Mehr" - immer sichtbar, aber verschwommen/transparent bis Klick */
+        .gallery-extra {
+            filter: blur(10px);
+            opacity: 0.35;
+            pointer-events: none;
+            transition: filter 0.5s ease, opacity 0.5s ease;
+        }
+        .gallery-extra.visible {
+            filter: blur(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
 
         .gallery-more-btn { text-align: center; margin-top: 32px; }
 
@@ -408,9 +417,6 @@
     </div>
 </section>
 
-<!-- ============================================================
-     GALERIE - TATTOOS (Hover-Video wie vorher, ohne Klick-Popup)
-     ============================================================ -->
 <section id="galerie" style="background: var(--bg-secondary);">
     <div class="container">
         <div class="section-label animate__animated animate__fadeInUp">Galerie</div>
@@ -418,7 +424,6 @@
 
         <div class="gallery-grid" id="galleryGrid">
 
-            <!-- GALERIE 1 -->
             <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
                 <div class="gallery-image" style="background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.99422-6/773912946_2441695216239982_8028727674805031092_n.png?stp=dst-jpg_tt6&cstp=mx3316x4096&ctp=s3316x4096&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=IanEDcYXAakQ7kNvwFcB0ba&_nc_oc=Adpyh6aadTYOGD01i84PDjQINDeg0wHBKdDMz5lVdCL-Mvj4OHNcAsF6PJyObQkT1AY&_nc_zt=14&_nc_ht=scontent-fra5-1.xx&_nc_gid=BtdglD06zPejiig-VCOW_A&_nc_ss=7b2a8&oh=00_AQF1VtMK5WFmG8rRySVrazZgXHGzFPDIF2zLwO5F7nZCRA&oe=6A9506C3');"></div>
                 <div class="gallery-video-wrapper">
@@ -430,7 +435,6 @@
                 </div>
             </div>
 
-            <!-- GALERIE 2 -->
             <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
                 <div class="gallery-image" style="background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.99422-6/753707381_1024384417111863_1863466894185881683_n.png?stp=dst-jpg_tt6&cstp=mx3075x4096&ctp=s3075x4096&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=NAKpFYW7p48Q7kNvwGV8nn8&_nc_oc=Adq07RqiOIh8r7PAdtCWW6JD53LFO9DXK7-XuSXw8jgRyuupM4j9LI0RcJtx3epx8Ww&_nc_zt=14&_nc_ht=scontent-fra5-1.xx&_nc_gid=9Rb5m2SNcKVHWzpbKoO-2w&_nc_ss=7b2a8&oh=00_AQG7PuD0eU5T4hTylg-_-v5uh3uEQUgGOsQjrZ5xbJIeAQ&oe=6A94F2C7');"></div>
                 <div class="gallery-video-wrapper">
@@ -442,7 +446,6 @@
                 </div>
             </div>
 
-            <!-- GALERIE 3 -->
             <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
                 <div class="gallery-image" style="background-image: url('https://scontent-dus1-1.xx.fbcdn.net/v/t39.99422-6/727519389_2419640565201949_1188565738683056779_n.png?stp=dst-jpg_tt6&cstp=mx3102x4096&ctp=s590x590&_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=QE4vChl1JbAQ7kNvwEFaKLr&_nc_oc=Adq4vmmL4fWjMHbXFh4IKEMrTMqTx95_ln_pus2gxGNO4nQ0Qp16FUTR8J-YCrHxF_A&_nc_zt=14&_nc_ht=scontent-dus1-1.xx&_nc_gid=Q_S6r-GBMcUnctwI-5cBAA&_nc_ss=7b2a8&oh=00_AQExf0jDE2YS9yH4gsqKH7HRopD9sNXCOdRIyc5XtfEqAQ&oe=6A952459');"></div>
                 <div class="gallery-video-wrapper">
@@ -454,7 +457,6 @@
                 </div>
             </div>
 
-            <!-- GALERIE 4 -->
             <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.25s;">
                 <div class="gallery-image" style="background-image: url('https://scontent-fra3-2.xx.fbcdn.net/v/t39.99422-6/724534673_1303596565088020_4607571948662739470_n.png?stp=dst-jpg_tt6&cstp=mx3072x4096&ctp=s3072x4096&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iy64KooIPFoQ7kNvwEsQfwW&_nc_oc=AdowSw2QvSpSJcgoLJvcoHdVBlCM46BPTVP5ZpnsLgoB2AgoCBgM2kQhJ8A8t0nZGt8&_nc_zt=14&_nc_ht=scontent-fra3-2.xx&_nc_gid=pXR_ARJ6bnb0GlCY_8yxpQ&_nc_ss=7b2a8&oh=00_AQHqlq7EJyYSRqnTa4q7WlJD8gxuEnxwKi71zP7UaT3BbA&oe=6A950CEA');"></div>
                 <div class="gallery-video-wrapper">
@@ -466,7 +468,6 @@
                 </div>
             </div>
 
-            <!-- ZUSATZBILDER - standardmäßig versteckt, erscheinen beim Klick auf "Mehr" direkt hier im Raster -->
             <div class="gallery-slot photo-only gallery-extra" id="extra1" style="background-image: url('https://scontent-fra3-1.xx.fbcdn.net/v/t51.82787-15/573256724_18212747344308450_1828411614948836631_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1918&ctp=s1440x1918&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=WHTX1TCSHHYQ7kNvwEWHKpq&_nc_oc=Adovmmgx1xFc0eT8DLSG8j6amEOwwdZfgzc21eDVAhG4yQ3sAiI8bqmQVbj8DtsmFwk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&_nc_gid=1ORHkY8s-j1o9q9vSv4zVg&_nc_ss=7b2a8&oh=00_AQEY7nV1muzQrSbwf347NKmkMgbtuEs4Bm_VqPFQ3VYc5w&oe=6A94FCA4');"></div>
             <div class="gallery-slot photo-only gallery-extra" id="extra2" style="background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t51.82787-15/619505697_18220748629308450_6127866125872254746_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1838&ctp=s1440x1838&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=OXjz8BiaMNEQ7kNvwE-PYxP&_nc_oc=Adq6cEH4HjxbX_r4CCVpZv0-OAgBvnO3Sxdh9BUAn8Wx8MJVtpbIC33aITTcFRv4Y0Y&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=6ApOsP8m9Srgk44UZnxN5Q&_nc_ss=7b2a8&oh=00_AQFqnp50tUUu486U5v-Y7jNZRr-LqFmVQ1zqrNxaDAXSiQ&oe=6A952CAA');"></div>
             <div class="gallery-slot photo-only gallery-extra" id="extra3" style="background-image: url('https://scontent-fra3-2.xx.fbcdn.net/v/t51.82787-15/548583082_18206077534308450_7662693264021069259_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1846&ctp=s1440x1846&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=r7L39aM_nfgQ7kNvwE5boPQ&_nc_oc=AdoHNDSQR4EqVaKkiIsDkFP5x0vw7nw_hduKsUD7d4Q_NzkMPsAlYvGM3C8y0ang3nM&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&_nc_gid=sqWQvgfDJpedvI3uFUN2UA&_nc_ss=7b2a8&oh=00_AQGl6TyXwWVTxKWt7NwARikomF6Xj2isgkkUPOslfk-8xw&oe=6A951C12');"></div>
@@ -485,9 +486,6 @@
     </div>
 </section>
 
-<!-- ============================================================
-     BEAUTY - PMU GALERIE (reine Fotos, kein Icon/Text drüber)
-     ============================================================ -->
 <section id="beauty">
     <div class="container">
         <div class="section-label animate__animated animate__fadeInUp">Beauty</div>
