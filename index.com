@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A&F JACEK — Tattoo & PMU Studio, Biberach an der Riß</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Archivo:wght@400;500;600;700;800&family=Archivo+Expanded:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F1EAE2;
+    --paper-dim: #E7DED3;
+    --ink: #17140F;
+    --ink-soft: #38332C;
+    --transfer: #6E5A82;
+    --transfer-dim: #DCD2E6;
+    --rose: #9C3B4E;
+    --rose-deep: #6E2333;
+    --line: rgba(23,20,15,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Archivo', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+
+  /* stencil texture: fine carbon-transfer crosshatch */
+  .stencil-bg{
+    background-image:
+      repeating-linear-gradient(115deg, transparent 0 18px, rgba(110,90,130,0.05) 18px 19px),
+      repeating-linear-gradient(25deg, transparent 0 22px, rgba(23,20,15,0.035) 22px 23px);
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(241,234,226,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .navrow{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px;
+  }
+  .brand{
+    font-family:'Archivo Expanded', sans-serif;
+    font-weight:800;
+    font-size:19px;
+    letter-spacing:0.02em;
+    display:flex; flex-direction:column; line-height:1.1;
+  }
+  .brand small{
+    font-family:'Archivo', sans-serif;
+    font-weight:500;
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--transfer);
+    margin-top:3px;
+  }
+  nav ul{list-style:none; display:flex; gap:28px;}
+  nav a{
+    text-decoration:none; font-size:14px; font-weight:600;
+    letter-spacing:0.01em; color:var(--ink-soft);
+    position:relative; padding-bottom:2px;
+  }
+  nav a::after{
+    content:''; position:absolute; left:0; bottom:-2px; width:0; height:2px;
+    background:var(--rose); transition:width .25s ease;
+  }
+  nav a:hover::after{width:100%;}
+  .navcall{
+    display:none;
+  }
+  @media (min-width:720px){
+    .navcall{
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--ink); color:var(--paper);
+      padding:9px 16px; border-radius:2px;
+      font-size:13px; font-weight:700; text-decoration:none;
+      letter-spacing:0.03em;
+    }
+  }
+  @media (max-width:719px){ nav ul{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:96px 0 80px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-inner{position:relative; z-index:2; max-width:760px;}
+  .eyebrow{
+    font-size:13px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--transfer); margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:''; width:26px; height:1px; background:var(--transfer);
+  }
+  .hero h1{
+    font-family:'Archivo Expanded', sans-serif;
+    font-weight:800;
+    font-size:clamp(38px, 6.4vw, 68px);
+    line-height:1.02;
+    letter-spacing:-0.01em;
+    max-width:11ch;
+  }
+  .hero h1 .mark{
+    font-family:'Permanent Marker', cursive;
+    font-weight:400;
+    color:var(--rose);
+    display:inline-block;
+    transform:rotate(-2deg);
+    font-size:0.85em;
+  }
+  .hero p.lede{
+    margin-top:24px; font-size:18px; color:var(--ink-soft); max-width:52ch;
+  }
+  .hero-ctas{display:flex; gap:14px; margin-top:36px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:14px 24px; border-radius:2px; font-weight:700; font-size:14.5px;
+    text-decoration:none; letter-spacing:0.01em; border:1.5px solid transparent;
+    transition:transform .15s ease, background .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--rose); color:var(--paper);}
+  .btn-primary:hover{background:var(--rose-deep);}
+  .btn-ghost{border-color:var(--ink); color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink); color:var(--paper);}
+
+  .hero-badge{
+    position:absolute; right:6%; top:90px; z-index:1;
+    width:168px; height:168px; border-radius:50%;
+    border:1.5px dashed var(--transfer);
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    animation:spin 34s linear infinite;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .hero-badge-inner{
+    animation:spin 34s linear infinite reverse;
+    font-family:'Archivo Expanded', sans-serif;
+    font-weight:800; font-size:15px; line-height:1.3;
+  }
+  .hero-badge-inner .num{
+    font-size:30px; display:block;
+  }
+  @media (max-width: 900px){ .hero-badge{display:none;} }
+
+  .needle-line{
+    width:100%; height:64px; display:block; margin-top:8px;
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:88px 0;}
+  .sec-head{max-width:640px; margin-bottom:52px;}
+  .sec-head .eyebrow{margin-bottom:14px;}
+  .sec-head h2{
+    font-family:'Archivo Expanded', sans-serif;
+    font-weight:800; font-size:clamp(28px,4vw,42px); letter-spacing:-0.01em;
+  }
+  .sec-head p{margin-top:14px; color:var(--ink-soft); font-size:16.5px;}
+
+  /* ---------- LEISTUNGEN ---------- */
+  .services{background:var(--paper-dim); border-bottom:1px solid var(--line); border-top:1px solid var(--line);}
+  .service-grid{display:grid; grid-template-columns:1fr; gap:24px;}
+  @media (min-width:760px){ .service-grid{grid-template-columns:1fr 1fr;} }
+  .service-card{
+    background:var(--paper); border:1px solid var(--line);
+    padding:36px; position:relative; overflow:hidden;
+  }
+  .service-card .icon{width:46px; height:46px; margin-bottom:22px; color:var(--rose);}
+  .service-card h3{
+    font-family:'Archivo Expanded', sans-serif; font-weight:800; font-size:22px; margin-bottom:10px;
+  }
+  .service-card p{color:var(--ink-soft); font-size:15px; margin-bottom:18px;}
+  .service-card ul{list-style:none; font-size:14.5px; color:var(--ink-soft);}
+  .service-card li{padding:6px 0; border-top:1px dashed var(--line); display:flex; justify-content:space-between; gap:12px;}
+  .service-card li:first-child{border-top:none;}
+
+  /* ---------- BEWERTUNGEN ---------- */
+  .rating-band{
+    display:flex; flex-wrap:wrap; align-items:center; gap:40px;
+    padding:44px; border:1px solid var(--line); background:var(--paper);
+  }
+  .stars{color:var(--rose); font-size:26px; letter-spacing:3px;}
+  .rating-num{font-family:'Archivo Expanded', sans-serif; font-weight:800; font-size:52px; line-height:1;}
+  .rating-sub{font-size:13.5px; color:var(--ink-soft); letter-spacing:0.02em; margin-top:6px;}
+  .rating-quote{
+    max-width:420px; font-size:16px; color:var(--ink-soft); font-style:italic;
+    border-left:2px solid var(--rose); padding-left:18px;
+  }
+
+  /* ---------- GALERIE ---------- */
+  .gallery-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
+  }
+  @media (min-width:640px){ .gallery-grid{grid-template-columns:repeat(4,1fr);} }
+  .gallery-slot{
+    aspect-ratio:3/4; border:1.5px dashed var(--transfer);
+    background:var(--transfer-dim);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:10px; text-align:center; padding:14px;
+    color:var(--transfer);
+  }
+  .gallery-slot svg{width:34px; height:34px; opacity:0.7;}
+  .gallery-slot span{font-size:12px; font-weight:600; letter-spacing:0.02em;}
+  .gallery-note{
+    margin-top:22px; font-size:14px; color:var(--ink-soft);
+    background:var(--transfer-dim); border-left:3px solid var(--transfer);
+    padding:14px 18px; max-width:640px;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--paper-dim); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .about-grid{display:grid; grid-template-columns:1fr; gap:44px;}
+  @media (min-width:800px){ .about-grid{grid-template-columns:1.1fr 0.9fr;} }
+  .about h2{font-family:'Archivo Expanded', sans-serif; font-weight:800; font-size:clamp(26px,3.6vw,36px);}
+  .about p{margin-top:18px; color:var(--ink-soft); font-size:16px; max-width:56ch;}
+  .about-facts{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .fact{border:1px solid var(--line); background:var(--paper); padding:22px;}
+  .fact .n{font-family:'Archivo Expanded', sans-serif; font-weight:800; font-size:28px; color:var(--rose);}
+  .fact .l{font-size:13px; color:var(--ink-soft); margin-top:6px;}
+
+  /* ---------- KONTAKT ---------- */
+  .contact-grid{display:grid; grid-template-columns:1fr; gap:36px;}
+  @media (min-width:800px){ .contact-grid{grid-template-columns:1fr 1fr;} }
+  .contact-card{border:1px solid var(--line); padding:32px; background:var(--paper);}
+  .contact-card h3{font-family:'Archivo Expanded', sans-serif; font-weight:800; font-size:20px; margin-bottom:18px;}
+  .contact-row{display:flex; gap:14px; padding:12px 0; border-top:1px dashed var(--line); align-items:flex-start;}
+  .contact-row:first-of-type{border-top:none;}
+  .contact-row svg{width:20px; height:20px; flex-shrink:0; margin-top:2px; color:var(--rose);}
+  .contact-row a{text-decoration:none; font-weight:600;}
+  .contact-row a:hover{color:var(--rose);}
+  .contact-row .muted{color:var(--ink-soft); font-size:14.5px;}
+  .map-embed{border:1px solid var(--line); overflow:hidden; height:100%; min-height:280px;}
+  .map-embed iframe{width:100%; height:100%; min-height:280px; border:0; display:block;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink); color:var(--paper); padding:44px 0 28px;
+  }
+  .footer-row{
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px; align-items:center;
+  }
+  footer .brand-f{font-family:'Archivo Expanded', sans-serif; font-weight:800; font-size:17px;}
+  footer .brand-f small{display:block; font-family:'Archivo'; font-weight:500; font-size:11px; color:#9c9285; margin-top:4px; letter-spacing:0.08em; text-transform:uppercase;}
+  footer .flinks{display:flex; gap:22px; list-style:none; font-size:14px;}
+  footer .flinks a{text-decoration:none; color:#cfc7ba;}
+  footer .flinks a:hover{color:var(--paper);}
+  .footer-fine{margin-top:28px; padding-top:20px; border-top:1px solid rgba(241,234,226,0.14); font-size:12.5px; color:#8b8276; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navrow">
+    <div class="brand">A&F JACEK<small>Tattoo &amp; PMU Studio</small></div>
+    <nav>
+      <ul>
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#bewertungen">Bewertungen</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#studio">Studio</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <a class="navcall" href="tel:015734602843">01573 4602843</a>
+  </div>
+</header>
+
+<section class="hero stencil-bg">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="eyebrow">Biberach an der Riß</div>
+      <h1>Deine Idee.<br>Unsere <span class="mark">Nadel.</span></h1>
+      <p class="lede">Tattoo &amp; Permanent Make-up in der Pfluggasse 14 — handgemacht, mit über 27 Bewertungen und einer glatten 5.0 von Kund:innen aus Biberach und Umgebung.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="tel:015734602843">Termin anfragen — 01573 4602843</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps/place/3QXR%2B9C+Biberach+an+der+Ri%C3%9F" target="_blank" rel="noopener">Route zum Studio</a>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-inner">
+        <span class="num">5.0</span>
+        27 Google&nbsp;Bewertungen
+      </div>
+    </div>
+    <svg class="needle-line" viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0 30 L200 30 L215 12 L230 48 L245 12 L260 48 L275 30 L1200 30" fill="none" stroke="var(--ink)" stroke-width="1.4" opacity="0.35"/>
+    </svg>
+  </div>
+</section>
+
+<section id="leistungen" class="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Leistungen</div>
+      <h2>Zwei Handwerke, ein Studio</h2>
+      <p>Von der ersten Skizze bis zum fertigen Motiv — jede Sitzung wird individuell geplant und in ruhiger, hygienischer Atmosphäre umgesetzt.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M8 40 L30 18" stroke-linecap="round"/>
+          <path d="M26 14 L34 22" stroke-linecap="round"/>
+          <path d="M32 12 L38 18 L34 22 L28 16 Z"/>
+          <circle cx="10" cy="38" r="2.4" fill="currentColor" stroke="none"/>
+        </svg>
+        <h3>Tattoo</h3>
+        <p>Von filigranem Fineline bis zu großflächigen Motiven — Freihand oder nach Vorlage, jedes Stück ein Unikat.</p>
+        <ul>
+          <li><span>Fineline &amp; Ornamental</span></li>
+          <li><span>Cover-ups</span></li>
+          <li><span>Individuelle Motive nach Beratung</span></li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M10 30 Q 20 14 38 20" stroke-linecap="round"/>
+          <path d="M12 32 Q 21 20 36 24" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+        <h3>Permanent Make-up</h3>
+        <p>Natürlich betonte Brauen, Lidstrich oder Lippen — langanhaltend und auf den Hautton abgestimmt.</p>
+        <ul>
+          <li><span>Powder Brows</span></li>
+          <li><span>Lidstrich</span></li>
+          <li><span>Lip Blush</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="bewertungen">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Bewertungen</div>
+      <h2>Was Kund:innen sagen</h2>
+    </div>
+    <div class="rating-band">
+      <div>
+        <div class="stars">★★★★★</div>
+        <div class="rating-num">5.0</div>
+        <div class="rating-sub">Durchschnitt aus 27 Google-Bewertungen</div>
+      </div>
+      <p class="rating-quote">Die vollständigen Bewertungen findet ihr direkt bei Google — schaut gern vorbei, bevor ihr einen Termin bucht.</p>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/place/3QXR%2B9C+Biberach+an+der+Ri%C3%9F" target="_blank" rel="noopener">Alle Bewertungen ansehen</a>
+    </div>
+  </div>
+</section>
+
+<section id="galerie" class="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Galerie</div>
+      <h2>Aktuelle Arbeiten</h2>
+      <p>Hier entsteht bald eine Auswahl echter Arbeiten aus dem Studio.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
+      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
+      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
+      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
+    </div>
+    <p class="gallery-note">Platzhalter — hier kommen echte Fotos vom Studio rein, sobald sie verfügbar sind.</p>
+  </div>
+</section>
+
+<section id="studio" class="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="eyebrow">Über uns</div>
+      <h2>Handwerk aus Biberach</h2>
+      <p>A&F JACEK Tattoo &amp; PMU Studio steht für saubere Linien, hohe Hygienestandards und persönliche Beratung — mitten in Biberach an der Riß. Ob erstes Tattoo oder nächstes Stück in der Sammlung: hier wird jede Idee ernst genommen.</p>
+      <p>Text kann jederzeit durch die eigenen Worte des Studios ersetzt werden.</p>
+    </div>
+    <div class="about-facts">
+      <div class="fact"><div class="n">5.0</div><div class="l">Ø Google-Bewertung</div></div>
+      <div class="fact"><div class="n">27</div><div class="l">Bewertungen</div></div>
+      <div class="fact"><div class="n">2</div><div class="l">Leistungsbereiche</div></div>
+      <div class="fact"><div class="n">1</div><div class="l">Studio in Biberach</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Kontakt</div>
+      <h2>Vorbeikommen oder anrufen</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Studio</h3>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+          <div>Pfluggasse 14<br><span class="muted">88400 Biberach an der Riß</span></div>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"/></svg>
+          <a href="tel:015734602843">01573 4602843</a>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <div>Termine nach Vereinbarung<br><span class="muted">Anruf oder Nachricht genügt</span></div>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          <a href="https://www.facebook.com/share/1993gLLr56/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook-Seite</a>
+        </div>
+      </div>
+      <div class="map-embed">
+        <iframe
+          src="https://www.google.com/maps?q=Pfluggasse+14,+88400+Biberach+an+der+Ri%C3%9F&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Standort A&F JACEK Tattoo & PMU Studio"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="brand-f">A&F JACEK<small>Tattoo &amp; PMU Studio · Biberach an der Riß</small></div>
+      <ul class="flinks">
+        <li><a href="tel:015734602843">01573 4602843</a></li>
+        <li><a href="https://www.facebook.com/share/1993gLLr56/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="#kontakt">Anfahrt</a></li>
+      </ul>
+    </div>
+    <div class="footer-fine">
+      <span>© 2026 A&F JACEK Tattoo &amp; PMU Studio</span>
+      <span>Pfluggasse 14, 88400 Biberach an der Riß</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
