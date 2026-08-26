@@ -630,6 +630,7 @@
             transition: opacity 0.4s ease;
             z-index: 2;
             background: #000;
+            pointer-events: none;
         }
 
         .gallery-slot .gallery-video-wrapper iframe {
@@ -728,6 +729,147 @@
             border-left: 3px solid var(--accent-gold);
             padding: 16px 20px;
             border-radius: 4px;
+        }
+
+        .gallery-more-btn {
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        /* ============================================================
+                   LIGHTBOX (Bild / Video vergrößert)
+                   ============================================================ */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            padding: 70px 20px;
+            cursor: zoom-out;
+        }
+        .lightbox-overlay.active {
+            display: flex;
+        }
+        .lightbox-content {
+            position: relative;
+            max-width: 460px;
+            width: 100%;
+            cursor: default;
+        }
+        .lightbox-content img {
+            width: 100%;
+            height: auto;
+            max-height: 82vh;
+            object-fit: contain;
+            border-radius: 8px;
+            display: block;
+            box-shadow: var(--shadow-elegant);
+        }
+        .lightbox-video-box {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            max-height: 82vh;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-elegant);
+            background: #000;
+        }
+        .lightbox-video-box iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: -48px;
+            right: 0;
+            background: var(--accent-gold);
+            color: #0a0a0a;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            border: none;
+        }
+        .lightbox-close:hover {
+            background: var(--accent-gold-dim);
+        }
+
+        /* ============================================================
+                   MEHR-MODAL (4 zusätzliche Bilder)
+                   ============================================================ */
+        .more-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9998;
+            padding: 40px 20px;
+        }
+        .more-modal-overlay.active {
+            display: flex;
+        }
+        .more-modal-inner {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-dim);
+            border-radius: 12px;
+            padding: 36px;
+            max-width: 820px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        .more-modal-inner h3 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            font-size: 22px;
+            margin-bottom: 24px;
+            padding-right: 30px;
+        }
+        .more-modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: var(--accent-gold);
+            color: #0a0a0a;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+        .more-modal-close:hover {
+            background: var(--accent-gold-dim);
+        }
+        .more-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .more-grid .gallery-slot {
+            aspect-ratio: 3/4;
+        }
+        @media (max-width: 640px) {
+            .more-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         /* ============================================================
@@ -903,7 +1045,6 @@
 <header>
     <div class="navrow">
         <div class="brand">
-            <!-- KEIN BILD MEHR - NUR SCHRIFT -->
             A&F JACEK
             <small>Tattoo &amp; PMU Studio</small>
         </div>
@@ -912,6 +1053,7 @@
                 <li><a href="#leistungen">Leistungen</a></li>
                 <li><a href="#bewertungen">Bewertungen</a></li>
                 <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#beauty">Beauty</a></li>
                 <li><a href="#studio">Studio</a></li>
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
@@ -925,7 +1067,6 @@
      HERO BANNER
      ============================================================ -->
 <section class="hero-banner">
-    <!-- HIER IHR HERO-BILD EINFÜGEN -->
     <div class="bg-image" style="background-image: url('header.png');"></div>
     <div class="overlay"></div>
 
@@ -1028,7 +1169,7 @@
 </section>
 
 <!-- ============================================================
-     GALERIE - MIT FACEBOOK VIDEO AUF HOVER
+     GALERIE - TATTOOS - MIT FACEBOOK VIDEO AUF HOVER + LIGHTBOX
      ============================================================ -->
 <section id="galerie" style="background: var(--bg-secondary);">
     <div class="container">
@@ -1036,95 +1177,115 @@
         <h2 class="section-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Aktuelle Arbeiten</h2>
 
         <div class="gallery-grid">
-            
-            <!-- ============================================================
-                 GALERIE 1 - MIT FACEBOOK VIDEO AUF HOVER
-                 ============================================================ -->
-            <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
-                <!-- 1. HIER IHR BILD EINFÜGEN -->
+
+            <!-- GALERIE 1 -->
+            <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.1s;"
+                 onclick="openLightboxVideo('https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1610495730538049%2F&show_text=false&width=385&t=0')">
                 <div class="gallery-image" style="background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.99422-6/773912946_2441695216239982_8028727674805031092_n.png?stp=dst-jpg_tt6&cstp=mx3316x4096&ctp=s3316x4096&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=IanEDcYXAakQ7kNvwFcB0ba&_nc_oc=Adpyh6aadTYOGD01i84PDjQINDeg0wHBKdDMz5lVdCL-Mvj4OHNcAsF6PJyObQkT1AY&_nc_zt=14&_nc_ht=scontent-fra5-1.xx&_nc_gid=BtdglD06zPejiig-VCOW_A&_nc_ss=7b2a8&oh=00_AQF1VtMK5WFmG8rRySVrazZgXHGzFPDIF2zLwO5F7nZCRA&oe=6A9506C3');"></div>
-                
-                <!-- 2. HIER IHR FACEBOOK IFRAME EINFÜGEN -->
                 <div class="gallery-video-wrapper">
-                    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1610495730538049%2F&show_text=false&width=385&t=0" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:none;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100%;" 
-                            scrolling="no" 
-                            frameborder="0" 
-                            allowfullscreen="true" 
-                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-                    </iframe>
+                    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1610495730538049%2F&show_text=false&width=385&t=0"
+                            width="100%" height="100%"
+                            style="border:none;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            scrolling="no" frameborder="0" allowfullscreen="true"
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 </div>
-                
-
+                <div class="video-overlay"><i class="fas fa-play-circle"></i><span>Vorschau ansehen</span></div>
             </div>
-            
-            <!-- ============================================================
-                 GALERIE 2 - NORMALES BILD
-                 ============================================================ -->
-            <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
-                <!-- 1. HIER IHR BILD EINFÜGEN -->
+
+            <!-- GALERIE 2 -->
+            <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.1s;"
+                 onclick="openLightboxVideo('https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F981940711558273%2F&show_text=false&width=357&t=0')">
                 <div class="gallery-image" style="background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.99422-6/753707381_1024384417111863_1863466894185881683_n.png?stp=dst-jpg_tt6&cstp=mx3075x4096&ctp=s3075x4096&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=NAKpFYW7p48Q7kNvwGV8nn8&_nc_oc=Adq07RqiOIh8r7PAdtCWW6JD53LFO9DXK7-XuSXw8jgRyuupM4j9LI0RcJtx3epx8Ww&_nc_zt=14&_nc_ht=scontent-fra5-1.xx&_nc_gid=9Rb5m2SNcKVHWzpbKoO-2w&_nc_ss=7b2a8&oh=00_AQG7PuD0eU5T4hTylg-_-v5uh3uEQUgGOsQjrZ5xbJIeAQ&oe=6A94F2C7');"></div>
-                
-                <!-- 2. HIER IHR FACEBOOK IFRAME EINFÜGEN -->
                 <div class="gallery-video-wrapper">
-                    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F981940711558273%2F&show_text=false&width=357&t=0" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:none;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100%;" 
-                            scrolling="no" 
-                            frameborder="0" 
-                            allowfullscreen="true" 
-                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-                    </iframe>
+                    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F981940711558273%2F&show_text=false&width=357&t=0"
+                            width="100%" height="100%"
+                            style="border:none;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            scrolling="no" frameborder="0" allowfullscreen="true"
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 </div>
-                
+                <div class="video-overlay"><i class="fas fa-play-circle"></i><span>Vorschau ansehen</span></div>
+            </div>
 
-            </div>
-            
-            <!-- ============================================================
-                 GALERIE 3 - MIT FACEBOOK VIDEO AUF HOVER
-                 ============================================================ -->
-            <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+            <!-- GALERIE 3 -->
+            <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.2s;"
+                 onclick="openLightboxVideo('https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1723965712114611%2F&show_text=false&width=360&t=0')">
                 <div class="gallery-image" style="background-image: url('https://scontent-dus1-1.xx.fbcdn.net/v/t39.99422-6/727519389_2419640565201949_1188565738683056779_n.png?stp=dst-jpg_tt6&cstp=mx3102x4096&ctp=s590x590&_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=QE4vChl1JbAQ7kNvwEFaKLr&_nc_oc=Adq4vmmL4fWjMHbXFh4IKEMrTMqTx95_ln_pus2gxGNO4nQ0Qp16FUTR8J-YCrHxF_A&_nc_zt=14&_nc_ht=scontent-dus1-1.xx&_nc_gid=Q_S6r-GBMcUnctwI-5cBAA&_nc_ss=7b2a8&oh=00_AQExf0jDE2YS9yH4gsqKH7HRopD9sNXCOdRIyc5XtfEqAQ&oe=6A952459');"></div>
-            
                 <div class="gallery-video-wrapper">
-                    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1723965712114611%2F&show_text=false&width=360&t=0" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:none;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100%;" 
-                            scrolling="no" 
-                            frameborder="0" 
-                            allowfullscreen="true" 
-                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-                    </iframe>
+                    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1723965712114611%2F&show_text=false&width=360&t=0"
+                            width="100%" height="100%"
+                            style="border:none;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            scrolling="no" frameborder="0" allowfullscreen="true"
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 </div>
+                <div class="video-overlay"><i class="fas fa-play-circle"></i><span>Vorschau ansehen</span></div>
             </div>
-            
-            <!-- ============================================================
-                 GALERIE 4 - MIT FACEBOOK VIDEO AUF HOVER
-                 ============================================================ -->
-            <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.25s;">
+
+            <!-- GALERIE 4 -->
+            <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.25s;"
+                 onclick="openLightboxVideo('https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1969545020342782%2F&show_text=false&width=357&t=0')">
                 <div class="gallery-image" style="background-image: url('https://scontent-fra3-2.xx.fbcdn.net/v/t39.99422-6/724534673_1303596565088020_4607571948662739470_n.png?stp=dst-jpg_tt6&cstp=mx3072x4096&ctp=s3072x4096&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iy64KooIPFoQ7kNvwEsQfwW&_nc_oc=AdowSw2QvSpSJcgoLJvcoHdVBlCM46BPTVP5ZpnsLgoB2AgoCBgM2kQhJ8A8t0nZGt8&_nc_zt=14&_nc_ht=scontent-fra3-2.xx&_nc_gid=pXR_ARJ6bnb0GlCY_8yxpQ&_nc_ss=7b2a8&oh=00_AQHqlq7EJyYSRqnTa4q7WlJD8gxuEnxwKi71zP7UaT3BbA&oe=6A950CEA');"></div>
-            
                 <div class="gallery-video-wrapper">
-                    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1969545020342782%2F&show_text=false&width=357&t=0" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:none;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100%;" 
-                            scrolling="no" 
-                            frameborder="0" 
-                            allowfullscreen="true" 
-                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-                    </iframe>
+                    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1969545020342782%2F&show_text=false&width=357&t=0"
+                            width="100%" height="100%"
+                            style="border:none;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100%;"
+                            scrolling="no" frameborder="0" allowfullscreen="true"
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 </div>
+                <div class="video-overlay"><i class="fas fa-play-circle"></i><span>Vorschau ansehen</span></div>
             </div>
-            
+
         </div>
+
+        <div class="gallery-more-btn animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+            <button class="btn btn-outline" onclick="openMoreModal()"><i class="fas fa-images"></i> Mehr Arbeiten ansehen</button>
+        </div>
+
         <div class="gallery-note animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
             <i class="fas fa-info-circle" style="color: var(--accent-gold); margin-right: 10px;"></i>
             Klicke auf ein Bild um eine Vorschau zu starten.
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     BEAUTY - PMU GALERIE - MIT LIGHTBOX
+     ============================================================ -->
+<section id="beauty">
+    <div class="container">
+        <div class="section-label animate__animated animate__fadeInUp">Beauty</div>
+        <h2 class="section-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Permanent Make-up</h2>
+        <p class="section-sub animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">Powder Brows, Lidstrich und Lip Blush — natürlich betont und langanhaltend.</p>
+
+        <div class="gallery-grid">
+
+            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.1s; background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/787124187_122195092400755530_8600243483550638894_n.jpg?stp=dst-jpg_tt6&cstp=mx1320x1629&ctp=s1320x1629&_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=Fv2hfhLT7i0Q7kNvwG009aN&_nc_oc=AdqDAXhnip5l3flZelrqK6bHjw5yysAshDEdKxqsdT0S3MwDUpAPLI5YGzJU1X5JShY&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=0fEN8CGtGvThAg71A71suQ&_nc_ss=7b2a8&oh=00_AQHpbnooS-jCz1Wl092ToVhC-ak7EkTbWrIuO51ZCCRhQg&oe=6A95302A');"
+                 onclick="openLightboxImage(this.style.backgroundImage.slice(5, -2))">
+                <div class="image-overlay"></div>
+                <i class="fas fa-image"></i>
+                <span class="overlay-text">Beauty 1</span>
+            </div>
+
+            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.15s; background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/786702689_122195092388755530_4484297296442769516_n.jpg?stp=dst-jpg_tt6&cstp=mx1320x1635&ctp=s1320x1635&_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=vE9IG3peseQQ7kNvwHy_Zn5&_nc_oc=AdoyJPoL_xYnh5Xk2uf0T0H0e--4aFL7MiTM-reKhUMrCc2lbxObtLJ_WcU2k-hI6wo&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=MCL7GQEhwVogdp5JwrU8Ug&_nc_ss=7b2a8&oh=00_AQF0Ofe727KdkIUTKCodOSkx5B5-SOzc-hYD1Cr2afcHxg&oe=6A9514C8');"
+                 onclick="openLightboxImage(this.style.backgroundImage.slice(5, -2))">
+                <div class="image-overlay"></div>
+                <i class="fas fa-image"></i>
+                <span class="overlay-text">Beauty 2</span>
+            </div>
+
+            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.2s; background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/742173256_122189777828755530_985448460305734498_n.jpg?stp=dst-jpg_tt6&cstp=mx1638x2048&ctp=s1638x2048&_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=ujd7NnKfxZsQ7kNvwEp7G0b&_nc_oc=AdoTmBqUcrAUfT-UVHM6IV6SHEiquKoJS7Glra4YMhWGoEnO_O4KUrCOSnO7xakOnEw&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=XjJ6-qPuRzRrKgO9GhvhHQ&_nc_ss=7b2a8&oh=00_AQFs5szTZg6sXlC7KciRBHOLPC5_GzK5H98ApNUJic5s3Q&oe=6A95076C');"
+                 onclick="openLightboxImage(this.style.backgroundImage.slice(5, -2))">
+                <div class="image-overlay"></div>
+                <i class="fas fa-image"></i>
+                <span class="overlay-text">Beauty 3</span>
+            </div>
+
+            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.25s; background-image: url('https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/617866792_122169124922755530_3742007039944926568_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1850&ctp=s1440x1850&_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=_VgCTwBDyLgQ7kNvwFe3Kww&_nc_oc=AdpcJZSdIU4LlN99PwX27FEl7bFKIXiToNHqywy8ne-u3oMC1NMCzMy8uKyKBZTZ9bk&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&_nc_gid=S6KJuAvTCvO-3xKnfxmwog&_nc_ss=7b2a8&oh=00_AQGfpxdr4JJZWwTwUlzlo1cHp6LW3gPSfB9tr4D5d-4mBw&oe=6A94FE46');"
+                 onclick="openLightboxImage(this.style.backgroundImage.slice(5, -2))">
+                <div class="image-overlay"></div>
+                <i class="fas fa-image"></i>
+                <span class="overlay-text">Beauty 4</span>
+            </div>
+
         </div>
     </div>
 </section>
@@ -1139,15 +1300,11 @@
                 <div class="section-label animate__animated animate__fadeInUp">Über uns</div>
                 <h2 class="section-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Handwerk aus Biberach</h2>
                 
-                <!-- HIER IHR STUDIO-BILD EINFÜGEN -->
                 <img src="https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/615495961_122168150198755530_3579319844257571998_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=ohtMZaf_pGwQ7kNvwHl6L6p&_nc_oc=Adp8_JepqfLGtAwl8kGW8AoSm7rOnIalLTP-TNKBFPF7RbJrzLFyio8W0uC932LpMd8&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=I8srcR35FReZTsgy6tJqmw&_nc_ss=7b2a8&oh=00_AQEGgNNwV9I0DPSZyCsvDIEpj31zumezCABhqa4L_fx7zQ&oe=6A9514C5" alt="Unser Studio" style="width: 100%; height: 320px; object-fit: cover; border-radius: 8px; margin-bottom: 20px;" class="animate__animated animate__fadeInUp">
                 
                 <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.8; max-width: 560px;" class="animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
                     A&F JACEK Tattoo &amp; PMU Studio steht für saubere Linien, hohe Hygienestandards und persönliche Beratung — mitten in Biberach an der Riß. Ob erstes Tattoo oder nächstes Stück in der Sammlung: hier wird jede Idee ernst genommen.
                 </p>
-
-                
-
             </div>
             <div class="about-facts">
                 <div class="fact animate__animated animate__fadeInUp" style="animation-delay: 0.1s;"><div class="n">5.0</div><div class="l">Ø Google-Bewertung</div></div>
@@ -1218,6 +1375,41 @@
     </div>
 </footer>
 
+<!-- ============================================================
+     MEHR-MODAL (4 zusätzliche Bilder)
+     ============================================================ -->
+<div class="more-modal-overlay" id="moreModalOverlay">
+    <div class="more-modal-inner">
+        <button class="more-modal-close" onclick="closeMoreModal()"><i class="fas fa-times"></i></button>
+        <h3>Weitere Arbeiten</h3>
+        <div class="more-grid">
+            <div class="gallery-slot" style="background-image: url('https://scontent-fra3-1.xx.fbcdn.net/v/t51.82787-15/573256724_18212747344308450_1828411614948836631_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1918&ctp=s1440x1918&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=WHTX1TCSHHYQ7kNvwEWHKpq&_nc_oc=Adovmmgx1xFc0eT8DLSG8j6amEOwwdZfgzc21eDVAhG4yQ3sAiI8bqmQVbj8DtsmFwk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&_nc_gid=1ORHkY8s-j1o9q9vSv4zVg&_nc_ss=7b2a8&oh=00_AQEY7nV1muzQrSbwf347NKmkMgbtuEs4Bm_VqPFQ3VYc5w&oe=6A94FCA4');"
+                 onclick="openLightboxImage(this.style.backgroundImage.slice(5, -2))">
+                <div class="image-overlay"></div><i class="fas fa-image"></i>
+            </div>
+            <div class="gallery-slot" style="background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t51.82787-15/619505697_18220748629308450_6127866125872254746_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1838&ctp=s1440x1838&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=OXjz8BiaMNEQ7kNvwE-PYxP&_nc_oc=Adq6cEH4HjxbX_r4CCVpZv0-OAgBvnO3Sxdh9BUAn8Wx8MJVtpbIC33aITTcFRv4Y0Y&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=6ApOsP8m9Srgk44UZnxN5Q&_nc_ss=7b2a8&oh=00_AQFqnp50tUUu486U5v-Y7jNZRr-LqFmVQ1zqrNxaDAXSiQ&oe=6A952CAA');"
+                 onclick="openLightboxImage(this.style.backgroundImage.slice(5, -2))">
+                <div class="image-overlay"></div><i class="fas fa-image"></i>
+            </div>
+            <div class="gallery-slot" style="background-image: url('https://scontent-fra3-2.xx.fbcdn.net/v/t51.82787-15/548583082_18206077534308450_7662693264021069259_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1846&ctp=s1440x1846&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=r7L39aM_nfgQ7kNvwE5boPQ&_nc_oc=AdoHNDSQR4EqVaKkiIsDkFP5x0vw7nw_hduKsUD7d4Q_NzkMPsAlYvGM3C8y0ang3nM&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&_nc_gid=sqWQvgfDJpedvI3uFUN2UA&_nc_ss=7b2a8&oh=00_AQGl6TyXwWVTxKWt7NwARikomF6Xj2isgkkUPOslfk-8xw&oe=6A951C12');"
+                 onclick="openLightboxImage(this.style.backgroundImage.slice(5, -2))">
+                <div class="image-overlay"></div><i class="fas fa-image"></i>
+            </div>
+            <div class="gallery-slot" style="background-image: url('https://scontent-fra3-1.xx.fbcdn.net/v/t51.82787-15/573256724_18212747344308450_1828411614948836631_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1918&ctp=s1440x1918&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=WHTX1TCSHHYQ7kNvwEWHKpq&_nc_oc=Adovmmgx1xFc0eT8DLSG8j6amEOwwdZfgzc21eDVAhG4yQ3sAiI8bqmQVbj8DtsmFwk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&_nc_gid=1ORHkY8s-j1o9q9vSv4zVg&_nc_ss=7b2a8&oh=00_AQEY7nV1muzQrSbwf347NKmkMgbtuEs4Bm_VqPFQ3VYc5w&oe=6A94FCA4');"
+                 onclick="openLightboxImage(this.style.backgroundImage.slice(5, -2))">
+                <div class="image-overlay"></div><i class="fas fa-image"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     LIGHTBOX (Bild / Video vergrößert)
+     ============================================================ -->
+<div class="lightbox-overlay" id="lightboxOverlay" onclick="if(event.target===this) closeLightbox()">
+    <div class="lightbox-content" id="lightboxContent"></div>
+</div>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const animatedElements = document.querySelectorAll('.animate__animated');
@@ -1230,6 +1422,56 @@
             });
         }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
         animatedElements.forEach(el => observer.observe(el));
+    });
+
+    // ============================================================
+    // LIGHTBOX
+    // ============================================================
+    function openLightboxImage(src) {
+        const overlay = document.getElementById('lightboxOverlay');
+        const content = document.getElementById('lightboxContent');
+        content.innerHTML = `
+            <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+            <img src="${src}" alt="Vorschau">
+        `;
+        overlay.classList.add('active');
+    }
+
+    function openLightboxVideo(embedUrl) {
+        const overlay = document.getElementById('lightboxOverlay');
+        const content = document.getElementById('lightboxContent');
+        content.innerHTML = `
+            <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+            <div class="lightbox-video-box">
+                <iframe src="${embedUrl}" scrolling="no" frameborder="0" allowfullscreen="true"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+        `;
+        overlay.classList.add('active');
+    }
+
+    function closeLightbox() {
+        const overlay = document.getElementById('lightboxOverlay');
+        overlay.classList.remove('active');
+        document.getElementById('lightboxContent').innerHTML = '';
+    }
+
+    // ============================================================
+    // MEHR-MODAL
+    // ============================================================
+    function openMoreModal() {
+        document.getElementById('moreModalOverlay').classList.add('active');
+    }
+    function closeMoreModal() {
+        document.getElementById('moreModalOverlay').classList.remove('active');
+    }
+
+    // Escape schließt beides
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeLightbox();
+            closeMoreModal();
+        }
     });
 </script>
 
