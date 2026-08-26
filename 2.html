@@ -17,7 +17,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
     <style>
-        /* ----- RESET & ROOT (wie zweite Seite: dunkel, elegant) ----- */
+        /* ============================================================
+                   ALLGEMEINE STYLES
+                   ============================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -33,7 +35,6 @@
             --text-secondary: #b0b0b0;
             --accent-gold: #c8a87c;
             --accent-gold-dim: #a5865e;
-            --accent-rose: #b45a6b;
             --border-dim: rgba(200, 168, 124, 0.12);
             --shadow-elegant: 0 12px 40px rgba(0,0,0,0.8);
         }
@@ -58,7 +59,9 @@
             padding: 0 24px;
         }
 
-        /* ----- NAVIGATION (wie zweite Seite) ----- */
+        /* ============================================================
+                   NAVIGATION
+                   ============================================================ */
         header {
             position: fixed;
             top: 0;
@@ -96,6 +99,16 @@
             text-transform: uppercase;
             color: var(--text-secondary);
             margin-top: 2px;
+        }
+
+        /* ============================================================
+                   BILD-PLATZHALTER 1: LOGO
+                   Ersetzen Sie 'IHRE-LOGO-URL.png' mit Ihrer Logo-URL
+                   ============================================================ */
+        .brand img {
+            height: 40px;
+            width: auto;
+            display: block;
         }
 
         nav ul {
@@ -170,7 +183,9 @@
             .mobile-call { display: none !important; }
         }
 
-        /* ----- HERO BANNER (wie zweite Seite: Full-Width Bild) ----- */
+        /* ============================================================
+                   HERO BANNER
+                   ============================================================ */
         .hero-banner {
             position: relative;
             min-height: 100vh;
@@ -181,14 +196,20 @@
             overflow: hidden;
         }
 
+        /* ============================================================
+                   BILD-PLATZHALTER 2: HERO-HINTERGRUNDBILD
+                   Ersetzen Sie 'IHRE-HERO-BILD-URL.jpg' mit Ihrer Bild-URL
+                   ============================================================ */
         .hero-banner .bg-image {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Crect width="100" height="100" fill="%231a1a1a"/%3E%3Ccircle cx="50" cy="50" r="40" fill="%23222222"/%3E%3C/svg%3E') center/cover no-repeat;
-            opacity: 0.3;
+            background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.99422-6/773912946_2441695216239982_8028727674805031092_n.png?stp=dst-jpg_tt6&cstp=mx3316x4096&ctp=s590x590&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=IanEDcYXAakQ7kNvwFcB0ba&_nc_oc=Adpyh6aadTYOGD01i84PDjQINDeg0wHBKdDMz5lVdCL-Mvj4OHNcAsF6PJyObQkT1AY&_nc_zt=14&_nc_ht=scontent-fra5-1.xx&_nc_gid=dXv7erFnoawlXECHErNaFQ&_nc_ss=7b2a8&oh=00_AQF5LpkbmBcBDBHx650281IZjKf86xC8Yul7dzF15ef8BQ&oe=6A949643');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
             z-index: 1;
         }
 
@@ -340,7 +361,9 @@
             .hero-ctas .btn { width: 100%; justify-content: center; }
         }
 
-        /* ----- SECTIONS (wie zweite Seite) ----- */
+        /* ============================================================
+                   SECTIONS
+                   ============================================================ */
         section {
             padding: 90px 0;
             border-bottom: 1px solid var(--border-dim);
@@ -380,7 +403,9 @@
             line-height: 1.7;
         }
 
-        /* ----- LEISTUNGEN (Cards wie zweite Seite) ----- */
+        /* ============================================================
+                   LEISTUNGEN
+                   ============================================================ */
         .service-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -437,7 +462,9 @@
             font-weight: 300;
         }
 
-        /* ----- BEWERTUNGEN (wie erste Seite, aber im Stil der zweiten) ----- */
+        /* ============================================================
+                   BEWERTUNGEN
+                   ============================================================ */
         .rating-band {
             display: flex;
             flex-wrap: wrap;
@@ -518,7 +545,9 @@
             margin-top: 44px;
         }
 
-        /* ----- GALERIE (Platzhalter) ----- */
+        /* ============================================================
+                   GALERIE
+                   ============================================================ */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -539,14 +568,37 @@
             font-size: 13px;
             transition: all 0.3s;
             cursor: pointer;
+            background-size: cover;
+            background-position: center;
+            position: relative;
         }
         .gallery-slot:hover {
             border-color: var(--accent-gold);
-            background: var(--bg-soft);
+            background-color: var(--bg-soft);
         }
         .gallery-slot i {
             font-size: 36px;
             opacity: 0.4;
+            z-index: 1;
+        }
+        .gallery-slot .overlay-text {
+            background: rgba(0,0,0,0.7);
+            padding: 4px 12px;
+            border-radius: 4px;
+            z-index: 1;
+        }
+        .gallery-slot .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .gallery-slot:hover .image-overlay {
+            background: rgba(0,0,0,0.1);
         }
         @media (max-width: 640px) {
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
@@ -562,7 +614,9 @@
             border-radius: 4px;
         }
 
-        /* ----- ABOUT (wie zweite Seite) ----- */
+        /* ============================================================
+                   ABOUT / STUDIO
+                   ============================================================ */
         .about-grid {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
@@ -597,7 +651,9 @@
             .about-grid { grid-template-columns: 1fr; }
         }
 
-        /* ----- KONTAKT + MAP (wie erste Seite) ----- */
+        /* ============================================================
+                   KONTAKT + MAP
+                   ============================================================ */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -660,7 +716,9 @@
             .map-embed { min-height: 250px; }
         }
 
-        /* ----- FOOTER (wie zweite Seite) ----- */
+        /* ============================================================
+                   FOOTER
+                   ============================================================ */
         footer {
             background: var(--bg-secondary);
             padding: 50px 0 30px;
@@ -715,26 +773,27 @@
             gap: 10px;
         }
 
-        /* ----- ANIMATION HELPER (wie zweite Seite) ----- */
+        /* ============================================================
+                   ANIMATIONEN
+                   ============================================================ */
         .animate__animated {
             visibility: visible !important;
-        }
-
-        /* Responsive Anpassungen für Badge */
-        @media (max-width: 900px) {
-            .hero-badge {
-                margin: 30px auto 0;
-            }
         }
     </style>
 </head>
 <body>
 
-<!-- HEADER (wie zweite Seite) -->
+<!-- ============================================================
+     HEADER / NAVIGATION
+     ============================================================ -->
 <header>
     <div class="navrow">
         <div class="brand">
-            A&F JACEK
+            <!-- ============================================================
+                 BILD-PLATZHALTER 1: LOGO
+                 Ersetzen Sie 'IHRE-LOGO-URL.png' mit Ihrer Logo-URL
+                 ============================================================ -->
+            <img src="IHRE-LOGO-URL.png" alt="A&F JACEK Logo">
             <small>Tattoo &amp; PMU Studio</small>
         </div>
         <nav>
@@ -751,9 +810,15 @@
     </div>
 </header>
 
-<!-- HERO BANNER (wie zweite Seite: mit Hintergrundbild) -->
+<!-- ============================================================
+     HERO BANNER
+     ============================================================ -->
 <section class="hero-banner">
-    <div class="bg-image"></div>
+    <!-- ============================================================
+         BILD-PLATZHALTER 2: HERO-HINTERGRUNDBILD
+         Ersetzen Sie 'IHRE-HERO-BILD-URL.jpg' mit Ihrer Bild-URL
+         ============================================================ -->
+    <div class="bg-image" style="background-image: url('IHRE-HERO-BILD-URL.jpg');"></div>
     <div class="overlay"></div>
     <div class="container">
         <div class="hero-content">
@@ -770,7 +835,6 @@
             </div>
         </div>
 
-        <!-- Badge (wie erste Seite) -->
         <div class="hero-badge animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
             <div class="big">5.0</div>
             <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
@@ -779,7 +843,9 @@
     </div>
 </section>
 
-<!-- LEISTUNGEN -->
+<!-- ============================================================
+     LEISTUNGEN
+     ============================================================ -->
 <section id="leistungen" style="background: var(--bg-secondary);">
     <div class="container">
         <div class="section-label animate__animated animate__fadeInUp">Leistungen</div>
@@ -811,7 +877,9 @@
     </div>
 </section>
 
-<!-- BEWERTUNGEN (wie erste Seite) -->
+<!-- ============================================================
+     BEWERTUNGEN
+     ============================================================ -->
 <section id="bewertungen">
     <div class="container">
         <div class="section-label animate__animated animate__fadeInUp">Bewertungen</div>
@@ -850,7 +918,9 @@
     </div>
 </section>
 
-<!-- GALERIE (Platzhalter) -->
+<!-- ============================================================
+     GALERIE
+     ============================================================ -->
 <section id="galerie" style="background: var(--bg-secondary);">
     <div class="container">
         <div class="section-label animate__animated animate__fadeInUp">Galerie</div>
@@ -858,11 +928,40 @@
         <p class="section-sub animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">Hier entsteht bald eine Auswahl echter Arbeiten aus dem Studio.</p>
 
         <div class="gallery-grid">
-            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.1s;"><i class="fas fa-image"></i> Foto folgt</div>
-            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.15s;"><i class="fas fa-image"></i> Foto folgt</div>
-            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.2s;"><i class="fas fa-image"></i> Foto folgt</div>
-            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.25s;"><i class="fas fa-image"></i> Foto folgt</div>
+            <!-- ============================================================
+                 BILD-PLATZHALTER 3-6: GALERIE-BILDER
+                 Ersetzen Sie die 'IHRE-GALERIE-BILD-X.jpg' mit Ihren Bild-URLs
+                 ============================================================ -->
+            
+            <!-- GALERIE BILD 1 -->
+            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.1s; background-image: url('IHRE-GALERIE-BILD-1.jpg');">
+                <div class="image-overlay"></div>
+                <i class="fas fa-image"></i>
+                <span class="overlay-text">Arbeit 1</span>
+            </div>
+            
+            <!-- GALERIE BILD 2 -->
+            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.15s; background-image: url('IHRE-GALERIE-BILD-2.jpg');">
+                <div class="image-overlay"></div>
+                <i class="fas fa-image"></i>
+                <span class="overlay-text">Arbeit 2</span>
+            </div>
+            
+            <!-- GALERIE BILD 3 -->
+            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.2s; background-image: url('IHRE-GALERIE-BILD-3.jpg');">
+                <div class="image-overlay"></div>
+                <i class="fas fa-image"></i>
+                <span class="overlay-text">Arbeit 3</span>
+            </div>
+            
+            <!-- GALERIE BILD 4 -->
+            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.25s; background-image: url('IHRE-GALERIE-BILD-4.jpg');">
+                <div class="image-overlay"></div>
+                <i class="fas fa-image"></i>
+                <span class="overlay-text">Arbeit 4</span>
+            </div>
         </div>
+        
         <div class="gallery-note animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
             <i class="fas fa-info-circle" style="color: var(--accent-gold); margin-right: 10px;"></i>
             Platzhalter — hier kommen echte Fotos vom Studio rein, sobald sie verfügbar sind.
@@ -870,13 +969,22 @@
     </div>
 </section>
 
-<!-- ABOUT / STUDIO (wie zweite Seite) -->
+<!-- ============================================================
+     ABOUT / STUDIO
+     ============================================================ -->
 <section id="studio">
     <div class="container">
         <div class="about-grid">
             <div>
                 <div class="section-label animate__animated animate__fadeInUp">Über uns</div>
                 <h2 class="section-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Handwerk aus Biberach</h2>
+                
+                <!-- ============================================================
+                     BILD-PLATZHALTER 7: STUDIO-BILD (optional)
+                     Ersetzen Sie 'IHRE-STUDIO-BILD-URL.jpg' mit Ihrer Bild-URL
+                     ============================================================ -->
+                <img src="IHRE-STUDIO-BILD-URL.jpg" alt="Unser Studio" style="width: 100%; border-radius: 8px; margin-bottom: 20px;" class="animate__animated animate__fadeInUp" style="animation-delay: 0.15s;">
+                
                 <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.8; max-width: 560px;" class="animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
                     A&F JACEK Tattoo &amp; PMU Studio steht für saubere Linien, hohe Hygienestandards und persönliche Beratung — mitten in Biberach an der Riß. Ob erstes Tattoo oder nächstes Stück in der Sammlung: hier wird jede Idee ernst genommen.
                 </p>
@@ -894,7 +1002,9 @@
     </div>
 </section>
 
-<!-- KONTAKT + MAP (wie erste Seite) -->
+<!-- ============================================================
+     KONTAKT + MAP
+     ============================================================ -->
 <section id="kontakt" style="background: var(--bg-secondary);">
     <div class="container">
         <div class="section-label animate__animated animate__fadeInUp">Kontakt</div>
@@ -928,7 +1038,9 @@
     </div>
 </section>
 
-<!-- FOOTER (wie zweite Seite) -->
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
 <footer>
     <div class="container">
         <div class="footer-row">
@@ -949,7 +1061,9 @@
     </div>
 </footer>
 
-<!-- JavaScript für Animationen (wie zweite Seite) -->
+<!-- ============================================================
+     JAVASCRIPT FÜR ANIMATIONEN
+     ============================================================ -->
 <script>
     // Intersection Observer für Animationen beim Scrollen
     document.addEventListener('DOMContentLoaded', function() {
@@ -959,15 +1073,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const el = entry.target;
-                    // Die Klasse bleibt, die Animation wird durch Sichtbarkeit getriggert
                     el.style.visibility = 'visible';
-                    // Falls die Animation bereits gelaufen ist, neu starten
-                    el.classList.remove('animate__fadeInUp', 'animate__fadeInDown', 'animate__fadeInLeft', 'animate__fadeInRight');
-                    // Kurzer Timeout für re-trigger
-                    setTimeout(() => {
-                        // Hier die ursprüngliche Klasse wieder hinzufügen – 
-                        // aber wir behalten die Klassen aus dem HTML, daher nichts tun
-                    }, 10);
                     observer.unobserve(el);
                 }
             });
