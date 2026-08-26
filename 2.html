@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
     <style>
+        /* ============================================================
+                   ALLGEMEINE STYLES
+                   ============================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -177,7 +180,7 @@
         }
 
         /* ============================================================
-                   HERO BANNER - BILD JETZT SCHARF & KLAR
+                   HERO BANNER
                    ============================================================ */
         .hero-banner {
             position: relative;
@@ -189,7 +192,6 @@
             background: var(--bg-primary);
         }
 
-        /* BILD - OHNE ÜBERTRIEBENE FILTER */
         .hero-banner .bg-image {
             position: absolute;
             top: 0;
@@ -197,19 +199,13 @@
             width: 100%;
             height: 100%;
             z-index: 0;
-            /* ============================================================
-               ⭐⭐⭐ IHR BILD HIER - VERWENDEN SIE EIN HOCHAUFLÖSENDES BILD ⭐⭐⭐
-               Empfehlung: mind. 1920x1080px
-               ============================================================ */
             background-image: url('header.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            /* KEIN OPACITY-FILTER MEHR - BILD IST VOLL SICHTBAR */
             opacity: 1;
         }
 
-        /* NUR GANZ LEICHTES DUNKEL FÜR TEXT-LESBARKEIT */
         .hero-banner .overlay {
             position: absolute;
             top: 0;
@@ -218,19 +214,6 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
             z-index: 1;
-        }
-
-        /* EXTRA: LEICHTE UNSCHÄRFE IM HINTERGRUND FÜR BESSEREN TEXT */
-        .hero-banner .bg-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: inherit;
-            filter: blur(0px);
-            z-index: -1;
         }
 
         .hero-content {
@@ -376,7 +359,7 @@
         }
 
         /* ============================================================
-                   REST DER SECTIONS (UNVERÄNDERT)
+                   SECTIONS
                    ============================================================ */
         section {
             padding: 90px 0;
@@ -417,6 +400,9 @@
             line-height: 1.7;
         }
 
+        /* ============================================================
+                   LEISTUNGEN
+                   ============================================================ */
         .service-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -473,6 +459,9 @@
             font-weight: 300;
         }
 
+        /* ============================================================
+                   BEWERTUNGEN
+                   ============================================================ */
         .rating-band {
             display: flex;
             flex-wrap: wrap;
@@ -553,12 +542,17 @@
             margin-top: 44px;
         }
 
+        /* ============================================================
+                   GALERIE - MIT VIDEO AUF HOVER
+                   ============================================================ */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 18px;
             margin-top: 36px;
         }
+
+        /* NORMALE GALERIE-SLOTS */
         .gallery-slot {
             aspect-ratio: 3/4;
             background: var(--bg-card);
@@ -576,6 +570,7 @@
             background-size: cover;
             background-position: center;
             position: relative;
+            overflow: hidden;
         }
         .gallery-slot:hover {
             border-color: var(--accent-gold);
@@ -605,6 +600,122 @@
         .gallery-slot:hover .image-overlay {
             background: rgba(0,0,0,0.1);
         }
+
+        /* VIDEO-SLOT */
+        .gallery-slot.gallery-video {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-slot .gallery-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .gallery-slot .gallery-video-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 2;
+            background: #000;
+        }
+
+        .gallery-slot .gallery-video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .gallery-slot .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            z-index: 3;
+            background: rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease;
+            color: white;
+            pointer-events: none;
+        }
+
+        .gallery-slot .video-overlay i {
+            font-size: 48px;
+            color: white;
+            opacity: 0.8;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-slot .video-overlay span {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: rgba(0,0,0,0.6);
+            padding: 6px 16px;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* HOVER EFFEKTE */
+        .gallery-slot.gallery-video:hover .gallery-image {
+            opacity: 0;
+        }
+
+        .gallery-slot.gallery-video:hover .gallery-video-wrapper {
+            opacity: 1;
+        }
+
+        .gallery-slot.gallery-video:hover .video-overlay {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-slot.gallery-video:hover .video-overlay i {
+            transform: scale(1.1);
+        }
+
+        .gallery-slot.gallery-video:hover .video-overlay span {
+            opacity: 1;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .gallery-slot.gallery-video .gallery-image {
+                opacity: 0;
+            }
+            .gallery-slot.gallery-video .gallery-video-wrapper {
+                opacity: 1;
+            }
+            .gallery-slot.gallery-video .video-overlay {
+                background: rgba(0, 0, 0, 0.4);
+            }
+            .gallery-slot.gallery-video .video-overlay span {
+                opacity: 1;
+            }
+        }
+
         @media (max-width: 640px) {
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
         }
@@ -619,6 +730,9 @@
             border-radius: 4px;
         }
 
+        /* ============================================================
+                   ABOUT / STUDIO
+                   ============================================================ */
         .about-grid {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
@@ -653,6 +767,9 @@
             .about-grid { grid-template-columns: 1fr; }
         }
 
+        /* ============================================================
+                   KONTAKT + MAP
+                   ============================================================ */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -715,6 +832,9 @@
             .map-embed { min-height: 250px; }
         }
 
+        /* ============================================================
+                   FOOTER
+                   ============================================================ */
         footer {
             background: var(--bg-secondary);
             padding: 50px 0 30px;
@@ -776,10 +896,13 @@
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
 <header>
     <div class="navrow">
         <div class="brand">
+            <!-- HIER IHR LOGO EINFÜGEN -->
             <img src="IHRE-LOGO-URL.png" alt="A&F JACEK Logo">
             <small>Tattoo &amp; PMU Studio</small>
         </div>
@@ -798,21 +921,13 @@
 </header>
 
 <!-- ============================================================
-     HERO BANNER - BILD JETZT SCHARF & KLAR
+     HERO BANNER
      ============================================================ -->
 <section class="hero-banner">
-    
-    <!-- ============================================================
-         ⭐⭐⭐ IHR BILD HIER - NUR EINE ZEILE ⭐⭐⭐
-         Ersetzen Sie 'header.png' mit Ihrer Bild-URL
-         Verwenden Sie ein hochauflösendes Bild (mind. 1920x1080)
-         ============================================================ -->
+    <!-- HIER IHR HERO-BILD EINFÜGEN -->
     <div class="bg-image" style="background-image: url('header.png');"></div>
-    
-    <!-- LEICHTER OVERLAY FÜR TEXT-LESBARKEIT -->
     <div class="overlay"></div>
 
-    <!-- INHALT -->
     <div class="container">
         <div class="hero-content">
             <div class="eyebrow animate__animated animate__fadeInUp">Biberach an der Riß</div>
@@ -912,7 +1027,7 @@
 </section>
 
 <!-- ============================================================
-     GALERIE
+     GALERIE - MIT FACEBOOK VIDEO AUF HOVER
      ============================================================ -->
 <section id="galerie" style="background: var(--bg-secondary);">
     <div class="container">
@@ -921,26 +1036,60 @@
         <p class="section-sub animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">Hier entsteht bald eine Auswahl echter Arbeiten aus dem Studio.</p>
 
         <div class="gallery-grid">
-            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.1s; background-image: url('https://scontent-fra3-1.xx.fbcdn.net/v/t39.99422-6/724350301_2099578444239127_278094162242500451_n.png?stp=dst-jpg_tt6&cstp=mx3072x4096&ctp=s3072x4096&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=xinZ8RJK09oQ7kNvwElDG8a&_nc_oc=Adrg13DLbToNyjRp5NNYDxSs-N6jfzJ_JJca_OmT25aQeWk3Wyq3pkUBw3McLdbrWO8&_nc_zt=14&_nc_ht=scontent-fra3-1.xx&_nc_gid=M6BeBWcfcHWZIx2eW_HRrg&_nc_ss=7b2a8&oh=00_AQGhrh1yFJ2yKu-LXZLmS-JykJgWyH55W0PrLUJK6tPO-Q&oe=6A948563');">
-                <div class="image-overlay"></div>
-                <i class="fas fa-image"></i>
-                <span class="overlay-text">Arbeit 1</span>
+            
+            <!-- ============================================================
+                 GALERIE 1 - MIT FACEBOOK VIDEO AUF HOVER
+                 ============================================================ -->
+            <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                <!-- 1. HIER IHR BILD EINFÜGEN -->
+                <div class="gallery-image" style="background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.99422-6/773912946_2441695216239982_8028727674805031092_n.png?stp=dst-jpg_tt6&cstp=mx3316x4096&ctp=s3316x4096&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=IanEDcYXAakQ7kNvwFcB0ba&_nc_oc=Adpyh6aadTYOGD01i84PDjQINDeg0wHBKdDMz5lVdCL-Mvj4OHNcAsF6PJyObQkT1AY&_nc_zt=14&_nc_ht=scontent-fra5-1.xx&_nc_gid=LQfCz7aYoBa4CCVtTTdAXQ&_nc_ss=7b2a8&oh=00_AQH9AlEiZj8pmnv6gipBrOFrMCZ6tqt4mg0XP6SKOArBIA&oe=6A949643');"></div>
+                
+                <!-- 2. HIER IHR FACEBOOK IFRAME EINFÜGEN -->
+                <div class="gallery-video-wrapper">
+                    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1610495730538049%2F&show_text=false&width=385&t=0" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:none;overflow:hidden;position:absolute;top:0;left:0;width:100%;height:100%;" 
+                            scrolling="no" 
+                            frameborder="0" 
+                            allowfullscreen="true" 
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
+                </div>
+                
+                <div class="video-overlay">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Video abspielen</span>
+                </div>
             </div>
+            
+            <!-- ============================================================
+                 GALERIE 2 - NORMALES BILD
+                 ============================================================ -->
             <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.15s; background-image: url('IHRE-GALERIE-BILD-2.jpg');">
                 <div class="image-overlay"></div>
                 <i class="fas fa-image"></i>
                 <span class="overlay-text">Arbeit 2</span>
             </div>
+            
+            <!-- ============================================================
+                 GALERIE 3 - NORMALES BILD
+                 ============================================================ -->
             <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.2s; background-image: url('IHRE-GALERIE-BILD-3.jpg');">
                 <div class="image-overlay"></div>
                 <i class="fas fa-image"></i>
                 <span class="overlay-text">Arbeit 3</span>
             </div>
+            
+            <!-- ============================================================
+                 GALERIE 4 - NORMALES BILD
+                 ============================================================ -->
             <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.25s; background-image: url('IHRE-GALERIE-BILD-4.jpg');">
                 <div class="image-overlay"></div>
                 <i class="fas fa-image"></i>
                 <span class="overlay-text">Arbeit 4</span>
             </div>
+            
         </div>
         
         <div class="gallery-note animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
@@ -960,6 +1109,7 @@
                 <div class="section-label animate__animated animate__fadeInUp">Über uns</div>
                 <h2 class="section-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Handwerk aus Biberach</h2>
                 
+                <!-- HIER IHR STUDIO-BILD EINFÜGEN -->
                 <img src="IHRE-STUDIO-BILD-URL.jpg" alt="Unser Studio" style="width: 100%; border-radius: 8px; margin-bottom: 20px;" class="animate__animated animate__fadeInUp" style="animation-delay: 0.15s;">
                 
                 <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.8; max-width: 560px;" class="animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
