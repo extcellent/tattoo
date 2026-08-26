@@ -204,6 +204,18 @@
     max-width:420px; font-size:16px; color:var(--ink-soft); font-style:italic;
     border-left:2px solid var(--rose); padding-left:18px;
   }
+  .testimonial-grid{
+    display:grid; grid-template-columns:1fr; gap:20px; margin-top:28px;
+  }
+  @media (min-width:760px){ .testimonial-grid{grid-template-columns:repeat(3,1fr);} }
+  .testimonial-card{
+    border:1px solid var(--line); background:var(--paper-dim);
+    padding:26px; display:flex; flex-direction:column; gap:14px;
+  }
+  .stars.small{font-size:15px; letter-spacing:2px; color:var(--rose);}
+  .testimonial-card p{font-size:14.5px; color:var(--ink-soft); flex-grow:1;}
+  .t-source{font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--transfer);}
+  .reviews-cta{margin-top:36px; display:flex; justify-content:center;}
 
   /* ---------- GALERIE ---------- */
   .gallery-grid{
@@ -358,8 +370,29 @@
         <div class="rating-num">5.0</div>
         <div class="rating-sub">Durchschnitt aus 27 Google-Bewertungen</div>
       </div>
-      <p class="rating-quote">Die vollständigen Bewertungen findet ihr direkt bei Google — schaut gern vorbei, bevor ihr einen Termin bucht.</p>
-      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=A%26F+JACEK+Tattoo%26PMU+Studio&query_place_id=ChIJ5U9jTOvFm0cRpx4KwDK5K9c" target="_blank" rel="noopener">Alle Bewertungen ansehen</a>
+      <p class="rating-quote">Ehrliche Beratung, saubere Arbeit, faire Preise — das ziehen sich als roter Faden durch die Rückmeldungen.</p>
+    </div>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="stars small">★★★★★</div>
+        <p>Eine Kundin berichtet, dass sowohl ihr Mann als auch später ihr Schwiegervater sich hier tätowieren ließen — beide Male mit einem Ergebnis, das keine Wünsche offen ließ.</p>
+        <span class="t-source">Google-Bewertung</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars small">★★★★★</div>
+        <p>Immer wieder hervorgehoben: die saubere, präzise Umsetzung mit viel Liebe zum Detail, gepaart mit einer angenehmen Atmosphäre im Studio und ehrlicher Beratung zu einem fairen Preis.</p>
+        <span class="t-source">Google-Bewertung</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars small">★★★★★</div>
+        <p>Mehrere kurze Rückmeldungen bringen es auf den Punkt: durchweg zufriedene Kund:innen, die die Arbeit im Studio klar weiterempfehlen.</p>
+        <span class="t-source">Google-Bewertung</span>
+      </div>
+    </div>
+
+    <div class="reviews-cta">
+      <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=A%26F+JACEK+Tattoo%26PMU+Studio&query_place_id=ChIJ5U9jTOvFm0cRpx4KwDK5K9c" target="_blank" rel="noopener">Alle 27 Bewertungen auf Google ansehen</a>
     </div>
   </div>
 </section>
@@ -426,7 +459,7 @@
       </div>
       <div class="map-embed">
         <iframe
-          src="https://www.google.com/maps?q=place_id:ChIJ5U9jTOvFm0cRpx4KwDK5K9c&output=embed"
+          src="https://www.google.com/maps?q=48.0984905,9.7910243&z=17&output=embed"
           loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           title="Standort A&F JACEK Tattoo & PMU Studio"></iframe>
       </div>
