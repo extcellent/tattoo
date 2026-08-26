@@ -13,7 +13,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    <!-- Animate.css für Animationen -->
+    <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
     <style>
@@ -101,9 +101,6 @@
             margin-top: 2px;
         }
 
-        /* ============================================================
-                   BILD-PLATZHALTER 1: LOGO
-                   ============================================================ */
         .brand img {
             height: 40px;
             width: auto;
@@ -183,7 +180,7 @@
         }
 
         /* ============================================================
-                   HERO BANNER - FUNKTIONIERT GARANTIERT
+                   HERO BANNER - BILD JETZT KLAR SICHTBAR
                    ============================================================ */
         .hero-banner {
             position: relative;
@@ -192,10 +189,9 @@
             align-items: center;
             padding-top: 80px;
             overflow: hidden;
-            background: var(--bg-primary);
         }
 
-        /* HERO HINTERGRUND - 100% funktionierend */
+        /* HERO HINTERGRUND */
         .hero-bg {
             position: absolute;
             top: 0;
@@ -205,16 +201,8 @@
             z-index: 0;
         }
 
-        /* FALLBACK FARBE - falls Bild nicht lädt */
-        .hero-bg .bg-fallback {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-        }
-
         /* ============================================================
-           ⭐⭐⭐ HIER IHR BILD EINFÜGEN ⭐⭐⭐
-           Datei muss im gleichen Ordner liegen wie index.html
+           ⭐⭐⭐ IHR BILD HIER - OHNE ÜBERTRIEBENEN FILTER ⭐⭐⭐
            ============================================================ */
         .hero-bg .bg-image {
             position: absolute;
@@ -226,18 +214,19 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.35;
+            /* NUR LEICHTE DUNKELHEIT - KEIN STARKER FILTER */
+            opacity: 0.85;
             z-index: 1;
         }
 
-        /* OVERLAY - für bessere Lesbarkeit */
+        /* NUR GANZ LEICHTER OVERLAY FÜR TEXT-LESBARKEIT */
         .hero-bg .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.35);
             z-index: 2;
         }
 
@@ -792,9 +781,6 @@
             gap: 10px;
         }
 
-        /* ============================================================
-                   ANIMATIONEN
-                   ============================================================ */
         .animate__animated {
             visibility: visible !important;
         }
@@ -802,15 +788,10 @@
 </head>
 <body>
 
-<!-- ============================================================
-     HEADER / NAVIGATION
-     ============================================================ -->
+<!-- HEADER -->
 <header>
     <div class="navrow">
         <div class="brand">
-            <!-- ============================================================
-                 BILD-PLATZHALTER 1: LOGO
-                 ============================================================ -->
             <img src="IHRE-LOGO-URL.png" alt="A&F JACEK Logo">
             <small>Tattoo &amp; PMU Studio</small>
         </div>
@@ -829,23 +810,21 @@
 </header>
 
 <!-- ============================================================
-     HERO BANNER - MIT GARANTIERT SICHTBAREM BILD
+     HERO BANNER - BILD JETZT KLAR SICHTBAR
      ============================================================ -->
 <section class="hero-banner">
     
     <!-- HERO HINTERGRUND -->
     <div class="hero-bg">
         
-        <!-- FALLBACK FARBE (wird immer angezeigt) -->
-        <div class="bg-fallback"></div>
-        
         <!-- ============================================================
-             ⭐⭐⭐ IHR BILD HIER EINFÜGEN ⭐⭐⭐
-             Datei: header.png (muss im gleichen Ordner sein)
+             ⭐⭐⭐ IHR BILD HIER - KLAR SICHTBAR ⭐⭐⭐
+             opacity: 0.85 = fast voll sichtbar
+             overlay: 0.35 = nur leicht abgedunkelt
              ============================================================ -->
         <div class="bg-image" style="background-image: url('header.png');"></div>
         
-        <!-- OVERLAY für bessere Lesbarkeit -->
+        <!-- NUR LEICHTER OVERLAY (0.35 statt 0.7) -->
         <div class="overlay"></div>
         
     </div>
@@ -960,32 +939,21 @@
         <p class="section-sub animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">Hier entsteht bald eine Auswahl echter Arbeiten aus dem Studio.</p>
 
         <div class="gallery-grid">
-            <!-- ============================================================
-                 BILD-PLATZHALTER 3-6: GALERIE-BILDER
-                 ============================================================ -->
-            
-            <!-- GALERIE BILD 1 -->
             <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.1s; background-image: url('IHRE-GALERIE-BILD-1.jpg');">
                 <div class="image-overlay"></div>
                 <i class="fas fa-image"></i>
                 <span class="overlay-text">Arbeit 1</span>
             </div>
-            
-            <!-- GALERIE BILD 2 -->
             <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.15s; background-image: url('IHRE-GALERIE-BILD-2.jpg');">
                 <div class="image-overlay"></div>
                 <i class="fas fa-image"></i>
                 <span class="overlay-text">Arbeit 2</span>
             </div>
-            
-            <!-- GALERIE BILD 3 -->
             <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.2s; background-image: url('IHRE-GALERIE-BILD-3.jpg');">
                 <div class="image-overlay"></div>
                 <i class="fas fa-image"></i>
                 <span class="overlay-text">Arbeit 3</span>
             </div>
-            
-            <!-- GALERIE BILD 4 -->
             <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.25s; background-image: url('IHRE-GALERIE-BILD-4.jpg');">
                 <div class="image-overlay"></div>
                 <i class="fas fa-image"></i>
@@ -1010,9 +978,6 @@
                 <div class="section-label animate__animated animate__fadeInUp">Über uns</div>
                 <h2 class="section-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Handwerk aus Biberach</h2>
                 
-                <!-- ============================================================
-                     BILD-PLATZHALTER 7: STUDIO-BILD (optional)
-                     ============================================================ -->
                 <img src="IHRE-STUDIO-BILD-URL.jpg" alt="Unser Studio" style="width: 100%; border-radius: 8px; margin-bottom: 20px;" class="animate__animated animate__fadeInUp" style="animation-delay: 0.15s;">
                 
                 <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.8; max-width: 560px;" class="animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
@@ -1091,30 +1056,18 @@
     </div>
 </footer>
 
-<!-- ============================================================
-     JAVASCRIPT FÜR ANIMATIONEN
-     ============================================================ -->
 <script>
-    // Intersection Observer für Animationen beim Scrollen
     document.addEventListener('DOMContentLoaded', function() {
         const animatedElements = document.querySelectorAll('.animate__animated');
-        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const el = entry.target;
-                    el.style.visibility = 'visible';
-                    observer.unobserve(el);
+                    entry.target.style.visibility = 'visible';
+                    observer.unobserve(entry.target);
                 }
             });
-        }, {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        animatedElements.forEach(el => {
-            observer.observe(el);
-        });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+        animatedElements.forEach(el => observer.observe(el));
     });
 </script>
 
