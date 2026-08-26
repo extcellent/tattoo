@@ -543,7 +543,7 @@
         }
 
         /* ============================================================
-                   GALERIE - MIT VIDEO AUF HOVER (OHNE PLAYBUTTON)
+                   GALERIE - MIT VIDEO AUF HOVER
                    ============================================================ */
         .gallery-grid {
             display: grid;
@@ -601,12 +601,11 @@
             background: rgba(0,0,0,0.1);
         }
 
-        /* VIDEO-SLOT - OHNE PLAYBUTTON */
+        /* VIDEO-SLOT */
         .gallery-slot.gallery-video {
             position: relative;
             overflow: hidden;
             cursor: pointer;
-            background: #000;
         }
 
         .gallery-slot .gallery-image {
@@ -640,15 +639,64 @@
             width: 100%;
             height: 100%;
             border: none;
+        }
+
+        .gallery-slot .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            z-index: 3;
+            background: rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease;
+            color: white;
             pointer-events: none;
         }
 
-        /* HOVER EFFEKTE - OHNE PLAYBUTTON */
+        .gallery-slot .video-overlay i {
+            font-size: 48px;
+            color: white;
+            opacity: 0.8;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-slot .video-overlay span {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: rgba(0,0,0,0.6);
+            padding: 6px 16px;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* HOVER EFFEKTE */
         .gallery-slot.gallery-video:hover .gallery-image {
             opacity: 0;
         }
 
         .gallery-slot.gallery-video:hover .gallery-video-wrapper {
+            opacity: 1;
+        }
+
+        .gallery-slot.gallery-video:hover .video-overlay {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-slot.gallery-video:hover .video-overlay i {
+            transform: scale(1.1);
+        }
+
+        .gallery-slot.gallery-video:hover .video-overlay span {
             opacity: 1;
         }
 
@@ -658,6 +706,12 @@
                 opacity: 0;
             }
             .gallery-slot.gallery-video .gallery-video-wrapper {
+                opacity: 1;
+            }
+            .gallery-slot.gallery-video .video-overlay {
+                background: rgba(0, 0, 0, 0.4);
+            }
+            .gallery-slot.gallery-video .video-overlay span {
                 opacity: 1;
             }
         }
@@ -973,7 +1027,7 @@
 </section>
 
 <!-- ============================================================
-     GALERIE - OHNE PLAYBUTTON
+     GALERIE - MIT FACEBOOK VIDEO AUF HOVER
      ============================================================ -->
 <section id="galerie" style="background: var(--bg-secondary);">
     <div class="container">
@@ -984,13 +1038,13 @@
         <div class="gallery-grid">
             
             <!-- ============================================================
-                 GALERIE 1 - VIDEO (OHNE PLAYBUTTON) - NEUE BILD-URL
+                 GALERIE 1 - MIT FACEBOOK VIDEO AUF HOVER
                  ============================================================ -->
             <div class="gallery-slot gallery-video animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
-                <!-- NEUE BILD-URL -->
-                <div class="gallery-image" style="background-image: url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.99422-6/773912946_2441695216239982_8028727674805031092_n.png?stp=dst-jpg_tt6&cstp=mx3316x4096&ctp=s3316x4096&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=IanEDcYXAakQ7kNvwFcB0ba&_nc_oc=Adpyh6aadTYOGD01i84PDjQINDeg0wHBKdDMz5lVdCL-Mvj4OHNcAsF6PJyObQkT1AY&_nc_zt=14&_nc_ht=scontent-fra5-1.xx&_nc_gid=LQfCz7aYoBa4CCVtTTdAXQ&_nc_ss=7b2a8&oh=00_AQH9AlEiZj8pmnv6gipBrOFrMCZ6tqt4mg0XP6SKOArBIA&oe=6A949643');"></div>
+                <!-- 1. HIER IHR BILD EINFÜGEN -->
+                <div class="gallery-image" style="background-image: url('https://scontent-fra3-1.xx.fbcdn.net/v/t39.99422-6/724350301_2099578444239127_278094162242500451_n.png?stp=dst-jpg_tt6&cstp=mx3072x4096&ctp=s3072x4096&_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_ohc=xinZ8RJK09oQ7kNvwElDG8a&_nc_oc=Adrg13DLbToNyjRp5NNYDxSs-N6jfzJ_JJca_OmT25aQeWk3Wyq3pkUBw3McLdbrWO8&_nc_zt=14&_nc_ht=scontent-fra3-1.xx&_nc_gid=M6BeBWcfcHWZIx2eW_HRrg&_nc_ss=7b2a8&oh=00_AQGhrh1yFJ2yKu-LXZLmS-JykJgWyH55W0PrLUJK6tPO-Q&oe=6A948563');"></div>
                 
-                <!-- VIDEO (UNVERÄNDERT) -->
+                <!-- 2. HIER IHR FACEBOOK IFRAME EINFÜGEN -->
                 <div class="gallery-video-wrapper">
                     <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1610495730538049%2F&show_text=false&width=385&t=0" 
                             width="100%" 
@@ -1002,7 +1056,11 @@
                             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
                     </iframe>
                 </div>
-                <!-- PLAYBUTTON ENTFERNT -->
+                
+                <div class="video-overlay">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Video abspielen</span>
+                </div>
             </div>
             
             <!-- ============================================================
