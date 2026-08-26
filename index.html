@@ -6,17 +6,17 @@
 <title>A&F JACEK — Tattoo & PMU Studio, Biberach an der Riß</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Archivo:wght@400;500;600;700;800&family=Archivo+Expanded:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Barlow:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper: #F1EAE2;
     --paper-dim: #E7DED3;
-    --ink: #17140F;
+    --ink: #0E0C0A;
     --ink-soft: #38332C;
     --transfer: #6E5A82;
     --transfer-dim: #DCD2E6;
-    --rose: #9C3B4E;
-    --rose-deep: #6E2333;
+    --rose: #C4272B;
+    --rose-deep: #8E1519;
     --line: rgba(23,20,15,0.14);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -24,7 +24,7 @@
   body{
     background:var(--paper);
     color:var(--ink);
-    font-family:'Archivo', sans-serif;
+    font-family:'Barlow', sans-serif;
     line-height:1.5;
     -webkit-font-smoothing:antialiased;
   }
@@ -46,34 +46,36 @@
   /* ---------- NAV ---------- */
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(241,234,226,0.92);
+    background:rgba(14,12,10,0.94);
     backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
+    border-bottom:1px solid rgba(241,234,226,0.1);
   }
   .navrow{
     display:flex; align-items:center; justify-content:space-between;
     padding:18px 28px;
   }
   .brand{
-    font-family:'Archivo Expanded', sans-serif;
-    font-weight:800;
+    font-family:'Oswald', sans-serif;
+    font-weight:700;
     font-size:19px;
-    letter-spacing:0.02em;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
     display:flex; flex-direction:column; line-height:1.1;
+    color:var(--paper);
   }
   .brand small{
-    font-family:'Archivo', sans-serif;
+    font-family:'Barlow', sans-serif;
     font-weight:500;
     font-size:11px;
     letter-spacing:0.12em;
     text-transform:uppercase;
-    color:var(--transfer);
+    color:#C9A9BE;
     margin-top:3px;
   }
   nav ul{list-style:none; display:flex; gap:28px;}
   nav a{
-    text-decoration:none; font-size:14px; font-weight:600;
-    letter-spacing:0.01em; color:var(--ink-soft);
+    text-decoration:none; font-size:13.5px; font-weight:600;
+    letter-spacing:0.06em; text-transform:uppercase; color:#D8D1C6;
     position:relative; padding-bottom:2px;
   }
   nav a::after{
@@ -81,55 +83,69 @@
     background:var(--rose); transition:width .25s ease;
   }
   nav a:hover::after{width:100%;}
+  nav a:hover{color:var(--paper);}
   .navcall{
     display:none;
   }
   @media (min-width:720px){
     .navcall{
       display:inline-flex; align-items:center; gap:8px;
-      background:var(--ink); color:var(--paper);
+      background:var(--rose); color:var(--paper);
       padding:9px 16px; border-radius:2px;
       font-size:13px; font-weight:700; text-decoration:none;
-      letter-spacing:0.03em;
+      letter-spacing:0.05em; text-transform:uppercase;
     }
+    .navcall:hover{background:var(--rose-deep);}
   }
   @media (max-width:719px){ nav ul{display:none;} }
 
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
-    padding:96px 0 80px;
+    padding:140px 0 120px;
     overflow:hidden;
-    border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(ellipse at 75% 20%, rgba(156,59,78,0.35), transparent 55%),
+      linear-gradient(180deg, #100D09 0%, var(--ink) 100%);
+    color:var(--paper);
+  }
+  .hero::before{
+    content:'';
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(115deg, transparent 0 18px, rgba(220,210,230,0.035) 18px 19px),
+      repeating-linear-gradient(25deg, transparent 0 22px, rgba(220,210,230,0.02) 22px 23px);
+    pointer-events:none;
   }
   .hero-inner{position:relative; z-index:2; max-width:760px;}
   .eyebrow{
     font-size:13px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
-    color:var(--transfer); margin-bottom:18px; display:flex; align-items:center; gap:10px;
+    color:#C9A9BE; margin-bottom:18px; display:flex; align-items:center; gap:10px;
   }
   .eyebrow::before{
-    content:''; width:26px; height:1px; background:var(--transfer);
+    content:''; width:26px; height:1px; background:#C9A9BE;
   }
   .hero h1{
-    font-family:'Archivo Expanded', sans-serif;
+    font-family:'Oswald', sans-serif;
     font-weight:800;
-    font-size:clamp(38px, 6.4vw, 68px);
-    line-height:1.02;
+    font-size:clamp(40px, 7vw, 76px);
+    line-height:1.0;
     letter-spacing:-0.01em;
     max-width:11ch;
+    color:var(--paper);
   }
   .hero h1 .mark{
     font-family:'Permanent Marker', cursive;
     font-weight:400;
-    color:var(--rose);
+    color:#E8899C;
     display:inline-block;
     transform:rotate(-2deg);
     font-size:0.85em;
   }
   .hero p.lede{
-    margin-top:24px; font-size:18px; color:var(--ink-soft); max-width:52ch;
+    margin-top:26px; font-size:18px; color:#CFC7BD; max-width:52ch;
   }
-  .hero-ctas{display:flex; gap:14px; margin-top:36px; flex-wrap:wrap;}
+  .hero-ctas{display:flex; gap:14px; margin-top:40px; flex-wrap:wrap;}
   .btn{
     display:inline-flex; align-items:center; gap:9px;
     padding:14px 24px; border-radius:2px; font-weight:700; font-size:14.5px;
@@ -139,21 +155,21 @@
   .btn:hover{transform:translateY(-2px);}
   .btn-primary{background:var(--rose); color:var(--paper);}
   .btn-primary:hover{background:var(--rose-deep);}
-  .btn-ghost{border-color:var(--ink); color:var(--ink);}
-  .btn-ghost:hover{background:var(--ink); color:var(--paper);}
+  .btn-ghost{border-color:var(--paper); color:var(--paper);}
+  .btn-ghost:hover{background:var(--paper); color:var(--ink);}
 
   .hero-badge{
-    position:absolute; right:6%; top:90px; z-index:1;
+    position:absolute; right:6%; top:110px; z-index:1;
     width:168px; height:168px; border-radius:50%;
-    border:1.5px dashed var(--transfer);
+    border:1.5px dashed #C9A9BE;
     display:flex; align-items:center; justify-content:center;
-    text-align:center;
+    text-align:center; color:var(--paper);
     animation:spin 34s linear infinite;
   }
   @keyframes spin{ to{ transform:rotate(360deg); } }
   .hero-badge-inner{
     animation:spin 34s linear infinite reverse;
-    font-family:'Archivo Expanded', sans-serif;
+    font-family:'Oswald', sans-serif;
     font-weight:800; font-size:15px; line-height:1.3;
   }
   .hero-badge-inner .num{
@@ -162,7 +178,7 @@
   @media (max-width: 900px){ .hero-badge{display:none;} }
 
   .needle-line{
-    width:100%; height:64px; display:block; margin-top:8px;
+    width:100%; height:64px; display:block; margin-top:12px; position:relative; z-index:2;
   }
 
   /* ---------- SECTION HEADERS ---------- */
@@ -170,7 +186,7 @@
   .sec-head{max-width:640px; margin-bottom:52px;}
   .sec-head .eyebrow{margin-bottom:14px;}
   .sec-head h2{
-    font-family:'Archivo Expanded', sans-serif;
+    font-family:'Oswald', sans-serif;
     font-weight:800; font-size:clamp(28px,4vw,42px); letter-spacing:-0.01em;
   }
   .sec-head p{margin-top:14px; color:var(--ink-soft); font-size:16.5px;}
@@ -185,7 +201,7 @@
   }
   .service-card .icon{width:46px; height:46px; margin-bottom:22px; color:var(--rose);}
   .service-card h3{
-    font-family:'Archivo Expanded', sans-serif; font-weight:800; font-size:22px; margin-bottom:10px;
+    font-family:'Oswald', sans-serif; font-weight:800; font-size:22px; margin-bottom:10px;
   }
   .service-card p{color:var(--ink-soft); font-size:15px; margin-bottom:18px;}
   .service-card ul{list-style:none; font-size:14.5px; color:var(--ink-soft);}
@@ -198,7 +214,7 @@
     padding:44px; border:1px solid var(--line); background:var(--paper);
   }
   .stars{color:var(--rose); font-size:26px; letter-spacing:3px;}
-  .rating-num{font-family:'Archivo Expanded', sans-serif; font-weight:800; font-size:52px; line-height:1;}
+  .rating-num{font-family:'Oswald', sans-serif; font-weight:800; font-size:52px; line-height:1;}
   .rating-sub{font-size:13.5px; color:var(--ink-soft); letter-spacing:0.02em; margin-top:6px;}
   .rating-quote{
     max-width:420px; font-size:16px; color:var(--ink-soft); font-style:italic;
@@ -217,18 +233,42 @@
   .t-source{font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--transfer);}
   .reviews-cta{margin-top:36px; display:flex; justify-content:center;}
 
+  /* ---------- FLOATING CALL BUTTON ---------- */
+  .float-call{
+    position:fixed; right:22px; bottom:22px; z-index:60;
+    width:60px; height:60px; border-radius:50%;
+    background:var(--rose); color:var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 24px rgba(23,20,15,0.35);
+    text-decoration:none;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .float-call:hover{transform:scale(1.06); background:var(--rose-deep);}
+  .float-call svg{width:26px; height:26px;}
+  .float-tooltip{
+    position:fixed; right:92px; bottom:36px; z-index:60;
+    background:var(--ink); color:var(--paper);
+    padding:9px 14px; border-radius:4px; font-size:13px; font-weight:600;
+    white-space:nowrap; opacity:0; pointer-events:none;
+    transition:opacity .2s ease;
+  }
+  .float-call:hover + .float-tooltip{opacity:1;}
+  @media (max-width:600px){ .float-tooltip{display:none;} }
+
   /* ---------- GALERIE ---------- */
   .gallery-grid{
-    display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
+    display:grid; grid-template-columns:repeat(2,1fr); grid-auto-rows:90px; gap:14px;
   }
   @media (min-width:640px){ .gallery-grid{grid-template-columns:repeat(4,1fr);} }
   .gallery-slot{
-    aspect-ratio:3/4; border:1.5px dashed var(--transfer);
+    border:1.5px dashed var(--transfer);
     background:var(--transfer-dim);
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     gap:10px; text-align:center; padding:14px;
     color:var(--transfer);
   }
+  .gallery-slot.tall{grid-row:span 3;}
+  .gallery-slot.med{grid-row:span 2;}
   .gallery-slot svg{width:34px; height:34px; opacity:0.7;}
   .gallery-slot span{font-size:12px; font-weight:600; letter-spacing:0.02em;}
   .gallery-note{
@@ -241,18 +281,18 @@
   .about{background:var(--paper-dim); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
   .about-grid{display:grid; grid-template-columns:1fr; gap:44px;}
   @media (min-width:800px){ .about-grid{grid-template-columns:1.1fr 0.9fr;} }
-  .about h2{font-family:'Archivo Expanded', sans-serif; font-weight:800; font-size:clamp(26px,3.6vw,36px);}
+  .about h2{font-family:'Oswald', sans-serif; font-weight:800; font-size:clamp(26px,3.6vw,36px);}
   .about p{margin-top:18px; color:var(--ink-soft); font-size:16px; max-width:56ch;}
   .about-facts{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
   .fact{border:1px solid var(--line); background:var(--paper); padding:22px;}
-  .fact .n{font-family:'Archivo Expanded', sans-serif; font-weight:800; font-size:28px; color:var(--rose);}
+  .fact .n{font-family:'Oswald', sans-serif; font-weight:800; font-size:28px; color:var(--rose);}
   .fact .l{font-size:13px; color:var(--ink-soft); margin-top:6px;}
 
   /* ---------- KONTAKT ---------- */
   .contact-grid{display:grid; grid-template-columns:1fr; gap:36px;}
   @media (min-width:800px){ .contact-grid{grid-template-columns:1fr 1fr;} }
   .contact-card{border:1px solid var(--line); padding:32px; background:var(--paper);}
-  .contact-card h3{font-family:'Archivo Expanded', sans-serif; font-weight:800; font-size:20px; margin-bottom:18px;}
+  .contact-card h3{font-family:'Oswald', sans-serif; font-weight:800; font-size:20px; margin-bottom:18px;}
   .contact-row{display:flex; gap:14px; padding:12px 0; border-top:1px dashed var(--line); align-items:flex-start;}
   .contact-row:first-of-type{border-top:none;}
   .contact-row svg{width:20px; height:20px; flex-shrink:0; margin-top:2px; color:var(--rose);}
@@ -263,18 +303,27 @@
   .map-embed iframe{width:100%; height:100%; min-height:280px; border:0; display:block;}
 
   /* ---------- FOOTER ---------- */
-  footer{
-    background:var(--ink); color:var(--paper); padding:44px 0 28px;
+  footer{background:var(--ink); color:var(--paper);}
+  .footer-top{padding:56px 0 40px; border-bottom:1px solid rgba(241,234,226,0.12);}
+  .footer-cols{display:grid; grid-template-columns:1fr; gap:36px;}
+  @media (min-width:760px){ .footer-cols{grid-template-columns:1.2fr 1fr 1fr;} }
+  .footer-col h4{
+    font-family:'Oswald', sans-serif; font-weight:800; font-size:15px;
+    letter-spacing:0.04em; text-transform:uppercase; color:#C9A9BE; margin-bottom:18px;
   }
-  .footer-row{
-    display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px; align-items:center;
+  .footer-col p, .footer-col a{font-size:14.5px; color:#D8D1C6; line-height:1.7;}
+  .footer-col a{text-decoration:none;}
+  .footer-col a:hover{color:var(--paper);}
+  .footer-social{display:flex; gap:14px; margin-top:16px;}
+  .footer-social a{
+    width:36px; height:36px; border:1px solid rgba(241,234,226,0.25); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
   }
-  footer .brand-f{font-family:'Archivo Expanded', sans-serif; font-weight:800; font-size:17px;}
-  footer .brand-f small{display:block; font-family:'Archivo'; font-weight:500; font-size:11px; color:#9c9285; margin-top:4px; letter-spacing:0.08em; text-transform:uppercase;}
-  footer .flinks{display:flex; gap:22px; list-style:none; font-size:14px;}
-  footer .flinks a{text-decoration:none; color:#cfc7ba;}
-  footer .flinks a:hover{color:var(--paper);}
-  .footer-fine{margin-top:28px; padding-top:20px; border-top:1px solid rgba(241,234,226,0.14); font-size:12.5px; color:#8b8276; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+  .footer-social a:hover{border-color:var(--paper);}
+  .footer-social svg{width:16px; height:16px;}
+  footer .brand-f{font-family:'Oswald', sans-serif; font-weight:800; font-size:19px; margin-bottom:6px;}
+  .footer-bottom{padding:20px 0; }
+  .footer-fine{font-size:12.5px; color:#8b8276; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
 </style>
 </head>
 <body>
@@ -405,10 +454,14 @@
       <p>Hier entsteht bald eine Auswahl echter Arbeiten aus dem Studio.</p>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
-      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
-      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
-      <div class="gallery-slot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
+      <div class="gallery-slot tall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
+      <div class="gallery-slot med"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
+      <div class="gallery-slot med"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
+      <div class="gallery-slot tall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
+      <div class="gallery-slot med"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
+      <div class="gallery-slot tall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
+      <div class="gallery-slot med"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
+      <div class="gallery-slot med"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
     </div>
     <p class="gallery-note">Platzhalter — hier kommen echte Fotos vom Studio rein, sobald sie verfügbar sind.</p>
   </div>
@@ -468,21 +521,40 @@
 </section>
 
 <footer>
-  <div class="wrap">
-    <div class="footer-row">
-      <div class="brand-f">A&F JACEK<small>Tattoo &amp; PMU Studio · Biberach an der Riß</small></div>
-      <ul class="flinks">
-        <li><a href="tel:015734602843">01573 4602843</a></li>
-        <li><a href="https://www.facebook.com/share/1993gLLr56/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a></li>
-        <li><a href="#kontakt">Anfahrt</a></li>
-      </ul>
+  <div class="footer-top">
+    <div class="wrap footer-cols">
+      <div class="footer-col">
+        <div class="brand-f">A&F JACEK</div>
+        <p>Tattoo &amp; PMU Studio<br>Biberach an der Riß</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/share/1993gLLr56/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M15 8h2V4h-2a5 5 0 0 0-5 5v2H8v4h2v6h4v-6h3l1-4h-4V9a1 1 0 0 1 1-1Z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <p><a href="https://www.google.com/maps/search/?api=1&query=A%26F+JACEK+Tattoo%26PMU+Studio&query_place_id=ChIJ5U9jTOvFm0cRpx4KwDK5K9c" target="_blank" rel="noopener">Pfluggasse 14<br>88400 Biberach an der Riß</a></p>
+        <p style="margin-top:10px;"><a href="tel:015734602843">01573 4602843</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Öffnungszeiten</h4>
+        <p>Termine nach Vereinbarung<br>Anruf oder Nachricht genügt.</p>
+      </div>
     </div>
-    <div class="footer-fine">
+  </div>
+  <div class="footer-bottom">
+    <div class="wrap footer-fine">
       <span>© 2026 A&F JACEK Tattoo &amp; PMU Studio</span>
       <span>Pfluggasse 14, 88400 Biberach an der Riß</span>
     </div>
   </div>
 </footer>
+
+<a class="float-call" href="tel:015734602843" aria-label="Jetzt anrufen">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"/></svg>
+</a>
+<span class="float-tooltip">Termin anfragen?</span>
 
 </body>
 </html>
