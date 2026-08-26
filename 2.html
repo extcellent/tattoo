@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>A&F JACEK — Tattoo & PMU Studio, Biberach an der Riß</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Animate.css für Animationen -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <style>
+        /* ----- RESET & ROOT (wie zweite Seite: dunkel, elegant) ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #1a1a1a;
+            --bg-soft: #222222;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --accent-gold: #c8a87c;
+            --accent-gold-dim: #a5865e;
+            --accent-rose: #b45a6b;
+            --border-dim: rgba(200, 168, 124, 0.12);
+            --shadow-elegant: 0 12px 40px rgba(0,0,0,0.8);
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Barlow', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ----- NAVIGATION (wie zweite Seite) ----- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-dim);
+            transition: all 0.3s ease;
+        }
+
+        .navrow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .brand small {
+            display: block;
+            font-family: 'Barlow', sans-serif;
+            font-weight: 400;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+        }
+        nav a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+        nav a:hover {
+            color: var(--text-primary);
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .navcall {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-gold);
+            color: #0a0a0a;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .navcall i {
+            font-size: 14px;
+        }
+        .navcall:hover {
+            background: var(--accent-gold-dim);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 760px) {
+            nav ul { display: none; }
+            .navcall { display: none; }
+            .mobile-call {
+                display: inline-flex !important;
+                align-items: center;
+                gap: 8px;
+                background: var(--accent-gold);
+                color: #0a0a0a;
+                padding: 8px 16px;
+                border-radius: 4px;
+                font-weight: 600;
+                font-size: 13px;
+            }
+        }
+        @media (min-width: 761px) {
+            .mobile-call { display: none !important; }
+        }
+
+        /* ----- HERO BANNER (wie zweite Seite: Full-Width Bild) ----- */
+        .hero-banner {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--bg-primary);
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        .hero-banner .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Crect width="100" height="100" fill="%231a1a1a"/%3E%3Ccircle cx="50" cy="50" r="40" fill="%23222222"/%3E%3C/svg%3E') center/cover no-repeat;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .hero-banner .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.7);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 700px;
+            padding: 60px 0;
+        }
+
+        .hero-content .eyebrow {
+            font-size: 13px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .hero-content .eyebrow::before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: var(--accent-gold);
+        }
+
+        .hero-content h1 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            line-height: 1.05;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .hero-content h1 .highlight {
+            color: var(--accent-gold);
+        }
+
+        .hero-content .lede {
+            margin-top: 24px;
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 520px;
+            line-height: 1.7;
+        }
+
+        .hero-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 36px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: var(--accent-gold);
+            color: #0a0a0a;
+        }
+        .btn-primary:hover {
+            background: var(--accent-gold-dim);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(200, 168, 124, 0.3);
+        }
+        .btn-outline {
+            border: 2px solid var(--accent-gold);
+            color: var(--text-primary);
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: var(--accent-gold);
+            color: #0a0a0a;
+            transform: translateY(-3px);
+        }
+
+        .hero-badge {
+            position: absolute;
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--bg-card);
+            border: 1px solid var(--border-dim);
+            border-radius: 12px;
+            padding: 32px 28px;
+            text-align: center;
+            box-shadow: var(--shadow-elegant);
+            z-index: 3;
+            min-width: 180px;
+        }
+        .hero-badge .big {
+            font-family: 'Oswald', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            line-height: 1;
+        }
+        .hero-badge .stars {
+            color: var(--accent-gold);
+            font-size: 20px;
+            letter-spacing: 3px;
+            margin: 8px 0;
+        }
+        .hero-badge .sub {
+            color: var(--text-secondary);
+            font-size: 13px;
+            letter-spacing: 0.02em;
+        }
+
+        @media (max-width: 900px) {
+            .hero-badge {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                margin-top: 30px;
+                max-width: 280px;
+            }
+            .hero-content { text-align: center; }
+            .hero-content .lede { margin-left: auto; margin-right: auto; }
+            .hero-ctas { justify-content: center; }
+            .hero-content .eyebrow { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-badge { width: 100%; max-width: 100%; }
+            .hero-ctas .btn { width: 100%; justify-content: center; }
+        }
+
+        /* ----- SECTIONS (wie zweite Seite) ----- */
+        section {
+            padding: 90px 0;
+            border-bottom: 1px solid var(--border-dim);
+        }
+
+        .section-label {
+            font-size: 12px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .section-label::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--accent-gold);
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: 16px;
+        }
+
+        .section-sub {
+            color: var(--text-secondary);
+            max-width: 600px;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        /* ----- LEISTUNGEN (Cards wie zweite Seite) ----- */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 44px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-dim);
+            border-radius: 8px;
+            padding: 36px 30px;
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-gold);
+            box-shadow: var(--shadow-elegant);
+        }
+        .service-card .icon {
+            font-size: 36px;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+        .service-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 12px;
+        }
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+        .service-card ul {
+            list-style: none;
+            font-size: 14px;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-dim);
+            padding-top: 16px;
+        }
+        .service-card ul li {
+            padding: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .service-card ul li::after {
+            content: '→';
+            color: var(--accent-gold);
+            font-weight: 300;
+        }
+
+        /* ----- BEWERTUNGEN (wie erste Seite, aber im Stil der zweiten) ----- */
+        .rating-band {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 44px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-dim);
+            border-radius: 8px;
+            padding: 40px 44px;
+            margin-top: 24px;
+        }
+        .rating-band .stars-big {
+            color: var(--accent-gold);
+            font-size: 28px;
+            letter-spacing: 4px;
+        }
+        .rating-num {
+            font-family: 'Oswald', sans-serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            line-height: 1;
+        }
+        .rating-sub {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-top: 4px;
+            letter-spacing: 0.02em;
+        }
+        .rating-quote {
+            font-style: italic;
+            color: var(--text-secondary);
+            border-left: 2px solid var(--accent-gold);
+            padding-left: 24px;
+            max-width: 440px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-dim);
+            border-radius: 8px;
+            padding: 28px;
+            transition: transform 0.3s;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+        }
+        .testimonial-card .stars {
+            color: var(--accent-gold);
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+        .testimonial-card p {
+            color: var(--text-secondary);
+            font-size: 14.5px;
+            line-height: 1.7;
+            margin: 14px 0;
+        }
+        .testimonial-card .source {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-gold);
+            opacity: 0.7;
+        }
+
+        .reviews-cta {
+            text-align: center;
+            margin-top: 44px;
+        }
+
+        /* ----- GALERIE (Platzhalter) ----- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 36px;
+        }
+        .gallery-slot {
+            aspect-ratio: 3/4;
+            background: var(--bg-card);
+            border: 1px dashed var(--border-dim);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            gap: 14px;
+            font-size: 13px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .gallery-slot:hover {
+            border-color: var(--accent-gold);
+            background: var(--bg-soft);
+        }
+        .gallery-slot i {
+            font-size: 36px;
+            opacity: 0.4;
+        }
+        @media (max-width: 640px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .gallery-note {
+            margin-top: 24px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            background: var(--bg-card);
+            border-left: 3px solid var(--accent-gold);
+            padding: 16px 20px;
+            border-radius: 4px;
+        }
+
+        /* ----- ABOUT (wie zweite Seite) ----- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-facts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+        .fact {
+            background: var(--bg-card);
+            border: 1px solid var(--border-dim);
+            border-radius: 8px;
+            padding: 28px 20px;
+            text-align: center;
+        }
+        .fact .n {
+            font-family: 'Oswald', sans-serif;
+            font-size: 34px;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+        .fact .l {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            letter-spacing: 0.02em;
+        }
+        @media (max-width: 760px) {
+            .about-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ----- KONTAKT + MAP (wie erste Seite) ----- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 28px;
+        }
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-dim);
+            border-radius: 8px;
+            padding: 36px 32px;
+        }
+        .contact-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 24px;
+        }
+        .contact-row {
+            display: flex;
+            gap: 18px;
+            padding: 16px 0;
+            border-top: 1px solid var(--border-dim);
+            align-items: flex-start;
+        }
+        .contact-row:first-of-type { border-top: none; }
+        .contact-row i {
+            font-size: 20px;
+            color: var(--accent-gold);
+            width: 24px;
+            margin-top: 2px;
+        }
+        .contact-row a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .contact-row a:hover { color: var(--accent-gold); }
+        .contact-row .muted {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .map-embed {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-dim);
+            min-height: 300px;
+            height: 100%;
+        }
+        .map-embed iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            border: 0;
+            display: block;
+        }
+        @media (max-width: 760px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .map-embed { min-height: 250px; }
+        }
+
+        /* ----- FOOTER (wie zweite Seite) ----- */
+        footer {
+            background: var(--bg-secondary);
+            padding: 50px 0 30px;
+            border-top: 1px solid var(--border-dim);
+        }
+        .footer-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+        .footer-brand {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .footer-brand small {
+            display: block;
+            font-family: 'Barlow', sans-serif;
+            font-weight: 400;
+            font-size: 11px;
+            color: var(--text-secondary);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+        .footer-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .footer-links a {
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--text-primary); }
+        .footer-fine {
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-dim);
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* ----- ANIMATION HELPER (wie zweite Seite) ----- */
+        .animate__animated {
+            visibility: visible !important;
+        }
+
+        /* Responsive Anpassungen für Badge */
+        @media (max-width: 900px) {
+            .hero-badge {
+                margin: 30px auto 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER (wie zweite Seite) -->
+<header>
+    <div class="navrow">
+        <div class="brand">
+            A&F JACEK
+            <small>Tattoo &amp; PMU Studio</small>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#leistungen">Leistungen</a></li>
+                <li><a href="#bewertungen">Bewertungen</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#studio">Studio</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+        <a class="navcall" href="tel:015734602843"><i class="fas fa-phone-alt"></i> 01573 4602843</a>
+        <a class="mobile-call" href="tel:015734602843"><i class="fas fa-phone-alt"></i></a>
+    </div>
+</header>
+
+<!-- HERO BANNER (wie zweite Seite: mit Hintergrundbild) -->
+<section class="hero-banner">
+    <div class="bg-image"></div>
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="hero-content">
+            <div class="eyebrow animate__animated animate__fadeInUp">Biberach an der Riß</div>
+            <h1 class="animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                Deine Idee.<br><span class="highlight">Unsere Nadel.</span>
+            </h1>
+            <p class="lede animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                Tattoo &amp; Permanent Make-up in der Pfluggasse 14 — handgemacht, mit über 27 Bewertungen und einer glatten 5.0 von Kund:innen aus Biberach und Umgebung.
+            </p>
+            <div class="hero-ctas animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+                <a class="btn btn-primary" href="tel:015734602843"><i class="fas fa-calendar-check"></i> Termin anfragen</a>
+                <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=A%26F+JACEK+Tattoo%26PMU+Studio&query_place_id=ChIJ5U9jTOvFm0cRpx4KwDK5K9c" target="_blank"><i class="fas fa-map-pin"></i> Route zum Studio</a>
+            </div>
+        </div>
+
+        <!-- Badge (wie erste Seite) -->
+        <div class="hero-badge animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+            <div class="big">5.0</div>
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div class="sub">27 Google-Bewertungen</div>
+        </div>
+    </div>
+</section>
+
+<!-- LEISTUNGEN -->
+<section id="leistungen" style="background: var(--bg-secondary);">
+    <div class="container">
+        <div class="section-label animate__animated animate__fadeInUp">Leistungen</div>
+        <h2 class="section-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Zwei Handwerke, ein Studio</h2>
+        <p class="section-sub animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">Von der ersten Skizze bis zum fertigen Motiv — jede Sitzung wird individuell geplant und in ruhiger, hygienischer Atmosphäre umgesetzt.</p>
+
+        <div class="service-grid">
+            <div class="service-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                <div class="icon"><i class="fas fa-pen-fancy"></i></div>
+                <h3>Tattoo</h3>
+                <p>Von filigranem Fineline bis zu großflächigen Motiven — Freihand oder nach Vorlage, jedes Stück ein Unikat.</p>
+                <ul>
+                    <li>Fineline &amp; Ornamental</li>
+                    <li>Cover-ups</li>
+                    <li>Individuelle Motive nach Beratung</li>
+                </ul>
+            </div>
+            <div class="service-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                <div class="icon"><i class="fas fa-feather-alt"></i></div>
+                <h3>Permanent Make-up</h3>
+                <p>Natürlich betonte Brauen, Lidstrich oder Lippen — langanhaltend und auf den Hautton abgestimmt.</p>
+                <ul>
+                    <li>Powder Brows</li>
+                    <li>Lidstrich</li>
+                    <li>Lip Blush</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BEWERTUNGEN (wie erste Seite) -->
+<section id="bewertungen">
+    <div class="container">
+        <div class="section-label animate__animated animate__fadeInUp">Bewertungen</div>
+        <h2 class="section-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Was Kund:innen sagen</h2>
+
+        <div class="rating-band animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+            <div>
+                <div class="stars-big"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <div class="rating-num">5.0</div>
+                <div class="rating-sub">Durchschnitt aus 27 Google-Bewertungen</div>
+            </div>
+            <p class="rating-quote">Ehrliche Beratung, saubere Arbeit, faire Preise — das ziehen sich als roter Faden durch die Rückmeldungen.</p>
+        </div>
+
+        <div class="testimonial-grid">
+            <div class="testimonial-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>Eine Kundin berichtet, dass sowohl ihr Mann als auch später ihr Schwiegervater sich hier tätowieren ließen — beide Male mit einem Ergebnis, das keine Wünsche offen ließ.</p>
+                <div class="source">Google-Bewertung</div>
+            </div>
+            <div class="testimonial-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>Immer wieder hervorgehoben: die saubere, präzise Umsetzung mit viel Liebe zum Detail, gepaart mit einer angenehmen Atmosphäre im Studio und ehrlicher Beratung zu einem fairen Preis.</p>
+                <div class="source">Google-Bewertung</div>
+            </div>
+            <div class="testimonial-card animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>Mehrere kurze Rückmeldungen bringen es auf den Punkt: durchweg zufriedene Kund:innen, die die Arbeit im Studio klar weiterempfehlen.</p>
+                <div class="source">Google-Bewertung</div>
+            </div>
+        </div>
+
+        <div class="reviews-cta animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+            <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=A%26F+JACEK+Tattoo%26PMU+Studio&query_place_id=ChIJ5U9jTOvFm0cRpx4KwDK5K9c" target="_blank"><i class="fas fa-external-link-alt"></i> Alle 27 Bewertungen auf Google ansehen</a>
+        </div>
+    </div>
+</section>
+
+<!-- GALERIE (Platzhalter) -->
+<section id="galerie" style="background: var(--bg-secondary);">
+    <div class="container">
+        <div class="section-label animate__animated animate__fadeInUp">Galerie</div>
+        <h2 class="section-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Aktuelle Arbeiten</h2>
+        <p class="section-sub animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">Hier entsteht bald eine Auswahl echter Arbeiten aus dem Studio.</p>
+
+        <div class="gallery-grid">
+            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.1s;"><i class="fas fa-image"></i> Foto folgt</div>
+            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.15s;"><i class="fas fa-image"></i> Foto folgt</div>
+            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.2s;"><i class="fas fa-image"></i> Foto folgt</div>
+            <div class="gallery-slot animate__animated animate__fadeInUp" style="animation-delay: 0.25s;"><i class="fas fa-image"></i> Foto folgt</div>
+        </div>
+        <div class="gallery-note animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+            <i class="fas fa-info-circle" style="color: var(--accent-gold); margin-right: 10px;"></i>
+            Platzhalter — hier kommen echte Fotos vom Studio rein, sobald sie verfügbar sind.
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT / STUDIO (wie zweite Seite) -->
+<section id="studio">
+    <div class="container">
+        <div class="about-grid">
+            <div>
+                <div class="section-label animate__animated animate__fadeInUp">Über uns</div>
+                <h2 class="section-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Handwerk aus Biberach</h2>
+                <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.8; max-width: 560px;" class="animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                    A&F JACEK Tattoo &amp; PMU Studio steht für saubere Linien, hohe Hygienestandards und persönliche Beratung — mitten in Biberach an der Riß. Ob erstes Tattoo oder nächstes Stück in der Sammlung: hier wird jede Idee ernst genommen.
+                </p>
+                <p style="color: var(--text-secondary); font-size: 16px; line-height: 1.8; margin-top: 12px;" class="animate__animated animate__fadeInUp" style="animation-delay: 0.25s;">
+                    Text kann jederzeit durch die eigenen Worte des Studios ersetzt werden.
+                </p>
+            </div>
+            <div class="about-facts">
+                <div class="fact animate__animated animate__fadeInUp" style="animation-delay: 0.1s;"><div class="n">5.0</div><div class="l">Ø Google-Bewertung</div></div>
+                <div class="fact animate__animated animate__fadeInUp" style="animation-delay: 0.15s;"><div class="n">27</div><div class="l">Bewertungen</div></div>
+                <div class="fact animate__animated animate__fadeInUp" style="animation-delay: 0.2s;"><div class="n">2</div><div class="l">Leistungsbereiche</div></div>
+                <div class="fact animate__animated animate__fadeInUp" style="animation-delay: 0.25s;"><div class="n">1</div><div class="l">Studio in Biberach</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- KONTAKT + MAP (wie erste Seite) -->
+<section id="kontakt" style="background: var(--bg-secondary);">
+    <div class="container">
+        <div class="section-label animate__animated animate__fadeInUp">Kontakt</div>
+        <h2 class="section-title animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">Vorbeikommen oder anrufen</h2>
+
+        <div class="contact-grid">
+            <div class="contact-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                <h3>Studio</h3>
+                <div class="contact-row">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>Pfluggasse 14<br><span class="muted">88400 Biberach an der Riß</span></div>
+                </div>
+                <div class="contact-row">
+                    <i class="fas fa-phone-alt"></i>
+                    <a href="tel:015734602843">01573 4602843</a>
+                </div>
+                <div class="contact-row">
+                    <i class="fas fa-clock"></i>
+                    <div>Termine nach Vereinbarung<br><span class="muted">Anruf oder Nachricht genügt</span></div>
+                </div>
+                <div class="contact-row">
+                    <i class="fab fa-facebook"></i>
+                    <a href="https://www.facebook.com/share/1993gLLr56/?mibextid=wwXIfr" target="_blank">Facebook-Seite</a>
+                </div>
+            </div>
+
+            <div class="map-embed animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                <iframe src="https://www.google.com/maps?q=48.0984905,9.7910243&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Standort A&F JACEK Tattoo & PMU Studio"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER (wie zweite Seite) -->
+<footer>
+    <div class="container">
+        <div class="footer-row">
+            <div class="footer-brand">
+                A&F JACEK
+                <small>Tattoo &amp; PMU Studio · Biberach an der Riß</small>
+            </div>
+            <ul class="footer-links">
+                <li><a href="tel:015734602843">01573 4602843</a></li>
+                <li><a href="https://www.facebook.com/share/1993gLLr56/?mibextid=wwXIfr" target="_blank">Facebook</a></li>
+                <li><a href="#kontakt">Anfahrt</a></li>
+            </ul>
+        </div>
+        <div class="footer-fine">
+            <span>© 2026 A&F JACEK Tattoo &amp; PMU Studio</span>
+            <span>Pfluggasse 14, 88400 Biberach an der Riß</span>
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScript für Animationen (wie zweite Seite) -->
+<script>
+    // Intersection Observer für Animationen beim Scrollen
+    document.addEventListener('DOMContentLoaded', function() {
+        const animatedElements = document.querySelectorAll('.animate__animated');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    // Die Klasse bleibt, die Animation wird durch Sichtbarkeit getriggert
+                    el.style.visibility = 'visible';
+                    // Falls die Animation bereits gelaufen ist, neu starten
+                    el.classList.remove('animate__fadeInUp', 'animate__fadeInDown', 'animate__fadeInLeft', 'animate__fadeInRight');
+                    // Kurzer Timeout für re-trigger
+                    setTimeout(() => {
+                        // Hier die ursprüngliche Klasse wieder hinzufügen – 
+                        // aber wir behalten die Klassen aus dem HTML, daher nichts tun
+                    }, 10);
+                    observer.unobserve(el);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+    });
+</script>
+
+</body>
+</html>
