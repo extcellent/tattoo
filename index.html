@@ -245,6 +245,17 @@
     background:rgba(241,234,226,0.045);
     color:#C9A9BE;
   }
+  .beauty-heading{
+    font-family:'Oswald', sans-serif;
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--paper);
+    margin:56px 0 22px;
+    padding-top:32px;
+    border-top:1px solid rgba(241,234,226,0.14);
+  }
 
   /* ---------- SCROLL REVEAL ---------- */
   .reveal{
@@ -299,6 +310,17 @@
     background:var(--transfer-dim); border-left:3px solid var(--transfer);
     padding:14px 18px; max-width:640px;
   }
+
+  /* Filled gallery slots (real photos) */
+  .gallery-slot.filled{
+    border-style:solid;
+    background-size:cover;
+    background-position:center;
+    transition:transform .3s ease, box-shadow .3s ease, opacity .7s cubic-bezier(.2,.7,.3,1), transform .3s ease;
+  }
+  .gallery-slot.filled svg,
+  .gallery-slot.filled span{ display:none; }
+  .gallery-slot.filled:hover{ transform:translateY(-4px); box-shadow:0 14px 30px rgba(0,0,0,0.45); }
 
   /* ---------- ABOUT ---------- */
   .about{background:var(--paper-dim); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
@@ -476,16 +498,23 @@
       <h2>ART</h2>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-slot tall reveal" style="transition-delay:0ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
-      <div class="gallery-slot med reveal" style="transition-delay:60ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
-      <div class="gallery-slot med reveal" style="transition-delay:120ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
-      <div class="gallery-slot tall reveal" style="transition-delay:180ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
-      <div class="gallery-slot med reveal" style="transition-delay:240ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
-      <div class="gallery-slot tall reveal" style="transition-delay:300ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
-      <div class="gallery-slot med reveal" style="transition-delay:360ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
-      <div class="gallery-slot med reveal" style="transition-delay:420ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
+      <div class="gallery-slot tall filled reveal" style="transition-delay:0ms; background-image:url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.99422-6/773912946_2441695216239982_8028727674805031092_n.png?stp=dst-jpg_tt6&cstp=mx3316x4096&ctp=s3316x4096&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=IanEDcYXAakQ7kNvwFcB0ba&_nc_oc=Adpyh6aadTYOGD01i84PDjQINDeg0wHBKdDMz5lVdCL-Mvj4OHNcAsF6PJyObQkT1AY&_nc_zt=14&_nc_ht=scontent-fra5-1.xx&_nc_gid=BtdglD06zPejiig-VCOW_A&_nc_ss=7b2a8&oh=00_AQF1VtMK5WFmG8rRySVrazZgXHGzFPDIF2zLwO5F7nZCRA&oe=6A9506C3');"></div>
+      <div class="gallery-slot med filled reveal" style="transition-delay:60ms; background-image:url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.99422-6/753707381_1024384417111863_1863466894185881683_n.png?stp=dst-jpg_tt6&cstp=mx3075x4096&ctp=s3075x4096&_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=NAKpFYW7p48Q7kNvwGV8nn8&_nc_oc=Adq07RqiOIh8r7PAdtCWW6JD53LFO9DXK7-XuSXw8jgRyuupM4j9LI0RcJtx3epx8Ww&_nc_zt=14&_nc_ht=scontent-fra5-1.xx&_nc_gid=9Rb5m2SNcKVHWzpbKoO-2w&_nc_ss=7b2a8&oh=00_AQG7PuD0eU5T4hTylg-_-v5uh3uEQUgGOsQjrZ5xbJIeAQ&oe=6A94F2C7');"></div>
+      <div class="gallery-slot med filled reveal" style="transition-delay:120ms; background-image:url('https://scontent-dus1-1.xx.fbcdn.net/v/t39.99422-6/727519389_2419640565201949_1188565738683056779_n.png?stp=dst-jpg_tt6&cstp=mx3102x4096&ctp=s590x590&_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=QE4vChl1JbAQ7kNvwEFaKLr&_nc_oc=Adq4vmmL4fWjMHbXFh4IKEMrTMqTx95_ln_pus2gxGNO4nQ0Qp16FUTR8J-YCrHxF_A&_nc_zt=14&_nc_ht=scontent-dus1-1.xx&_nc_gid=Q_S6r-GBMcUnctwI-5cBAA&_nc_ss=7b2a8&oh=00_AQExf0jDE2YS9yH4gsqKH7HRopD9sNXCOdRIyc5XtfEqAQ&oe=6A952459');"></div>
+      <div class="gallery-slot tall filled reveal" style="transition-delay:180ms; background-image:url('https://scontent-fra3-2.xx.fbcdn.net/v/t39.99422-6/724534673_1303596565088020_4607571948662739470_n.png?stp=dst-jpg_tt6&cstp=mx3072x4096&ctp=s3072x4096&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iy64KooIPFoQ7kNvwEsQfwW&_nc_oc=AdowSw2QvSpSJcgoLJvcoHdVBlCM46BPTVP5ZpnsLgoB2AgoCBgM2kQhJ8A8t0nZGt8&_nc_zt=14&_nc_ht=scontent-fra3-2.xx&_nc_gid=pXR_ARJ6bnb0GlCY_8yxpQ&_nc_ss=7b2a8&oh=00_AQHqlq7EJyYSRqnTa4q7WlJD8gxuEnxwKi71zP7UaT3BbA&oe=6A950CEA');"></div>
+      <div class="gallery-slot med filled reveal" style="transition-delay:240ms; background-image:url('https://scontent-fra3-1.xx.fbcdn.net/v/t51.82787-15/573256724_18212747344308450_1828411614948836631_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1918&ctp=s1440x1918&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=WHTX1TCSHHYQ7kNvwEWHKpq&_nc_oc=Adovmmgx1xFc0eT8DLSG8j6amEOwwdZfgzc21eDVAhG4yQ3sAiI8bqmQVbj8DtsmFwk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&_nc_gid=1ORHkY8s-j1o9q9vSv4zVg&_nc_ss=7b2a8&oh=00_AQEY7nV1muzQrSbwf347NKmkMgbtuEs4Bm_VqPFQ3VYc5w&oe=6A94FCA4');"></div>
+      <div class="gallery-slot tall filled reveal" style="transition-delay:300ms; background-image:url('https://scontent-fra5-1.xx.fbcdn.net/v/t51.82787-15/619505697_18220748629308450_6127866125872254746_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1838&ctp=s1440x1838&_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=OXjz8BiaMNEQ7kNvwE-PYxP&_nc_oc=Adq6cEH4HjxbX_r4CCVpZv0-OAgBvnO3Sxdh9BUAn8Wx8MJVtpbIC33aITTcFRv4Y0Y&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=6ApOsP8m9Srgk44UZnxN5Q&_nc_ss=7b2a8&oh=00_AQFqnp50tUUu486U5v-Y7jNZRr-LqFmVQ1zqrNxaDAXSiQ&oe=6A952CAA');"></div>
+      <div class="gallery-slot med filled reveal" style="transition-delay:360ms; background-image:url('https://scontent-fra3-2.xx.fbcdn.net/v/t51.82787-15/548583082_18206077534308450_7662693264021069259_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1846&ctp=s1440x1846&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=r7L39aM_nfgQ7kNvwE5boPQ&_nc_oc=AdoHNDSQR4EqVaKkiIsDkFP5x0vw7nw_hduKsUD7d4Q_NzkMPsAlYvGM3C8y0ang3nM&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&_nc_gid=sqWQvgfDJpedvI3uFUN2UA&_nc_ss=7b2a8&oh=00_AQGl6TyXwWVTxKWt7NwARikomF6Xj2isgkkUPOslfk-8xw&oe=6A951C12');"></div>
+      <div class="gallery-slot med filled reveal" style="transition-delay:420ms; background-image:url('https://scontent-fra3-1.xx.fbcdn.net/v/t51.82787-15/573256724_18212747344308450_1828411614948836631_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1918&ctp=s1440x1918&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=WHTX1TCSHHYQ7kNvwEWHKpq&_nc_oc=Adovmmgx1xFc0eT8DLSG8j6amEOwwdZfgzc21eDVAhG4yQ3sAiI8bqmQVbj8DtsmFwk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&_nc_gid=1ORHkY8s-j1o9q9vSv4zVg&_nc_ss=7b2a8&oh=00_AQEY7nV1muzQrSbwf347NKmkMgbtuEs4Bm_VqPFQ3VYc5w&oe=6A94FCA4');"></div>
     </div>
-    <p class="gallery-note">Platzhalter — hier kommen echte Fotos vom Studio rein, sobald sie verfügbar sind.</p>
+
+    <h3 class="beauty-heading">Beauty</h3>
+    <div class="gallery-grid" style="grid-auto-rows:180px;">
+      <div class="gallery-slot filled reveal" style="transition-delay:0ms; background-image:url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/787124187_122195092400755530_8600243483550638894_n.jpg?stp=dst-jpg_tt6&cstp=mx1320x1629&ctp=s1320x1629&_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=Fv2hfhLT7i0Q7kNvwG009aN&_nc_oc=AdqDAXhnip5l3flZelrqK6bHjw5yysAshDEdKxqsdT0S3MwDUpAPLI5YGzJU1X5JShY&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=0fEN8CGtGvThAg71A71suQ&_nc_ss=7b2a8&oh=00_AQHpbnooS-jCz1Wl092ToVhC-ak7EkTbWrIuO51ZCCRhQg&oe=6A95302A');"></div>
+      <div class="gallery-slot filled reveal" style="transition-delay:60ms; background-image:url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/786702689_122195092388755530_4484297296442769516_n.jpg?stp=dst-jpg_tt6&cstp=mx1320x1635&ctp=s1320x1635&_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=vE9IG3peseQQ7kNvwHy_Zn5&_nc_oc=AdoyJPoL_xYnh5Xk2uf0T0H0e--4aFL7MiTM-reKhUMrCc2lbxObtLJ_WcU2k-hI6wo&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=MCL7GQEhwVogdp5JwrU8Ug&_nc_ss=7b2a8&oh=00_AQF0Ofe727KdkIUTKCodOSkx5B5-SOzc-hYD1Cr2afcHxg&oe=6A9514C8');"></div>
+      <div class="gallery-slot filled reveal" style="transition-delay:120ms; background-image:url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/742173256_122189777828755530_985448460305734498_n.jpg?stp=dst-jpg_tt6&cstp=mx1638x2048&ctp=s1638x2048&_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=ujd7NnKfxZsQ7kNvwEp7G0b&_nc_oc=AdoTmBqUcrAUfT-UVHM6IV6SHEiquKoJS7Glra4YMhWGoEnO_O4KUrCOSnO7xakOnEw&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=XjJ6-qPuRzRrKgO9GhvhHQ&_nc_ss=7b2a8&oh=00_AQFs5szTZg6sXlC7KciRBHOLPC5_GzK5H98ApNUJic5s3Q&oe=6A95076C');"></div>
+      <div class="gallery-slot filled reveal" style="transition-delay:180ms; background-image:url('https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/617866792_122169124922755530_3742007039944926568_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1850&ctp=s1440x1850&_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=_VgCTwBDyLgQ7kNvwFe3Kww&_nc_oc=AdpcJZSdIU4LlN99PwX27FEl7bFKIXiToNHqywy8ne-u3oMC1NMCzMy8uKyKBZTZ9bk&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&_nc_gid=S6KJuAvTCvO-3xKnfxmwog&_nc_ss=7b2a8&oh=00_AQGfpxdr4JJZWwTwUlzlo1cHp6LW3gPSfB9tr4D5d-4mBw&oe=6A94FE46');"></div>
+    </div>
   </div>
 </section>
 
@@ -495,10 +524,10 @@
       <div class="eyebrow">Einblick</div>
       <h2>STUDIO</h2>
     </div>
-    <div class="gallery-grid" style="grid-template-columns:repeat(3,1fr);">
-      <div class="gallery-slot med reveal" style="transition-delay:0ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
-      <div class="gallery-slot med reveal" style="transition-delay:100ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
-      <div class="gallery-slot med reveal" style="transition-delay:200ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="9" cy="10" r="1.6"/><path d="M3 16 L9 11 L14 15 L17 12 L21 16"/></svg><span>Foto folgt</span></div>
+    <div class="gallery-grid" style="grid-template-columns:repeat(3,1fr); grid-auto-rows:220px;">
+      <div class="gallery-slot filled reveal" style="transition-delay:0ms; background-image:url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/615495961_122168150198755530_3579319844257571998_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=ohtMZaf_pGwQ7kNvwHl6L6p&_nc_oc=Adp8_JepqfLGtAwl8kGW8AoSm7rOnIalLTP-TNKBFPF7RbJrzLFyio8W0uC932LpMd8&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=I8srcR35FReZTsgy6tJqmw&_nc_ss=7b2a8&oh=00_AQEGgNNwV9I0DPSZyCsvDIEpj31zumezCABhqa4L_fx7zQ&oe=6A9514C5');"></div>
+      <div class="gallery-slot filled reveal" style="transition-delay:100ms; background-image:url('https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/626830861_122170687250755530_6262018086933982900_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=SqYGdG4AQT0Q7kNvwHwT3da&_nc_oc=AdqynIXN0swh8gQ8LpyNPJTZ6ZwD4-bl0663bUzZuh8kzSRX4X7yfNPN_AZlb5CFKtQ&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&_nc_gid=GoiQXGyDhjYVR7hVzv7Yrw&_nc_ss=7b2a8&oh=00_AQEQvbNjeiy2lL0ctR_hTpd2pNjBSwr4EgSqhiif2hWq7g&oe=6A95D0D6');"></div>
+      <div class="gallery-slot filled reveal" style="transition-delay:200ms; background-image:url('https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/614932413_122168032952755530_3751811553884147906_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=BXLfrWQBP6kQ7kNvwH0eFWM&_nc_oc=AdoUiIcBv9dP8HeQKAPibGN3N7EsGhsD4yyosx52cqVsra5fSzFf88dMz-5g0lCB9L0&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=DJ6AzvwZ7DCsbagPBjZTGQ&_nc_ss=7b2a8&oh=00_AQEcVIUCtqrrfTbbb6hrM0du70bDrrAN-YFEdgNU11E5xA&oe=6A95C6F4');"></div>
     </div>
   </div>
 </section>
